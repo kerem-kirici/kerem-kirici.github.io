@@ -31,9 +31,10 @@ export default function RootLayout({
               Kerem Kirici
             </a>
             <nav className="flex items-center gap-5 text-sm">
-              <a href="/" className="opacity-80 hover:opacity-100">
-                Home
-              </a>
+              <a href="/" className="opacity-80 hover:opacity-100">Home</a>
+              <a href="/projects" className="opacity-80 hover:opacity-100">Projects</a>
+              <a href="/about" className="opacity-80 hover:opacity-100">About</a>
+              <a href="/contact" className="opacity-80 hover:opacity-100">Contact</a>
               <a
                 href="https://github.com/kerem-kirici"
                 target="_blank"
