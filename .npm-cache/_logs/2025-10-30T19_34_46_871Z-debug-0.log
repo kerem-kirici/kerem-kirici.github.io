@@ -1,0 +1,18 @@
+0 verbose cli /opt/homebrew/Cellar/node@20/20.18.2/bin/node /opt/homebrew/bin/npm
+1 info using npm@11.5.2
+2 info using node@v20.18.2
+3 silly config load:file:/opt/homebrew/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/keremkirici/Projects/NextJS/portfolio-website/temp/.npmrc
+5 silly config load:file:/Users/keremkirici/.npmrc
+6 silly config load:file:/opt/homebrew/etc/npmrc
+7 verbose title npm exec next typegen
+8 verbose argv "exec" "next" "--" "typegen"
+9 verbose logfile logs-max:10 dir:/Users/keremkirici/Projects/NextJS/portfolio-website/.npm-cache/_logs/2025-10-30T19_34_46_871Z-
+10 verbose logfile /Users/keremkirici/Projects/NextJS/portfolio-website/.npm-cache/_logs/2025-10-30T19_34_46_871Z-debug-0.log
+11 silly logfile done cleaning log files
+12 verbose cwd /Users/keremkirici/Projects/NextJS/portfolio-website/temp
+13 verbose os Darwin 25.0.0
+14 verbose node v20.18.2
+15 verbose npm  v11.5.2
+16 verbose exit 0
+17 info ok
