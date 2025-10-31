@@ -92,14 +92,29 @@ export default function StickyScrollContainer({
       gridRef.current = gridContainer;
       cardsRef.current = cards;
 
+      const headerHeight = parseFloat(stickyTopOffset.replace('px', '')) || 0;
+
+      // Apply sticky positioning with progressive gap
+      // Each card gets a progressively higher top value to create gaps when they stack
       Array.from(cards).forEach((card, index) => {
         const cardElement = card as HTMLElement;
 
+        // Calculate gap: 24px for each card index + 16px
+        const gap = index * 24 + 16;
+
+        const topPosition = `${headerHeight + gap}px`;
+
         cardElement.style.position = 'sticky';
-        // Use the dynamically calculated header height
-        cardElement.style.top = stickyTopOffset;
+        cardElement.style.top = topPosition;
         cardElement.style.zIndex = `${index + 1}`;
+        cardElement.style.marginTop = ''; // Clear any margin
       });
+    };
+
+    const handleScroll = () => {
+      if (checkScreenSize()) {
+        applyStickyStyles();
+      }
     };
 
     /**
@@ -134,9 +149,12 @@ export default function StickyScrollContainer({
     // Run once stickyTopOffset is calculated
     handleResize();
 
+    // Add scroll listener to update stuck card in real-time
+    window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', handleResize, { passive: true });
 
     return () => {
+      window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
       clearStickyStyles();
     };

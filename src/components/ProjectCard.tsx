@@ -4,7 +4,7 @@ import { ButtonLink } from '@/components/links';
 import { Heading, Text } from '@/components/texts';
 import { getProjectBySlug } from '@/data/projects';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type Project = {
   slug: string;
@@ -14,6 +14,8 @@ export default function ProjectCard({ slug }: Project) {
   const project = getProjectBySlug(slug);
 
   const [isFlipped, setFlipped] = useState(false);
+
+  const cardRef = useRef<HTMLDivElement>(null);
 
   /**
    * Resets the flip state if the user resizes
@@ -38,15 +40,73 @@ export default function ProjectCard({ slug }: Project) {
   const { title, description, href, image, tags } = project;
 
   /**
+   * Scrolls the card into view at its sticky position.
+   * Calculates the proper scroll position based on the card's offset, header height, and sticky gap.
+   */
+  const scrollToCard = () => {
+    if (!cardRef.current || typeof window === 'undefined') return;
+
+    const header = document.querySelector('header') as HTMLElement;
+
+    const headerHeight = header ? header.getBoundingClientRect().height : 0;
+
+    // Find the card's index in the grid
+    const gridContainer = cardRef.current.closest('.grid');
+
+    if (!gridContainer) return;
+
+    const cards = Array.from(gridContainer.children);
+
+    const cardIndex = cards.indexOf(cardRef.current);
+
+    if (cardIndex === -1) return;
+
+    // Calculate the sticky gap for this card (matches StickyScrollContainer formula)
+    const stickyGap = cardIndex * 24 + 16;
+
+    // Calculate card's position relative to grid
+    // We need to account for vertical gaps between cards
+    // The gap-y-80 class means 80 * 0.25rem = 20rem = 320px between cards on xsmall
+    const verticalGap = window.innerWidth < 640 ? 320 : 20; // gap-y-80 on xsmall, gap-y-5 on larger
+
+    // Get the card's position relative to the grid by summing previous cards' heights and gaps
+    let cardTopInGrid = 0;
+
+    for (let i = 0; i < cardIndex; i++) {
+      const prevCard = cards[i] as HTMLElement;
+
+      cardTopInGrid += prevCard.offsetHeight + verticalGap;
+    }
+
+    const gridTop = (gridContainer as HTMLElement).offsetTop;
+
+    const cardOriginalTop = gridTop + cardTopInGrid;
+
+    // Calculate scroll position so the card reaches its sticky position
+    // The card should be at: headerHeight + stickyGap from the top of the viewport
+    // So we need to scroll to: cardOriginalTop - (headerHeight + stickyGap)
+    const scrollPosition = cardOriginalTop - headerHeight - stickyGap;
+
+    window.scrollTo({
+      top: Math.max(0, scrollPosition), // Ensure we don't scroll to negative position
+      behavior: 'smooth',
+    });
+  };
+
+  /**
    * Handles the click event on the root card.
-   * - On xsmall screens (< 640px), it toggles the card flip.
+   * - On xsmall screens (< 640px), it scrolls to the card's position and toggles the card flip.
    * - On small screens and above (>= 640px), it navigates to the project href
    * (respecting the original target="_blank").
    */
   const handleCardClick = () => {
     if (typeof window !== 'undefined') {
       if (window.innerWidth < 640) {
-        setFlipped((prev) => !prev);
+        // On xsmall screens, scroll to the card's position
+        scrollToCard();
+        setTimeout(() => {
+          setFlipped((prev) => !prev);
+        }, 300);
       } else {
         // Small screens and above - navigate to external link
         window.open(href, '_blank', 'noopener,noreferrer');
@@ -58,6 +118,7 @@ export default function ProjectCard({ slug }: Project) {
   // We add 'md:cursor-pointer' to replicate the link feel on desktop
   return (
     <div
+      ref={cardRef}
       onClick={handleCardClick}
       className="group relative block w-full aspect-[9/16] [perspective:1000px] cursor-pointer"
     >
