@@ -1,24 +1,24 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 
 type ProseProps = {
-  size?: "sm" | "md";
+  size?: 'sm' | 'md';
   className?: string;
   children: React.ReactNode;
 };
 
 function classNames(...classes: Array<string | false | null | undefined>) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 }
 
-export function Prose({ size = "md", className, children }: ProseProps) {
+export function Prose({ size = 'md', className, children }: ProseProps) {
   return (
     <div
       className={classNames(
-        "prose dark:prose-invert", // works if typography plugin is enabled; otherwise acts as a simple wrapper
-        size === "sm" ? "prose-sm" : "prose-base",
-        className
+        'prose dark:prose-invert', // works if typography plugin is enabled; otherwise acts as a simple wrapper
+        size === 'sm' ? 'prose-sm' : 'prose-base',
+        className,
       )}
     >
       {children}
@@ -27,5 +27,3 @@ export function Prose({ size = "md", className, children }: ProseProps) {
 }
 
 export default Prose;
-
-

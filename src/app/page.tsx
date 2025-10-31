@@ -1,10 +1,7 @@
-import { Actions } from '@/components/layout/Actions';
-import { Grid } from '@/components/layout/Grid';
-import { Section } from '@/components/layout/Section';
-import { ButtonLink } from '@/components/links/ButtonLink';
+import { Actions, Grid, Section } from '@/components/layout';
+import { ButtonLink } from '@/components/links';
 import ProjectCard from '@/components/ProjectCard';
-import { Heading } from '@/components/texts/Heading';
-import { Text } from '@/components/texts/Text';
+import { Heading, Subheading, Text } from '@/components/texts';
 import { projects } from '@/data/projects';
 
 export default function Home() {
@@ -12,11 +9,18 @@ export default function Home() {
     <>
       <Section padding="lg">
         <Heading as="h1" size="2xl" weight="semibold" tracking="tight">
-          Building elegant experiences with React & Next.js
+          Hey there! Welcome to my page.
         </Heading>
-        <Text size="lg" tone="muted" className="mt-4 max-w-2xl">
-          I’m Kerem, a frontend developer focused on crafting fast, accessible, and delightful web
-          apps. Here are some projects I’ve been working on.
+        <Subheading as="h2" size="lg" weight="semibold" tracking="tight">
+          A Developer, Student, and Future iOS Pro
+        </Subheading>
+        <Text size="lg" tone="muted" className="mt-4 max-w-3xl">
+          Hey, I&apos;m Kerem! I&apos;m a 3rd-year engineering student at ITU who also works as a
+          Junior Software Developer at Tatilsepeti. It&apos;s a unique position where I get to build
+          real-world features for large-scale React apps. I love building things that people find
+          genuinely useful - a perspective that was really shaped by my long-term work experience in
+          the U.S. While I enjoy my work in React, my true passion is mastering native iOS
+          development with Swift and SwiftUI.
         </Text>
         <Actions gap="md" className="mt-8">
           <ButtonLink href="mailto:kerem.kirici36@gmail.com" variant="primary" size="sm">
