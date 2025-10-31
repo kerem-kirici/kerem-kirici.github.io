@@ -21,22 +21,44 @@ export default function Header() {
   }, [open]);
 
   // Lock scroll when mobile menu is open
+  // Lock scroll when mobile menu is open
   useEffect(() => {
     const root = document.documentElement;
 
     const body = document.body;
 
     if (open) {
-      root.classList.add('overflow-hidden');
-      body.classList.add('overflow-hidden');
+      // Get current scroll position
+      const scrollY = window.scrollY;
+
+      // Apply styles to lock
+      root.style.overflow = 'hidden';
+      body.style.overflow = 'hidden';
+      body.style.position = 'fixed'; // Prevents body from scrolling
+      body.style.width = '100%';
+      body.style.top = `-${scrollY}px`; // Maintains scroll position
     } else {
-      root.classList.remove('overflow-hidden');
-      body.classList.remove('overflow-hidden');
+      // Restore scroll position
+      const scrollY = parseInt(body.style.top || '0') * -1;
+
+      // Remove styles to unlock
+      root.style.overflow = '';
+      body.style.overflow = '';
+      body.style.position = '';
+      body.style.width = '';
+      body.style.top = '';
+
+      // Restore scroll position
+      window.scrollTo(0, scrollY);
     }
 
+    // Cleanup on unmount (optional but good practice)
     return () => {
-      root.classList.remove('overflow-hidden');
-      body.classList.remove('overflow-hidden');
+      root.style.overflow = '';
+      body.style.overflow = '';
+      body.style.position = '';
+      body.style.width = '';
+      body.style.top = '';
     };
   }, [open]);
 
@@ -84,7 +106,7 @@ export default function Header() {
             {t('nav.resume')}
           </TextLink>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 pl-4 ml-2 border-l border-zinc-200 dark:border-zinc-800">
           <span className="text-xs opacity-70">EN</span>
           <Switch
             ariaLabel="Toggle language"
@@ -121,7 +143,7 @@ export default function Header() {
       {/* Mobile sidebar (right slide-in with ease-in-out) */}
       <>
         <div
-          className={`fixed inset-0 z-[1000] md:hidden bg-black/40 backdrop-blur-sm transition-opacity duration-300 ease-in-out ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+          className={`fixed inset-0 z-[1000] md:hidden bg-black/40 backdrop-blur-sm transition-opacity duration-300 ease-in-out overscroll-behavior-none ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
           onClick={() => setOpen(false)}
         />
         <aside
