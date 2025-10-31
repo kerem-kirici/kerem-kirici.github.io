@@ -1,5 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
 type Project = {
   title: string;
@@ -10,13 +10,7 @@ type Project = {
   tags?: string[];
 };
 
-export default function ProjectCard({
-  title,
-  description,
-  href,
-  image,
-  tags = [],
-}: Project) {
+export default function ProjectCard({ title, description, href, image, tags = [] }: Project) {
   return (
     <Link
       href={href}
@@ -33,9 +27,7 @@ export default function ProjectCard({
           <div className="hidden h-16 w-16 rounded-md bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-900 dark:to-zinc-800 sm:block" />
         )}
         <div className="min-w-0 flex-1">
-          <h3 className="truncate text-base font-semibold tracking-tight">
-            {title}
-          </h3>
+          <h3 className="truncate text-base font-semibold tracking-tight">{title}</h3>
           <p className="mt-1 line-clamp-3 text-sm text-zinc-600 dark:text-zinc-400">
             {description}
           </p>
@@ -56,5 +48,3 @@ export default function ProjectCard({
     </Link>
   );
 }
-
-

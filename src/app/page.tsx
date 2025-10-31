@@ -1,45 +1,50 @@
-import ProjectCard from '@/components/ProjectCard';
+'use client';
+
+import { useLanguage } from '@/components/i18n/LanguageProvider';
+import { Actions, Grid, PageLayout, Section } from '@/components/layout';
+import { ButtonLink } from '@/components/links';
+import { Heading, Subheading, Text } from '@/components/texts';
 import { projects } from '@/data/projects';
 
 export default function Home() {
-  const deneme = 'deneme';
+  const { t } = useLanguage();
 
   return (
-    <>
-      <section className="py-16">
-        <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-          Building elegant experiences with React & Next.js
-        </h1>
-        <p className="mt-4 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
-          I’m Kerem, a frontend developer focused on crafting fast, accessible, and delightful web
-          apps. Here are some projects I’ve been working on.
-        </p>
-        <div className="mt-8 flex gap-3">
-          <a
-            href="mailto:kerem.kirici36@gmail.com"
-            className="rounded-full bg-black px-5 py-2 text-sm font-medium text-white transition hover:opacity-90 dark:bg-white dark:text-black"
-          >
-            Get in touch
-          </a>
-          <a
-            href="https://github.com/kerem-kirici"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full border border-black/10 px-5 py-2 text-sm font-medium transition hover:bg-black/5 dark:border-white/15 dark:hover:bg-white/5"
-          >
-            GitHub
-          </a>
-        </div>
-      </section>
+    <PageLayout
+      title="Kerem Kırıcı – Frontend Developer"
+      description="Portfolio of Kerem Kırıcı: projects, experience, and contact information."
+    >
+      <Section padding="lg">
+        <Heading as="h1" size="2xl" weight="semibold" tracking="tight">
+          {t('hero.title')}
+        </Heading>
+        <Subheading as="h2" size="lg" weight="semibold" tracking="tight">
+          {t('hero.subtitle')}
+        </Subheading>
+        <Text size="lg" tone="muted" className="mt-4 max-w-3xl">
+          {t('hero.description')}
+        </Text>
+        <Actions gap="md" className="mt-8">
+          <ButtonLink href="mailto:kerem.kirici36@gmail.com" variant="primary" size="sm">
+            {t('hero.cta')}
+          </ButtonLink>
+          <ButtonLink href="https://github.com/kerem-kirici" variant="outline" size="sm" newTab>
+            {t('hero.github')}
+          </ButtonLink>
+        </Actions>
+      </Section>
 
-      <section className="pb-20">
-        <h2 className="text-xl font-semibold tracking-tight">Featured projects</h2>
-        <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
+      <Section padding="md" className="pb-20">
+        <Heading as="h2" size="lg" weight="semibold" tracking="tight">
+          {t('home.featured')} DAHA YAPILACAK
+        </Heading>
+        <Grid cols={{ base: 1, sm: 2 }} gap="md" className="mt-6">
           {projects.slice(0, 4).map((p) => (
-            <ProjectCard key={p.slug} {...p} href={`/project/${p.slug}`} />
+            //<ProjectCard key={p.slug} {...p} href={`/project/${p.slug}`} />
+            <div key={p.slug}>{p.title}</div>
           ))}
-        </div>
-      </section>
-    </>
+        </Grid>
+      </Section>
+    </PageLayout>
   );
 }

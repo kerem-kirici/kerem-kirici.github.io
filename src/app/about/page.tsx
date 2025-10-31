@@ -1,18 +1,26 @@
-export const metadata = {
-  title: "About – Kerem Kirici",
-  description: "About Kerem Kirici, frontend developer.",
-};
+'use client';
+
+import { useLanguage } from '@/components/i18n/LanguageProvider';
+import { PageLayout } from '@/components/layout';
+import { Section } from '@/components/layout/Section';
+import { Heading, Subheading, Text } from '@/components/texts';
 
 export default function AboutPage() {
+  const { t } = useLanguage();
+
   return (
-    <section className="py-12">
-      <h1 className="text-3xl font-semibold tracking-tight">About</h1>
-      <p className="mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400">
-        I’m Kerem, a frontend developer specializing in React and Next.js.
-        I enjoy building performant, accessible, and delightful user interfaces.
-      </p>
-    </section>
+    <PageLayout title="About – Kerem Kırıcı" description="About Kerem Kırıcı, frontend developer.">
+      <Section padding="md">
+        <Heading as="h1" size="xl" weight="semibold" tracking="tight">
+          {t('about.title')}
+        </Heading>
+        <Subheading gutter="md" muted>
+          {t('about.subtitle')}
+        </Subheading>
+        <Text tone="muted" className="mt-4 max-w-4xl" preserveNewlines>
+          {t('about.description')}
+        </Text>
+      </Section>
+    </PageLayout>
   );
 }
-
-
