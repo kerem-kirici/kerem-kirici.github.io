@@ -1,3 +1,6 @@
+'use client';
+
+import { useLanguage } from '@/components/i18n/LanguageProvider';
 import { Actions, Grid, Section } from '@/components/layout';
 import { ButtonLink } from '@/components/links';
 import ProjectCard from '@/components/ProjectCard';
@@ -5,11 +8,13 @@ import { Heading, Subheading, Text } from '@/components/texts';
 import { projects } from '@/data/projects';
 
 export default function Home() {
+  const { t } = useLanguage();
+
   return (
     <>
       <Section padding="lg">
         <Heading as="h1" size="2xl" weight="semibold" tracking="tight">
-          Hey there! Welcome to my page.
+          {t('hero.title')}
         </Heading>
         <Subheading as="h2" size="lg" weight="semibold" tracking="tight">
           A Developer, Student, and Future iOS Pro
@@ -24,17 +29,17 @@ export default function Home() {
         </Text>
         <Actions gap="md" className="mt-8">
           <ButtonLink href="mailto:kerem.kirici36@gmail.com" variant="primary" size="sm">
-            Get in touch
+            {t('hero.cta')}
           </ButtonLink>
           <ButtonLink href="https://github.com/kerem-kirici" variant="outline" size="sm" newTab>
-            GitHub
+            {t('hero.github')}
           </ButtonLink>
         </Actions>
       </Section>
 
       <Section padding="md" className="pb-20">
         <Heading as="h2" size="lg" weight="semibold" tracking="tight">
-          Featured projects
+          {t('home.featured')}
         </Heading>
         <Grid cols={{ base: 1, sm: 2 }} gap="md" className="mt-6">
           {projects.slice(0, 4).map((p) => (

@@ -1,3 +1,4 @@
+import LanguageProvider from '@/components/i18n/LanguageProvider';
 import Header from '@/components/layout/Header';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
@@ -24,16 +25,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <div className="mx-auto max-w-5xl px-6">
-          <Header />
-          <main>{children}</main>
-          <footer className="py-10 text-sm opacity-70">
-            © {new Date().getFullYear()} Kerem Kırıcı. All rights reserved.
-          </footer>
-        </div>
-      </body>
-    </html>
+    <LanguageProvider>
+      <html lang="en">
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <div className="mx-auto max-w-5xl px-6">
+            <Header />
+            <main>{children}</main>
+            <footer className="py-10 text-sm opacity-70">
+              © {new Date().getFullYear()} Kerem Kırıcı. All rights reserved.
+            </footer>
+          </div>
+        </body>
+      </html>
+    </LanguageProvider>
   );
 }
