@@ -4,6 +4,7 @@ import { useLanguage } from '@/components/i18n/LanguageProvider';
 import { Actions, Grid, PageLayout, Section } from '@/components/layout';
 import { ButtonLink } from '@/components/links';
 import ProjectCard from '@/components/ProjectCard';
+import StickyScrollContainer from '@/components/StickyScrollContainer';
 import { Heading, Subheading, Text } from '@/components/texts';
 import { projects } from '@/data/projects';
 
@@ -59,11 +60,17 @@ export default function Home() {
         <Heading as="h2" size="lg" weight="semibold" tracking="tight">
           {t('home.featured')} DAHA YAPILACAK
         </Heading>
-        <Grid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} gap="md" className="mt-6">
-          {projects.slice(0, 4).map((p) => (
-            <ProjectCard key={p.slug} slug={p.slug} />
-          ))}
-        </Grid>
+        <StickyScrollContainer>
+          <Grid
+            cols={{ base: 1, sm: 2, md: 3, lg: 4 }}
+            gap="md"
+            className="mt-6 gap-y-80 sm:gap-y-5"
+          >
+            {projects.slice(0, 4).map((p) => (
+              <ProjectCard key={p.slug} slug={p.slug} />
+            ))}
+          </Grid>
+        </StickyScrollContainer>
       </Section>
     </PageLayout>
   );
