@@ -14,6 +14,7 @@ export type TextLinkProps = {
   newTab?: boolean;
   prefetch?: boolean;
   iconRight?: React.ReactNode;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
   className?: string;
 };
 
@@ -30,6 +31,7 @@ export function TextLink({
   newTab,
   prefetch,
   iconRight,
+  onClick,
   className,
 }: TextLinkProps) {
   const underlineClass =
@@ -52,6 +54,7 @@ export function TextLink({
       prefetch={prefetch}
       target={newTab ? '_blank' : undefined}
       rel={newTab ? 'noopener noreferrer' : undefined}
+      onClick={onClick}
       className={classNames(
         'inline-flex items-center gap-1',
         weight === 'medium' ? 'font-medium' : 'font-normal',

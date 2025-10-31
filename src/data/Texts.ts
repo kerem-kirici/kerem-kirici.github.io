@@ -4,6 +4,8 @@ const TEXT_DICTIONARY = {
   'nav.about': { en: 'About', tr: 'Hakkımda' },
   'nav.contact': { en: 'Contact', tr: 'İletişim' },
   'nav.github': { en: 'GitHub', tr: 'GitHub' },
+  'nav.linkedin': { en: 'LinkedIn', tr: 'LinkedIn' },
+  'nav.resume': { en: 'Resume', tr: 'Özgeçmiş' },
   'footer.copyright': {
     en: '© {year} Kerem Kırıcı. All rights reserved.',
     tr: '© {year} Kerem Kırıcı. Tüm hakları saklıdır.',
@@ -13,15 +15,15 @@ const TEXT_DICTIONARY = {
     tr: 'Merhaba! Portfolyoma Hoşgeldiniz.',
   },
   'hero.subtitle': {
-    en: 'A Developer, Student, and Future iOS Pro',
-    tr: 'Yazılım Tutkunu, Öğrenci, ve Bir Gelecek iOS Geliştirici',
+    en: 'A Developer, Student, and Future Senior iOS Developer',
+    tr: 'Şimdiki Yazılım Tutkunu, Öğrenci, Geleceğin Senior iOS Geliştiricisi',
   },
   'hero.cta': { en: 'Get in touch', tr: 'İletişime geç' },
   'hero.github': { en: 'GitHub', tr: 'GitHub' },
   'home.featured': { en: 'Featured projects', tr: 'Öne çıkan projeler' },
   'hero.description': {
     en: "Hey, I\'m Kerem! I\'m a 3rd-year engineering student at ITU who also works as a Junior Software Developer at Tatilsepeti. It\'s a unique position where I get to build real-world features for large-scale React apps. I love building things that people find genuinely useful - a perspective that was really shaped by my long-term work experience in the U.S. While I enjoy my work in React, my true passion is mastering native iOS development with Swift and SwiftUI.",
-    tr: "Selam, ben Kerem! İTÜ'de 3. sınıf mühendislik öğrencisiyim ve aynı zamanda Tatilsepeti'nde Junior Software Developer olarak çalışıyorum. Bu, büyük ölçekli React uygulamaları için gerçek dünya özellikleri geliştirdiğim eşsiz bir pozisyon. İnsanların gerçekten işine yarayan şeyler yapmayı seviyorum; bu, ABD'deki uzun süreli çalışma deneyimimle şekillenen bir bakış açısı. React'teki işimi sevsem de, asıl tutkum Swift ve SwiftUI ile native iOS geliştirmede uzmanlaşmak.",
+    tr: "Selam, ben Kerem! İTÜ'de 3. sınıf Elektronik ve Haberleşme Müh. öğrencisiyim ve aynı zamanda Tatilsepeti'nde Junior Software Developer olarak çalışıyorum. Bu, büyük ölçekli React uygulamaları için gerçek dünya özellikleri geliştirdiğim eşsiz bir pozisyon. İnsanların gerçekten işine yarayan şeyler yapmayı seviyorum; bu, ABD'deki uzun süreli çalışma deneyimimle şekillenen bir bakış açısı. React'teki işimi sevsem de, asıl tutkum Swift ve SwiftUI ile native iOS geliştirmede uzmanlaşmak.",
   },
   'about.title': {
     en: 'About',
