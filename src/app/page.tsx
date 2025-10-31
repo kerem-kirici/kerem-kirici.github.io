@@ -1,7 +1,7 @@
 'use client';
 
 import { useLanguage } from '@/components/i18n/LanguageProvider';
-import { Actions, Grid, Section } from '@/components/layout';
+import { Actions, Grid, PageLayout, Section } from '@/components/layout';
 import { ButtonLink } from '@/components/links';
 import { Heading, Subheading, Text } from '@/components/texts';
 import { projects } from '@/data/projects';
@@ -10,7 +10,10 @@ export default function Home() {
   const { t } = useLanguage();
 
   return (
-    <>
+    <PageLayout
+      title="Kerem Kırıcı – Frontend Developer"
+      description="Portfolio of Kerem Kırıcı: projects, experience, and contact information."
+    >
       <Section padding="lg">
         <Heading as="h1" size="2xl" weight="semibold" tracking="tight">
           {t('hero.title')}
@@ -42,6 +45,6 @@ export default function Home() {
           ))}
         </Grid>
       </Section>
-    </>
+    </PageLayout>
   );
 }

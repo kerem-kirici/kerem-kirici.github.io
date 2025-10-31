@@ -12,6 +12,7 @@ type TextProps<T extends TextAs = 'p'> = {
   leading?: 'tight' | 'normal' | 'relaxed';
   align?: 'left' | 'center' | 'right' | 'justify';
   clamp?: 1 | 2 | 3 | 4;
+  preserveNewlines?: boolean;
   className?: string;
   children: React.ReactNode;
 };
@@ -28,6 +29,7 @@ export function Text<T extends TextAs = 'p'>({
   leading = 'normal',
   align = 'justify',
   clamp,
+  preserveNewlines = true,
   className,
   children,
 }: TextProps<T>) {
@@ -62,6 +64,7 @@ export function Text<T extends TextAs = 'p'>({
               ? 'text-justify'
               : 'text-left',
         clamp ? `line-clamp-${clamp}` : undefined,
+        preserveNewlines ? 'whitespace-pre-line' : undefined,
         className,
       )}
     >
