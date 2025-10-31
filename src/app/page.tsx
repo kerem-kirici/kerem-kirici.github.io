@@ -1,7 +1,9 @@
-import ProjectCard from "@/components/ProjectCard";
-import { projects } from "@/data/projects";
+import ProjectCard from '@/components/ProjectCard';
+import { projects } from '@/data/projects';
 
 export default function Home() {
+  const deneme = 'deneme';
+
   return (
     <>
       <section className="py-16">
@@ -9,8 +11,8 @@ export default function Home() {
           Building elegant experiences with React & Next.js
         </h1>
         <p className="mt-4 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
-          I’m Kerem, a frontend developer focused on crafting fast, accessible,
-          and delightful web apps. Here are some projects I’ve been working on.
+          I’m Kerem, a frontend developer focused on crafting fast, accessible, and delightful web
+          apps. Here are some projects I’ve been working on.
         </p>
         <div className="mt-8 flex gap-3">
           <a

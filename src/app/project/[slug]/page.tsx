@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { getProjectBySlug, projects } from "@/data/projects";
+import { getProjectBySlug, projects } from '@/data/projects';
+import Link from 'next/link';
 
 type Params = { params: { slug: string } };
 
@@ -9,14 +9,16 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: Params) {
   const project = getProjectBySlug(params.slug);
+
   return {
-    title: project ? `${project.title} – Kerem Kirici` : "Project – Kerem Kirici",
-    description: project?.description ?? "Project details",
+    title: project ? `${project.title} – Kerem Kirici` : 'Project – Kerem Kirici',
+    description: project?.description ?? 'Project details',
   };
 }
 
 export default function ProjectDetail({ params }: Params) {
   const project = getProjectBySlug(params.slug);
+
   if (!project) {
     return (
       <section className="py-16">
@@ -34,9 +36,7 @@ export default function ProjectDetail({ params }: Params) {
   return (
     <section className="py-16">
       <h1 className="text-3xl font-semibold tracking-tight">{project.title}</h1>
-      <p className="mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400">
-        {project.description}
-      </p>
+      <p className="mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400">{project.description}</p>
       <div className="mt-8 flex gap-3">
         <Link
           href={project.href}
@@ -55,5 +55,3 @@ export default function ProjectDetail({ params }: Params) {
     </section>
   );
 }
-
-
