@@ -4,7 +4,7 @@ import { useLanguage } from '@/components/i18n/LanguageProvider';
 import { TextLink } from '@/components/links/TextLink';
 import { Switch } from '@/components/toggles';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Header() {
   const { lang, setLang, t } = useLanguage();
@@ -22,33 +22,32 @@ export default function Header() {
     return () => document.removeEventListener('keydown', onKey);
   }, [open]);
 
-  // Lock scroll when mobile menu is open
-  useEffect(() => {
-    const root = document.documentElement;
+  // Lock scroll when mobile menu is open and restore on close (preserves position)
+  const scrollPositionRef = useRef(0);
 
+  useEffect(() => {
     const body = document.body;
 
     if (open) {
-      const scrollY = window.scrollY;
-
-      root.style.overflow = 'hidden';
+      // Save current scroll position and lock body
+      scrollPositionRef.current = window.scrollY;
       body.style.overflow = 'hidden';
       body.style.position = 'fixed';
       body.style.width = '100%';
-      body.style.top = `-${scrollY}px`;
+      body.style.top = `-${scrollPositionRef.current}px`;
     } else {
-      const scrollY = parseInt(body.style.top || '0') * -1;
+      // Read and clear styles first to restore normal flow
+      const savedY = scrollPositionRef.current;
 
-      root.style.overflow = '';
       body.style.overflow = '';
       body.style.position = '';
       body.style.width = '';
       body.style.top = '';
-      window.scrollTo(0, scrollY);
+      // Restore scroll position
+      window.scrollTo(0, savedY);
     }
 
     return () => {
-      root.style.overflow = '';
       body.style.overflow = '';
       body.style.position = '';
       body.style.width = '';
