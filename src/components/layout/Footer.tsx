@@ -1,6 +1,7 @@
 'use client';
 
 import { useLanguage } from '@/components/i18n/LanguageProvider';
+import TextLink from '../links/TextLink';
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -11,20 +12,29 @@ export default function Footer() {
     <footer className="py-10 text-sm">
       <div className="flex flex-col gap-3">
         <div className="flex flex-wrap items-center gap-4">
-          <a
-            href="mailto:kerem.kirici36@gmail.com"
-            className="text-zinc-900 dark:text-zinc-50 underline underline-offset-4 hover:opacity-80"
-          >
-            Email
-          </a>
-          <a
+          <TextLink
             href="https://github.com/kerem-kirici"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-zinc-900 dark:text-zinc-50 underline underline-offset-4 hover:opacity-80"
+            newTab
+            underline="always"
+            className="opacity-80 hover:opacity-100"
           >
-            GitHub
-          </a>
+            {t('footer.github')}
+          </TextLink>
+          <TextLink
+            href="https://www.linkedin.com/in/kerem-kırıcı-b191711b9/"
+            newTab
+            underline="always"
+            className="opacity-80 hover:opacity-100"
+          >
+            {t('footer.linkedin')}
+          </TextLink>
+          <TextLink
+            href="mailto:kerem.kirici36@gmail.com"
+            underline="always"
+            className="opacity-80 hover:opacity-100"
+          >
+            {t('footer.email')}
+          </TextLink>
         </div>
         <div className="opacity-70">{t('footer.copyright', { year })}</div>
       </div>

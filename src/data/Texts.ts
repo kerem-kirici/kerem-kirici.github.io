@@ -10,6 +10,9 @@ const TEXT_DICTIONARY = {
     en: '© {year} Kerem Kırıcı. All rights reserved.',
     tr: '© {year} Kerem Kırıcı. Tüm hakları saklıdır.',
   },
+  'footer.email': { en: 'Email', tr: 'Email' },
+  'footer.github': { en: 'GitHub', tr: 'GitHub' },
+  'footer.linkedin': { en: 'LinkedIn', tr: 'LinkedIn' },
   'hero.title': {
     en: 'Hey there! Welcome to my page.',
     tr: 'Merhaba! Portfolyoma Hoşgeldiniz.',
@@ -19,6 +22,7 @@ const TEXT_DICTIONARY = {
     tr: 'Şimdiki Yazılım Tutkunu, Öğrenci, Geleceğin Senior iOS Geliştiricisi',
   },
   'hero.cta': { en: 'Get in touch', tr: 'İletişime geç' },
+  'hero.linkedin': { en: 'LinkedIn', tr: 'LinkedIn' },
   'hero.github': { en: 'GitHub', tr: 'GitHub' },
   'home.featured': { en: 'Featured projects', tr: 'Öne çıkan projeler' },
   'hero.description': {

@@ -25,11 +25,31 @@ export default function Home() {
           {t('hero.description')}
         </Text>
         <Actions gap="md" className="mt-8">
-          <ButtonLink href="mailto:kerem.kirici36@gmail.com" variant="primary" size="sm">
-            {t('hero.cta')}
-          </ButtonLink>
-          <ButtonLink href="https://github.com/kerem-kirici" variant="outline" size="sm" newTab>
+          <ButtonLink
+            href="https://github.com/kerem-kirici"
+            variant="outline"
+            size="sm"
+            newTab
+            className="opacity-80 hover:opacity-100"
+          >
             {t('hero.github')}
+          </ButtonLink>
+          <ButtonLink
+            href="https://www.linkedin.com/in/kerem-kırıcı-b191711b9/"
+            variant="outline"
+            size="sm"
+            newTab
+            className="opacity-80 hover:opacity-100"
+          >
+            {t('hero.linkedin')}
+          </ButtonLink>
+          <ButtonLink
+            href="mailto:kerem.kirici36@gmail.com"
+            variant="outline"
+            size="sm"
+            className="opacity-80 hover:opacity-100"
+          >
+            {t('hero.cta')}
           </ButtonLink>
         </Actions>
       </Section>
