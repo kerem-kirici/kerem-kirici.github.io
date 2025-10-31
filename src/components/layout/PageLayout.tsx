@@ -20,5 +20,3 @@ export default function PageLayout({ title, description, children }: PageLayoutP
     </>
   );
 }
-
-

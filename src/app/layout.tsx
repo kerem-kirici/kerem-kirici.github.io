@@ -29,7 +29,7 @@ export default function RootLayout({
     <LanguageProvider>
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <div className="mx-auto max-w-5xl px-6">
+          <div className="mx-auto max-w-4xl px-8 md:px-6">
             <Header />
             <main>{children}</main>
             <Footer />
