@@ -1,59 +1,28 @@
 'use client';
 
-import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import React, { createContext, useContext, useMemo, useState } from 'react';
+
+import TEXT_DICTIONARY, { TextKey, TextParams } from '@/data/Texts';
 
 export type Lang = 'en' | 'tr';
-
-type Dict = Record<string, Record<Lang, string>>;
-
-const dictionary: Dict = {
-  'nav.home': { en: 'Home', tr: 'Ana Sayfa' },
-  'nav.projects': { en: 'Projects', tr: 'Projeler' },
-  'nav.about': { en: 'About', tr: 'Hakkımda' },
-  'nav.contact': { en: 'Contact', tr: 'İletişim' },
-  'nav.github': { en: 'GitHub', tr: 'GitHub' },
-  'hero.title': {
-    en: 'Building elegant experiences with React & Next.js',
-    tr: 'React & Next.js ile zarif deneyimler inşa ediyorum',
-  },
-  'hero.cta': { en: 'Get in touch', tr: 'İletişime geç' },
-  'hero.github': { en: 'GitHub', tr: 'GitHub' },
-  'home.featured': { en: 'Featured projects', tr: 'Öne çıkan projeler' },
-};
 
 type Ctx = {
   lang: Lang;
   setLang: (l: Lang) => void;
-  t: (k: keyof typeof dictionary) => string;
+  t: (k: TextKey, params?: TextParams) => string;
 };
 
 const LanguageContext = createContext<Ctx | null>(null);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLang] = useState<Lang>(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const saved = window.localStorage.getItem('lang') as Lang | null;
-
-        if (saved === 'en' || saved === 'tr') return saved;
-      } catch {}
-    }
-
-    return 'en';
-  });
-
-  useEffect(() => {
-    try {
-      window.localStorage.setItem('lang', lang);
-    } catch {}
-    if (typeof document !== 'undefined') {
-      document.documentElement.lang = lang;
-    }
-  }, [lang]);
+  // Session-only language; defaults to English on first render to match SSR
+  const [lang, setLang] = useState<Lang>('en');
 
   const t = useMemo(
-    () => (key: keyof typeof dictionary) =>
-      dictionary[key]?.[lang] ?? dictionary[key]?.en ?? String(key),
+    () => (key: TextKey, params?: TextParams) =>
+      TEXT_DICTIONARY[key]?.[lang]?.replace(/{(\w+)}/g, (match, p1) => params?.[p1] ?? match) ??
+      TEXT_DICTIONARY[key]?.en?.replace(/{(\w+)}/g, (match, p1) => params?.[p1] ?? match) ??
+      String(key).replace(/{(\w+)}/g, (match, p1) => params?.[p1] ?? match),
     [lang],
   );
 

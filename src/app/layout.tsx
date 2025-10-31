@@ -1,4 +1,5 @@
 import LanguageProvider from '@/components/i18n/LanguageProvider';
+import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
@@ -31,9 +32,7 @@ export default function RootLayout({
           <div className="mx-auto max-w-5xl px-6">
             <Header />
             <main>{children}</main>
-            <footer className="py-10 text-sm opacity-70">
-              © {new Date().getFullYear()} Kerem Kırıcı. All rights reserved.
-            </footer>
+            <Footer />
           </div>
         </body>
       </html>
