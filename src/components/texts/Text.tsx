@@ -10,7 +10,7 @@ type TextProps<T extends TextAs = 'p'> = {
   tone?: 'default' | 'muted' | 'subtle';
   weight?: 'regular' | 'medium';
   leading?: 'tight' | 'normal' | 'relaxed';
-  align?: 'left' | 'center' | 'right';
+  align?: 'left' | 'center' | 'right' | 'justify';
   clamp?: 1 | 2 | 3 | 4;
   className?: string;
   children: React.ReactNode;
@@ -26,7 +26,7 @@ export function Text<T extends TextAs = 'p'>({
   tone = 'default',
   weight = 'regular',
   leading = 'normal',
-  align = 'left',
+  align = 'justify',
   clamp,
   className,
   children,
@@ -54,7 +54,13 @@ export function Text<T extends TextAs = 'p'>({
           : leading === 'relaxed'
             ? 'leading-relaxed'
             : 'leading-normal',
-        align === 'center' ? 'text-center' : align === 'right' ? 'text-right' : 'text-left',
+        align === 'center'
+          ? 'text-center'
+          : align === 'right'
+            ? 'text-right'
+            : align === 'justify'
+              ? 'text-justify'
+              : 'text-left',
         clamp ? `line-clamp-${clamp}` : undefined,
         className,
       )}
