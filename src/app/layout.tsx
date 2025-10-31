@@ -1,3 +1,4 @@
+import Header from '@/components/layout/Header';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
@@ -26,33 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <div className="mx-auto max-w-5xl px-6">
-          <header className="flex items-center justify-between py-8">
-            <a href="/" className="text-lg font-semibold tracking-tight">
-              Kerem Kırıcı
-            </a>
-            <nav className="flex items-center gap-5 text-sm">
-              <a href="/" className="opacity-80 hover:opacity-100">
-                Home
-              </a>
-              <a href="/projects" className="opacity-80 hover:opacity-100">
-                Projects
-              </a>
-              <a href="/about" className="opacity-80 hover:opacity-100">
-                About
-              </a>
-              <a href="/contact" className="opacity-80 hover:opacity-100">
-                Contact
-              </a>
-              <a
-                href="https://github.com/kerem-kirici"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="opacity-80 hover:opacity-100"
-              >
-                GitHub
-              </a>
-            </nav>
-          </header>
+          <Header />
           <main>{children}</main>
           <footer className="py-10 text-sm opacity-70">
             © {new Date().getFullYear()} Kerem Kırıcı. All rights reserved.
