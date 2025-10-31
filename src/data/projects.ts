@@ -9,32 +9,43 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "portfolio-website",
-    title: "Elegant Portfolio",
+    slug: 'pokerist',
+    title: 'Pokerist',
+    image: '/projects/pokerist/Simulator Screenshot - iPhone 17 Pro - Dark Home.png',
     description:
-      "This website – a minimalist, performant portfolio built with Next.js 16, React 19, and Tailwind v4.",
-    href: "https://github.com/kerem-kirici/portfolio-website",
-    tags: ["Next.js", "Tailwind", "TypeScript"],
+      "A beautiful, modern Texas Hold'em poker hand analyzer and odds calculator for iOS built with SwiftUI.",
+    href: 'https://github.com/kerem-kirici/Pokerist',
+    tags: ['iOS', 'SwiftUI', 'Swift'],
   },
   {
-    slug: "awesome-widget",
-    title: "Awesome Widget",
+    slug: 'pokerist222',
+    title: 'Pokerist222',
+    image: '/projects/pokerist/Simulator Screenshot - iPhone 17 Pro - Light Home.png',
     description:
-      "A reusable UI widget exploring animations and accessibility best practices.",
-    href: "https://github.com/kerem-kirici",
-    tags: ["React", "UI", "A11y"],
+      "A beautiful, modern Texas Hold'em poker hand analyzer and odds calculator for iOS built with SwiftUI.",
+    href: 'https://github.com/kerem-kirici/Pokerist',
+    tags: ['iOS', 'SwiftUI', 'Swift'],
   },
   {
-    slug: "data-viz-experiments",
-    title: "Data Viz Experiments",
-    description: "Playground of charts and interactive visualizations.",
-    href: "https://github.com/kerem-kirici",
-    tags: ["D3", "Visualization", "Playground"],
+    slug: 'pokerist11',
+    title: 'Pokerist11',
+    image: '/projects/pokerist/Simulator Screenshot - iPhone 17 Pro - Dark Home.png',
+    description:
+      "A beautiful, modern Texas Hold'em poker hand analyzer and odds calculator for iOS built with SwiftUI.",
+    href: 'https://github.com/kerem-kirici/Pokerist',
+    tags: ['iOS', 'SwiftUI', 'Swift'],
+  },
+  {
+    slug: 'pokerist21122',
+    title: 'Pokerist21122',
+    image: '/projects/pokerist/Simulator Screenshot - iPhone 17 Pro - Light Home.png',
+    description:
+      "A beautiful, modern Texas Hold'em poker hand analyzer and odds calculator for iOS built with SwiftUI.",
+    href: 'https://github.com/kerem-kirici/Pokerist',
+    tags: ['iOS', 'SwiftUI', 'Swift'],
   },
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
 }
-
-
