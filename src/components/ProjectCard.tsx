@@ -1,9 +1,9 @@
 'use client';
 
+import { ButtonLink } from '@/components/links';
+import { Heading, Text } from '@/components/texts';
 import { getProjectBySlug } from '@/data/projects';
 import Image from 'next/image';
-import Link from 'next/link';
-// We no longer need useRouter since target="_blank" implies external links
 import { useEffect, useState } from 'react';
 
 type Project = {
@@ -14,23 +14,6 @@ export default function ProjectCard({ slug }: Project) {
   const project = getProjectBySlug(slug);
 
   const [isFlipped, setFlipped] = useState(false);
-
-  /**
-   * Handles the click event on the root card.
-   * - On xsmall screens (< 640px), it toggles the card flip.
-   * - On small screens and above (>= 640px), it navigates to the project href
-   * (respecting the original target="_blank").
-   */
-  const handleCardClick = () => {
-    if (typeof window !== 'undefined') {
-      if (window.innerWidth < 640) {
-        setFlipped((prev) => !prev);
-      } else {
-        // Small screens and above - navigate to external link
-        window.open(href, '_blank', 'noopener,noreferrer');
-      }
-    }
-  };
 
   /**
    * Resets the flip state if the user resizes
@@ -53,6 +36,23 @@ export default function ProjectCard({ slug }: Project) {
   }
 
   const { title, description, href, image, tags } = project;
+
+  /**
+   * Handles the click event on the root card.
+   * - On xsmall screens (< 640px), it toggles the card flip.
+   * - On small screens and above (>= 640px), it navigates to the project href
+   * (respecting the original target="_blank").
+   */
+  const handleCardClick = () => {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth < 640) {
+        setFlipped((prev) => !prev);
+      } else {
+        // Small screens and above - navigate to external link
+        window.open(href, '_blank', 'noopener,noreferrer');
+      }
+    }
+  };
 
   // --- FIX: Root <Link> is now a <div> ---
   // We add 'md:cursor-pointer' to replicate the link feel on desktop
@@ -86,7 +86,15 @@ export default function ProjectCard({ slug }: Project) {
           {/* Xsmall-only Title (Front Side) */}
           <div className="absolute bottom-0 left-0 right-0 z-10 p-5 sm:hidden">
             <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
-            <h3 className="relative text-lg font-semibold tracking-tight text-white">{title}</h3>
+            <Heading
+              as="h3"
+              size="md"
+              weight="semibold"
+              tracking="tight"
+              className="relative text-white"
+            >
+              {title}
+            </Heading>
           </div>
 
           {/* Hover Panel - visible on small screens and above (640px+) */}
@@ -94,12 +102,20 @@ export default function ProjectCard({ slug }: Project) {
             {/* ... (rest of desktop panel is identical) ... */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/40 to-black/30 backdrop-blur-sm dark:from-black/60 dark:via-black/50 dark:to-black/40" />
             <div className="relative flex h-full flex-col p-4 md:p-5">
-              <h3 className="mb-3 text-lg font-semibold tracking-tight text-white md:text-xl">
+              <Heading
+                as="h3"
+                size="md"
+                weight="semibold"
+                tracking="tight"
+                className="mb-3 text-white md:text-xl"
+              >
                 {title}
-              </h3>
+              </Heading>
               <div className="flex flex-1 flex-col overflow-y-auto min-h-0">
                 <div className="max-h-0 flex-1 overflow-hidden opacity-0 transition-all duration-300 ease-in-out group-hover:max-h-full group-hover:opacity-100">
-                  <p className="text-xs leading-relaxed text-white/90 md:text-sm">{description}</p>
+                  <Text size="xs" leading="relaxed" className="text-white/90 md:text-sm">
+                    {description}
+                  </Text>
                 </div>
               </div>
               {tags.length > 0 && (
@@ -124,12 +140,12 @@ export default function ProjectCard({ slug }: Project) {
         {/* This <Link> is now inside a <div>, so it's valid! */}
         <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] overflow-hidden rounded-3xl border border-black/10 bg-white shadow-lg dark:border-white/10 dark:bg-zinc-900 sm:hidden">
           <div className="flex flex-col h-full p-5">
-            <h3 className="mb-2 text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+            <Heading as="h3" size="md" weight="semibold" tracking="tight" className="mb-2">
               {title}
-            </h3>
-            <p className="flex-1 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 overflow-y-auto">
+            </Heading>
+            <Text size="sm" leading="relaxed" tone="muted" className="flex-1 overflow-y-auto">
               {description}
-            </p>
+            </Text>
             {tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mt-3">
                 {tags.map((tag) => (
@@ -143,15 +159,17 @@ export default function ProjectCard({ slug }: Project) {
               </div>
             )}
             {/* Details Button */}
-            <Link
+            <ButtonLink
               href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()} // Still crucial!
-              className="mt-4 ml-auto rounded-full bg-zinc-800 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
+              variant="secondary"
+              size="sm"
+              rounded="full"
+              newTab
+              onClick={(e) => e.stopPropagation()}
+              className="mt-4 ml-auto text-xs"
             >
               Details
-            </Link>
+            </ButtonLink>
           </div>
         </div>
       </div>
