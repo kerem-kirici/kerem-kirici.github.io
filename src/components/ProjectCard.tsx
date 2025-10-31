@@ -106,7 +106,7 @@ export default function ProjectCard({ slug }: Project) {
         scrollToCard();
         setTimeout(() => {
           setFlipped((prev) => !prev);
-        }, 300);
+        }, 50);
       } else {
         // Small screens and above - navigate to external link
         window.open(href, '_blank', 'noopener,noreferrer');
