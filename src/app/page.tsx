@@ -75,7 +75,7 @@ export default function Home() {
 
       <Section padding="md" className="pb-20">
         <Heading as="h2" size="lg" weight="semibold" tracking="tight">
-          {t('home.featured')} DAHA YAPILACAK
+          {t('home.featured')}
         </Heading>
         <ProjectsComponent lang={lang} />
       </Section>
