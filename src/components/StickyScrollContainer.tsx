@@ -35,6 +35,8 @@ export default function StickyScrollContainer({
 
   const cardsRef = useRef<HTMLCollection | null>(null);
 
+  const titleRef = useRef<HTMLElement | null>(null);
+
   // State to store the calculated header height
   const [stickyTopOffset, setStickyTopOffset] = useState(fallbackOffset);
 
@@ -77,6 +79,15 @@ export default function StickyScrollContainer({
     const applyStickyStyles = () => {
       if (!containerRef.current || stickyTopOffset === fallbackOffset) return;
 
+      // Find the title (Heading) element - it should be a direct child with class containing 'heading'
+      const titleEl = containerRef.current.querySelector('h2') as HTMLElement;
+
+      if (!titleEl) {
+        console.warn('StickyScrollContainer: No h2 title found.');
+      } else {
+        titleRef.current = titleEl;
+      }
+
       const gridContainer = containerRef.current.querySelector('.grid') as HTMLElement;
 
       if (!gridContainer) {
@@ -94,21 +105,56 @@ export default function StickyScrollContainer({
 
       const headerHeight = parseFloat(stickyTopOffset.replace('px', '')) || 0;
 
-      // Apply sticky positioning with progressive gap
-      // Each card gets a progressively higher top value to create gaps when they stack
-      Array.from(cards).forEach((card, index) => {
-        const cardElement = card as HTMLElement;
+      const titleTopOffset = headerHeight + 16; // Add 16px gap for title
 
-        // Calculate gap: 24px for each card index + 16px
-        const gap = index * 24 + 16;
+      // Apply sticky positioning to title at the very top
+      if (titleEl) {
+        titleEl.style.position = 'sticky';
+        titleEl.style.top = `${titleTopOffset}px`;
+        titleEl.style.zIndex = `${cards.length + 1}`;
 
-        const topPosition = `${headerHeight + gap}px`;
+        // Get computed background from body to prevent content bleeding through
+        const bodyStyle = window.getComputedStyle(document.body);
 
-        cardElement.style.position = 'sticky';
-        cardElement.style.top = topPosition;
-        cardElement.style.zIndex = `${index + 1}`;
-        cardElement.style.marginTop = ''; // Clear any margin
-      });
+        titleEl.style.backgroundColor = bodyStyle.backgroundColor;
+      }
+
+      // Wait a bit for the title to render with its new styles before measuring
+      setTimeout(() => {
+        if (!containerRef.current) return;
+
+        const titleEl = containerRef.current.querySelector('h2') as HTMLElement;
+
+        const gridContainer = containerRef.current.querySelector('.grid') as HTMLElement;
+
+        if (!gridContainer) return;
+
+        const cards = gridContainer.children;
+
+        if (!cards || cards.length === 0) return;
+
+        // Apply sticky positioning with progressive gap below the title
+        // Each card gets a progressively higher top value to create gaps when they stack
+        Array.from(cards).forEach((card, index) => {
+          const cardElement = card as HTMLElement;
+
+          // Calculate gap: 24px for each card index + 16px
+          // The first card starts below the title, so we need to add title height + gap
+          const cardGap = index * 24 + 16;
+
+          // Get title height if it exists, otherwise 0
+          const titleHeight = titleEl ? titleEl.getBoundingClientRect().height : 0;
+
+          const titleBottomGap = 4; // Gap between title and first card
+
+          const topPosition = `${titleTopOffset + titleHeight + titleBottomGap + cardGap}px`;
+
+          cardElement.style.position = 'sticky';
+          cardElement.style.top = topPosition;
+          cardElement.style.zIndex = `${index + 1}`;
+          cardElement.style.marginTop = ''; // Clear any margin
+        });
+      }, 10);
     };
 
     const handleScroll = () => {
@@ -123,6 +169,13 @@ export default function StickyScrollContainer({
     const clearStickyStyles = () => {
       if (gridRef.current) {
         gridRef.current.style.paddingBottom = '';
+      }
+
+      if (titleRef.current) {
+        titleRef.current.style.position = '';
+        titleRef.current.style.top = '';
+        titleRef.current.style.zIndex = '';
+        titleRef.current.style.backgroundColor = '';
       }
 
       if (cardsRef.current) {

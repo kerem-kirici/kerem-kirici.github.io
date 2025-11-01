@@ -11,15 +11,13 @@ import { memo } from 'react';
 
 const ProjectsComponent = memo(({ lang }: { lang: 'en' | 'tr' }) => {
   return (
-    <StickyScrollContainer>
-      <Grid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} gap="md" className="mt-6 gap-y-80 sm:gap-y-5">
-        {projects(lang)
-          .slice(0, 4)
-          .map((p) => (
-            <ProjectCard key={`${p.slug}-${lang}`} {...p} />
-          ))}
-      </Grid>
-    </StickyScrollContainer>
+    <Grid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} gap="md" className="mt-6 gap-y-80 sm:gap-y-5">
+      {projects(lang)
+        .slice(0, 4)
+        .map((p) => (
+          <ProjectCard key={`${p.slug}-${lang}`} {...p} />
+        ))}
+    </Grid>
   );
 });
 
@@ -74,10 +72,12 @@ export default function Home() {
       </Section>
 
       <Section padding="md" className="pb-20">
-        <Heading as="h2" size="lg" weight="semibold" tracking="tight">
-          {t('home.featured')}
-        </Heading>
-        <ProjectsComponent lang={lang} />
+        <StickyScrollContainer>
+          <Heading as="h2" size="lg" weight="semibold" tracking="tight">
+            {t('home.featured')}
+          </Heading>
+          <ProjectsComponent lang={lang} />
+        </StickyScrollContainer>
       </Section>
     </PageLayout>
   );
