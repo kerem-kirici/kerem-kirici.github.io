@@ -47,8 +47,8 @@ const TEXT_DICTIONARY = {
     tr: 'Sudoku - React Native Uygulaması',
   },
   'projects.sudokumobileapp.description': {
-    en: 'A feature-rich, cross-platform Sudoku game built with React Native and Expo, featuring multiple difficulties and a dark theme.',
-    tr: 'React Native ve Expo ile oluşturulmuş, çoklu zorluk seviyeleri ve karanlık tema içeren, zengin özelliklere sahip bir Sudoku oyunu.',
+    en: 'A cross-platform Sudoku game built with React Native, featuring multiple difficulties, stats, and a dark theme.',
+    tr: 'React Native ile yazılmış, çoklu zorluk, istatistikler ve karanlık tema sunan platformlar arası bir Sudoku oyunu.',
   },
   'projects.sudokumobileapp.long_explanation': {
     en: "A comprehensive, cross-platform Sudoku application built with React Native and Expo, designed for a modern user experience. It provides a full-featured game with multiple difficulty levels (Easy to Expert), intelligent note-taking, real-time auto-validation, and a complete undo/redo system. The app features a beautiful dark theme with gradients, smooth animations via Reanimated, and haptic feedback. Technically, it's built with TypeScript, uses Expo Router for navigation, and leverages Async Storage for offline play and progress persistence, ensuring a 60fps, responsive experience.",
@@ -65,8 +65,8 @@ const TEXT_DICTIONARY = {
     tr: 'Pokerist',
   },
   'projects.pokerist.description': {
-    en: "A modern Texas Hold'em analyzer for iOS, calculating win probabilities against 6 opponents using a Monte Carlo simulation.",
-    tr: "iOS için modern bir Texas Hold'em analiz aracı; Monte Carlo simülasyonu kullanarak 6 rakibe karşı kazanma olasılıklarını hesaplar.",
+    en: "An iOS Texas Hold'em analyzer that calculates win probabilities against 6 opponents using a Monte Carlo simulation.",
+    tr: "6 rakibe karşı kazanma olasılıklarını Monte Carlo simülasyonu ile hesaplayan bir iOS Texas Hold'em analiz aracı.",
   },
   'projects.pokerist.long_explanation': {
     en: "A native iOS application for Texas Hold'em players, built entirely with SwiftUI. The app provides real-time hand analysis and calculates win probabilities by running a 10,000-game Monte Carlo simulation asynchronously against up to 6 opponents. Its core features include an advanced 'Smart Possible Hands' calculator that details distinct draw scenarios, smart card selection to prevent duplicates, and a 'liquid glass' UI with light/dark modes. The architecture uses modern SwiftUI patterns like @Observable for state management, Task-based concurrency for background calculations, and smart caching to ensure a responsive user experience.",
@@ -83,8 +83,8 @@ const TEXT_DICTIONARY = {
     tr: '2048 Oynama Algoritması',
   },
   'projects.2048-playing-algorithm.description': {
-    en: 'A C++ console application that implements an AI algorithm to play the game 2048, achieving a 94% win rate.',
-    tr: '2048 oyununu oynamak için bir yapay zeka algoritması uygulayan ve %94 kazanma oranına ulaşan bir C++ konsol uygulaması.',
+    en: 'A C++ console app with a 2048 AI algorithm that achieves a 94% win rate using a tree-search method.',
+    tr: 'Ağaç arama metoduyla %94 kazanma oranına ulaşan bir 2048 yapay zeka algoritması içeren C++ konsol uygulaması.',
   },
   'projects.2048-playing-algorithm.long_explanation': {
     en: "A C++ console application that allows a user to either play the game 2048 or deploy an AI to play it for them. The AI is a multi-level tree-search algorithm based on 'Decision Levels' (player moves) and 'Probability Levels' (random tile spawns). It analyzes future states by calculating a 'chance of death' and 'point of gain' for each possible move, effectively choosing the path with the lowest risk and highest reward. Based on simulations (100 games, 3-layer depth), this algorithm achieves the '2048' tile 94% of the time and the '4096' tile 38% of the time.",
@@ -101,12 +101,12 @@ const TEXT_DICTIONARY = {
     tr: 'SudokuÜretici',
   },
   'projects.sudokugenerator.description': {
-    en: 'A collection of Sudoku tools in C++ and Python for generating, solving, and visualizing puzzles using backtracking algorithms.',
-    tr: "C++ ve Python'da, backtracking algoritmaları kullanarak Sudoku bulmacaları üreten, çözen ve görselleştiren araç koleksiyonu.",
+    en: 'A C++ and Python project that generates, solves, and visualizes Sudoku puzzles using backtracking algorithms.',
+    tr: 'Backtracking algoritmalarını kullanan, C++ ve Python ile yazılmış bir Sudoku üretme, çözme ve görselleştirme projesi.',
   },
   'projects.sudokugenerator.long_explanation': {
     en: 'A project containing a complete suite of Sudoku tools, implemented in both C++ and Python (3.7). The core logic for all features relies on efficient backtracking and recursive algorithms. It can generate new, unique Sudoku puzzles, solve any given puzzle, and check if a puzzle has a single unique solution. The C++ version is optimized for speed, generating puzzles in seconds, while the Python version provides a simple command-line UI for interaction and can visualize the puzzle-solving process as a .jpg image.',
-    tr: 'Hem C++ hem de Python (3.7) ile uygulanmış eksiksiz bir Sudoku araçları paketi içeren bir proje. Tüm özelliklerin temel mantığı, verimli backtracking (geri izleme) ve özyineli algoritmalara dayanır. Yeni, benzersiz Sudoku bulmacaları üretebilir, verilen herhangi bir bulmacayı çözebilir ve bir bulmacanın tek bir benzersiz çözümü olup olmadığını kontrol edebilir. C++ sürümü hız için optimize edilmiştir ve saniyeler içinde bulmacalar üretir; Python sürümü ise etkileşim için basit bir komut satırı arayüzü sunar ve bulmaca çözme sürecini bir .jpg dosyası olarak görselleştirebilir.',
+    tr: 'Hem C++ hem de Python (3.7) ile uygulanmış eksiksiz bir Sudoku araçları paketi içeren bir proje. Tüm özelliklerin temel mantığı, verimli backtracking (geri izleme) ve özyinelemeli algoritmalara dayanır. Yeni, benzersiz Sudoku bulmacaları üretebilir, verilen herhangi bir bulmacayı çözebilir ve bir bulmacanın tek bir benzersiz çözümü olup olmadığını kontrol edebilir. C++ sürümü hız için optimize edilmiştir ve saniyeler içinde bulmacalar üretir; Python sürümü ise etkileşim için basit bir komut satırı arayüzü sunar ve bulmaca çözme sürecini bir .jpg dosyası olarak görselleştirebilir.',
   },
   'projects.sudokugenerator.tags': {
     en: 'C++, Python, Backtracking',

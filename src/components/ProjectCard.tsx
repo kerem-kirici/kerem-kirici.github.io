@@ -108,12 +108,12 @@ export default function ProjectCard({ title, description, href, image, tags }: P
     <div
       ref={cardRef}
       onClick={handleCardClick}
-      className="group relative block w-full aspect-[9/16] [perspective:1000px] cursor-pointer"
+      className="group relative block w-full [perspective:1000px] cursor-pointer"
     >
       {/* The Flipper Container */}
       <div
         style={{ transform: isFlipped ? 'rotateY(180deg)' : 'none' }}
-        className="relative w-full h-full [transform-style:preserve-3d] transition-all duration-700 sm:!transform-none md:group-hover:scale-[1.02]"
+        className="relative w-full aspect-[9/16] [transform-style:preserve-3d] transition-all duration-700 sm:!transform-none md:group-hover:scale-[1.02]"
       >
         {/* === CARD FRONT === */}
         {/* FIX: Added [transform:translateZ(0)] to fix the title "bleeding" through */}
@@ -167,20 +167,6 @@ export default function ProjectCard({ title, description, href, image, tags }: P
                   </Text>
                 </div>
               </div>
-              {tags.length > 0 && (
-                <div className="max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out group-hover:max-h-[200px] group-hover:opacity-100 mt-auto">
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-white/20 bg-white/20 px-2 py-0.5 text-[10px] font-medium text-white backdrop-blur-sm"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         </div>
@@ -222,6 +208,22 @@ export default function ProjectCard({ title, description, href, image, tags }: P
           </div>
         </div>
       </div>
+
+      {/* Tags below phone frame on hover */}
+      {tags.length > 0 && (
+        <div className="hidden sm:block max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out group-hover:max-h-[60px] group-hover:opacity-100 mt-2">
+          <div className="flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border border-black/20 bg-white px-2 py-1 text-xs font-medium text-zinc-700 dark:border-white/20 dark:bg-zinc-800 dark:text-zinc-300"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
