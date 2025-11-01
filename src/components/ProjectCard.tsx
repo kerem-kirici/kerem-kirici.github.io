@@ -162,7 +162,12 @@ export default function ProjectCard({ title, description, href, image, tags }: P
               </Heading>
               <div className="flex flex-1 flex-col overflow-y-auto min-h-0">
                 <div className="max-h-0 flex-1 overflow-hidden opacity-0 transition-all duration-300 ease-in-out group-hover:max-h-full group-hover:opacity-100">
-                  <Text size="xs" leading="relaxed" className="text-white/90 md:text-sm">
+                  <Text
+                    size="xs"
+                    leading="relaxed"
+                    align="left"
+                    className="text-white/90 md:text-sm"
+                  >
                     {description}
                   </Text>
                 </div>
@@ -178,7 +183,13 @@ export default function ProjectCard({ title, description, href, image, tags }: P
             <Heading as="h3" size="md" weight="semibold" tracking="tight" className="mb-2">
               {title}
             </Heading>
-            <Text size="sm" leading="relaxed" tone="muted" className="flex-1 overflow-y-auto">
+            <Text
+              size="sm"
+              leading="relaxed"
+              tone="muted"
+              align="left"
+              className="flex-1 overflow-y-auto"
+            >
               {description}
             </Text>
             {tags.length > 0 && (
