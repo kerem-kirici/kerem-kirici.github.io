@@ -7,9 +7,26 @@ import ProjectCard from '@/components/ProjectCard';
 import StickyScrollContainer from '@/components/StickyScrollContainer';
 import { Heading, Subheading, Text } from '@/components/texts';
 import { projects } from '@/data/projects';
+import { memo } from 'react';
+
+const ProjectsComponent = memo(({ lang }: { lang: 'en' | 'tr' }) => {
+  return (
+    <StickyScrollContainer>
+      <Grid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} gap="md" className="mt-6 gap-y-80 sm:gap-y-5">
+        {projects(lang)
+          .slice(0, 4)
+          .map((p) => (
+            <ProjectCard key={`${p.slug}-${lang}`} {...p} />
+          ))}
+      </Grid>
+    </StickyScrollContainer>
+  );
+});
+
+ProjectsComponent.displayName = 'ProjectsComponent';
 
 export default function Home() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   return (
     <PageLayout
@@ -60,17 +77,7 @@ export default function Home() {
         <Heading as="h2" size="lg" weight="semibold" tracking="tight">
           {t('home.featured')} DAHA YAPILACAK
         </Heading>
-        <StickyScrollContainer>
-          <Grid
-            cols={{ base: 1, sm: 2, md: 3, lg: 4 }}
-            gap="md"
-            className="mt-6 gap-y-80 sm:gap-y-5"
-          >
-            {projects.slice(0, 4).map((p) => (
-              <ProjectCard key={p.slug} slug={p.slug} />
-            ))}
-          </Grid>
-        </StickyScrollContainer>
+        <ProjectsComponent lang={lang} />
       </Section>
     </PageLayout>
   );

@@ -1,51 +1,58 @@
+import { Lang } from '@/components/i18n/LanguageProvider';
+import TEXT_DICTIONARY from './Texts';
+
 export type Project = {
   slug: string;
   title: string;
   description: string;
+  long_explanation: string;
   href: string;
   tags: string[];
   image?: string;
 };
 
-export const projects: Project[] = [
-  {
-    slug: 'pokerist',
-    title: 'Pokerist',
-    image: '/projects/pokerist/Simulator Screenshot - iPhone 17 Pro - Dark Home.png',
-    description:
-      "A beautiful, modern Texas Hold'em poker hand analyzer and odds calculator for iOS built with SwiftUI.",
-    href: 'https://github.com/kerem-kirici/Pokerist',
-    tags: ['iOS', 'SwiftUI', 'Swift'],
-  },
-  {
-    slug: 'pokerist222',
-    title: 'Pokerist222',
-    image: '/projects/pokerist/Simulator Screenshot - iPhone 17 Pro - Light Home.png',
-    description:
-      "A beautiful, modern Texas Hold'em poker hand analyzer and odds calculator for iOS built with SwiftUI.",
-    href: 'https://github.com/kerem-kirici/Pokerist',
-    tags: ['iOS', 'SwiftUI', 'Swift'],
-  },
-  {
-    slug: 'pokerist11',
-    title: 'Pokerist11',
-    image: '/projects/pokerist/Simulator Screenshot - iPhone 17 Pro - Dark Home.png',
-    description:
-      "A beautiful, modern Texas Hold'em poker hand analyzer and odds calculator for iOS built with SwiftUI.",
-    href: 'https://github.com/kerem-kirici/Pokerist',
-    tags: ['iOS', 'SwiftUI', 'Swift'],
-  },
-  {
-    slug: 'pokerist21122',
-    title: 'Pokerist21122',
-    image: '/projects/pokerist/Simulator Screenshot - iPhone 17 Pro - Light Home.png',
-    description:
-      "A beautiful, modern Texas Hold'em poker hand analyzer and odds calculator for iOS built with SwiftUI.",
-    href: 'https://github.com/kerem-kirici/Pokerist',
-    tags: ['iOS', 'SwiftUI', 'Swift'],
-  },
-];
+export const projects = (language: Lang = 'en') => {
+  const projectSlugs = ['pokerist', 'sudokumobileapp', '2048-playing-algorithm', 'sudokugenerator'];
 
-export function getProjectBySlug(slug: string): Project | undefined {
-  return projects.find((p) => p.slug === slug);
+  return projectSlugs.reduce(
+    (
+      acc: {
+        slug: string;
+        title: string;
+        image: string;
+        description: string;
+        long_explanation: string;
+        href: string;
+        tags: string[];
+      }[],
+      slug: string,
+    ) => {
+      return [
+        ...acc,
+        {
+          slug,
+          title:
+            TEXT_DICTIONARY[`projects.${slug}.title` as keyof typeof TEXT_DICTIONARY][language],
+          image: `/projects/${slug}/image.png`,
+          description:
+            TEXT_DICTIONARY[`projects.${slug}.description` as keyof typeof TEXT_DICTIONARY][
+              language
+            ],
+          long_explanation:
+            TEXT_DICTIONARY[`projects.${slug}.long_explanation` as keyof typeof TEXT_DICTIONARY][
+              language
+            ],
+          href: `https://github.com/kerem-kirici/${slug}`,
+          tags: TEXT_DICTIONARY[`projects.${slug}.tags` as keyof typeof TEXT_DICTIONARY][
+            language
+          ].split(','),
+        },
+      ];
+    },
+    [],
+  );
+};
+
+export function getProjectBySlug(slug: string, language: Lang = 'en'): Project | undefined {
+  return projects(language).find((p) => p.slug === slug);
 }

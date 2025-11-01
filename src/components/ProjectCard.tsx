@@ -2,17 +2,11 @@
 
 import { ButtonLink } from '@/components/links';
 import { Heading, Text } from '@/components/texts';
-import { getProjectBySlug } from '@/data/projects';
+import type { Project } from '@/data/projects';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
-type Project = {
-  slug: string;
-};
-
-export default function ProjectCard({ slug }: Project) {
-  const project = getProjectBySlug(slug);
-
+export default function ProjectCard({ title, description, href, image, tags }: Project) {
   const [isFlipped, setFlipped] = useState(false);
 
   const cardRef = useRef<HTMLDivElement>(null);
@@ -32,12 +26,6 @@ export default function ProjectCard({ slug }: Project) {
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  if (!project) {
-    return null;
-  }
-
-  const { title, description, href, image, tags } = project;
 
   /**
    * Scrolls the card into view at its sticky position.

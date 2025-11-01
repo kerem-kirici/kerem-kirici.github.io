@@ -24,8 +24,8 @@ export default function ProjectsPage() {
       </p>
 
       <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
-        {projects.map((p) => (
-          <ProjectCard key={p.slug} {...p} href={`/project/${p.slug}`} />
+        {projects('en').map((p) => (
+          <ProjectCard key={p.slug} {...p} />
         ))}
       </div>
     </section>
