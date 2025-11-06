@@ -3,7 +3,7 @@
 import React from 'react';
 
 type HeadingAs = 'h1' | 'h2' | 'h3' | 'h4';
-type HeadingSize = '2xl' | 'xl' | 'lg' | 'md';
+type HeadingSize = '2xl' | 'xl' | 'lg' | 'md' | 'sm';
 type HeadingWeight = 'bold' | 'semibold' | 'medium';
 type HeadingAlign = 'left' | 'center' | 'right';
 type HeadingTracking = 'tight' | 'normal' | 'wide';
@@ -29,6 +29,7 @@ const sizeToClasses: Record<HeadingSize, string> = {
   xl: 'text-3xl',
   lg: 'text-2xl',
   md: 'text-xl',
+  sm: 'text-lg',
 };
 
 const weightToClasses: Record<HeadingWeight, string> = {
