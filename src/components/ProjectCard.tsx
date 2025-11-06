@@ -3,28 +3,29 @@
 import { ButtonLink } from '@/components/links';
 import { Heading, Text } from '@/components/texts';
 import type { Project } from '@/data/projects';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
 export default function ProjectCard({ title, description, href, image, tags }: Project) {
   const [isFlipped, setFlipped] = useState(false);
 
+  const [isXSmallScreen, setIsXSmallScreen] = useState(false);
+
   const cardRef = useRef<HTMLDivElement>(null);
 
   /**
-   * Resets the flip state if the user resizes
-   * their window from xsmall to small screen or larger.
+   * Check if we're on an xsmall screen
    */
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 640) {
-        setFlipped(false);
-      }
+    const checkScreenSize = () => {
+      setIsXSmallScreen(window.innerWidth < 640);
     };
 
-    window.addEventListener('resize', handleResize);
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
 
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
   /**
@@ -50,12 +51,12 @@ export default function ProjectCard({ title, description, href, image, tags }: P
     if (cardIndex === -1) return;
 
     // Calculate the sticky gap for this card (matches StickyScrollContainer formula)
-    const stickyGap = cardIndex * 24 + 16;
+    const stickyGap = (cardIndex + 1) * 24 + 16;
 
     // Calculate card's position relative to grid
     // We need to account for vertical gaps between cards
-    // The gap-y-80 class means 80 * 0.25rem = 20rem = 320px between cards on xsmall
-    const verticalGap = window.innerWidth < 640 ? 320 : 20; // gap-y-80 on xsmall, gap-y-5 on larger
+    // gap-y-10 on xsmall (2.5rem = 40px), gap-y-20 on sm and larger (5rem = 80px)
+    const verticalGap = window.innerWidth < 640 ? 40 : 80; // gap-y-10 on xsmall, gap-y-20 on larger
 
     // Get the card's position relative to the grid by summing previous cards' heights and gaps
     let cardTopInGrid = 0;
@@ -83,57 +84,54 @@ export default function ProjectCard({ title, description, href, image, tags }: P
 
   /**
    * Handles the click event on the root card.
-   * - On xsmall screens (< 640px), it scrolls to the card's position and toggles the card flip.
-   * - On small screens and above (>= 640px), it navigates to the project href
-   * (respecting the original target="_blank").
+   * - On xsmall screens (< 640px), it scrolls to the card's position first, then toggles flip.
+   * - On all screen sizes, clicking toggles the card flip.
    */
   const handleCardClick = () => {
     if (typeof window !== 'undefined') {
-      if (window.innerWidth < 640) {
-        // On xsmall screens, scroll to the card's position
+      if (isXSmallScreen) {
+        // On xsmall screens, scroll to the card's position before flipping
         scrollToCard();
         setTimeout(() => {
           setFlipped((prev) => !prev);
-        }, 50);
+        }, 300);
       } else {
-        // Small screens and above - navigate to external link
-        window.open(href, '_blank', 'noopener,noreferrer');
+        // On larger screens, just flip the card
+        setFlipped((prev) => !prev);
       }
     }
   };
 
-  // --- FIX: Root <Link> is now a <div> ---
-  // We add 'md:cursor-pointer' to replicate the link feel on desktop
   return (
-    <div
+    <motion.div
       ref={cardRef}
-      onClick={handleCardClick}
-      className="group relative block w-full [perspective:1000px] cursor-pointer"
+      className="relative block w-full [perspective:1000px] cursor-pointer"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+      whileTap={{ scale: 0.98 }}
     >
-      {/* The Flipper Container */}
-      <div
-        style={{ transform: isFlipped ? 'rotateY(180deg)' : 'none' }}
-        className="relative w-full aspect-[4/5] [transform-style:preserve-3d] transition-all duration-700 sm:!transform-none md:group-hover:scale-[1.02]"
+      {/* The Flipper Container with framer-motion */}
+      <motion.div
+        onClick={handleCardClick}
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.6, type: 'spring', stiffness: 100 }}
+        className="relative w-full aspect-[3/4] [transform-style:preserve-3d]"
+        style={{ transformStyle: 'preserve-3d' }}
       >
         {/* === CARD FRONT === */}
-        {/* FIX: Added [transform:translateZ(0)] to fix the title "bleeding" through */}
         <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:translateZ(0)] overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-zinc-900">
           {/* Image */}
           {image ? (
             <div className="absolute inset-0">
-              <Image
-                src={image}
-                alt={title}
-                fill
-                className="object-cover transition-transform duration-300 md:group-hover:scale-105"
-              />
+              <Image src={image} alt={title} fill className="object-cover" />
             </div>
           ) : (
             <div className="absolute inset-0 bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900" />
           )}
 
-          {/* Xsmall-only Title (Front Side) */}
-          <div className="absolute bottom-0 left-0 right-0 z-10 p-5 sm:hidden">
+          {/* Title Overlay (Front Side) - visible on all screens */}
+          <div className="absolute bottom-0 left-0 right-0 z-10 p-5">
             <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
             <Heading
               as="h3"
@@ -145,40 +143,10 @@ export default function ProjectCard({ title, description, href, image, tags }: P
               {title}
             </Heading>
           </div>
-
-          {/* Hover Panel - visible on small screens and above (640px+) */}
-          <div className="absolute bottom-0 left-0 right-0 z-20 hidden h-16 overflow-hidden transition-all duration-500 ease-in-out group-hover:h-2/3 sm:block">
-            {/* ... (rest of desktop panel is identical) ... */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/40 to-black/30 backdrop-blur-sm dark:from-black/60 dark:via-black/50 dark:to-black/40" />
-            <div className="relative flex h-full flex-col p-4 md:p-5">
-              <Heading
-                as="h3"
-                size="md"
-                weight="semibold"
-                tracking="tight"
-                className="mb-3 text-white md:text-xl"
-              >
-                {title}
-              </Heading>
-              <div className="flex flex-1 flex-col overflow-y-auto min-h-0">
-                <div className="max-h-0 flex-1 overflow-hidden opacity-0 transition-all duration-300 ease-in-out group-hover:max-h-full group-hover:opacity-100">
-                  <Text
-                    size="xs"
-                    leading="relaxed"
-                    align="left"
-                    className="text-white/90 md:text-sm"
-                  >
-                    {description}
-                  </Text>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* === CARD BACK === */}
-        {/* This <Link> is now inside a <div>, so it's valid! */}
-        <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] overflow-hidden rounded-3xl border border-black/10 bg-white shadow-lg dark:border-white/10 dark:bg-zinc-900 sm:hidden">
+        <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] overflow-hidden rounded-3xl border border-black/10 bg-white shadow-lg dark:border-white/10 dark:bg-zinc-900">
           <div className="flex flex-col h-full p-5">
             <Heading as="h3" size="md" weight="semibold" tracking="tight" className="mb-2">
               {title}
@@ -192,7 +160,7 @@ export default function ProjectCard({ title, description, href, image, tags }: P
             >
               {description}
             </Text>
-            {tags.length > 0 && (
+            {isXSmallScreen && tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mt-3">
                 {tags.map((tag) => (
                   <span
@@ -218,16 +186,16 @@ export default function ProjectCard({ title, description, href, image, tags }: P
             </ButtonLink>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Tags below phone frame on hover */}
-      {tags.length > 0 && (
-        <div className="hidden sm:block max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out group-hover:max-h-[60px] group-hover:opacity-100 mt-2">
+      {/* Tags below card - visible on non-mobile devices */}
+      {!isXSmallScreen && tags.length > 0 && (
+        <div className="mt-3">
           <div className="flex flex-wrap gap-2">
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-black/20 bg-white px-2 py-1 text-xs font-medium text-zinc-700 dark:border-white/20 dark:bg-zinc-800 dark:text-zinc-300"
+                className="rounded-full border border-black/20 bg-white px-2.5 py-1 text-xs font-medium text-zinc-700 dark:border-white/20 dark:bg-zinc-800 dark:text-zinc-300"
               >
                 {tag}
               </span>
@@ -235,6 +203,6 @@ export default function ProjectCard({ title, description, href, image, tags }: P
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }

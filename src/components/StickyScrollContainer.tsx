@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 
 type StickyScrollContainerProps = {
@@ -26,7 +27,7 @@ const checkScreenSize = () => {
 
 export default function StickyScrollContainer({
   children,
-  headerSelector = 'header', // Defaults to your semantic <header> tag
+  headerSelector = 'header',
   fallbackOffset = '0px',
 }: StickyScrollContainerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -74,12 +75,12 @@ export default function StickyScrollContainer({
   // Main effect to apply/clear styles
   useEffect(() => {
     /**
-     * Applies all necessary sticky styles to the grid and cards.
+     * Applies all necessary sticky styles to the grid and cards with stacking animation.
      */
     const applyStickyStyles = () => {
       if (!containerRef.current || stickyTopOffset === fallbackOffset) return;
 
-      // Find the title (Heading) element - it should be a direct child with class containing 'heading'
+      // Find the title (Heading) element
       const titleEl = containerRef.current.querySelector('h2') as HTMLElement;
 
       if (!titleEl) {
@@ -113,10 +114,8 @@ export default function StickyScrollContainer({
         titleEl.style.top = `${titleTopOffset}px`;
         titleEl.style.zIndex = `${cards.length + 1}`;
 
-        // Get computed background from body to prevent content bleeding through
-        const bodyStyle = window.getComputedStyle(document.body);
-
-        titleEl.style.backgroundColor = bodyStyle.backgroundColor;
+        // Make title background transparent
+        titleEl.style.backgroundColor = 'transparent';
       }
 
       // Wait a bit for the title to render with its new styles before measuring
@@ -133,13 +132,11 @@ export default function StickyScrollContainer({
 
         if (!cards || cards.length === 0) return;
 
-        // Apply sticky positioning with progressive gap below the title
-        // Each card gets a progressively higher top value to create gaps when they stack
+        // Apply sticky positioning with progressive gap - creating stacking effect
         Array.from(cards).forEach((card, index) => {
           const cardElement = card as HTMLElement;
 
-          // Calculate gap: 24px for each card index + 16px
-          // The first card starts below the title, so we need to add title height + gap
+          // Calculate gap: 24px for each card index + 16px base offset
           const cardGap = index * 24 + 16;
 
           // Get title height if it exists, otherwise 0
@@ -151,7 +148,7 @@ export default function StickyScrollContainer({
 
           cardElement.style.position = 'sticky';
           cardElement.style.top = topPosition;
-          cardElement.style.zIndex = `${index + 1}`;
+          cardElement.style.zIndex = `${index + 1}`; // Cards stack on top of previous ones
           cardElement.style.marginTop = ''; // Clear any margin
         });
       }, 10);
@@ -183,10 +180,11 @@ export default function StickyScrollContainer({
       }
     };
 
-    // This logic now runs when screen size changes
-    // OR when the calculated header height changes
+    // This logic runs when screen size changes or when the calculated header height changes
     const handleResize = () => {
-      if (checkScreenSize()) {
+      const isXSmall = checkScreenSize();
+
+      if (isXSmall) {
         applyStickyStyles();
       } else {
         clearStickyStyles();
@@ -196,14 +194,23 @@ export default function StickyScrollContainer({
     // Run once stickyTopOffset is calculated
     handleResize();
 
-    // Add scroll listener to update stuck card in real-time
+    // Add resize listener
     window.addEventListener('resize', handleResize, { passive: true });
 
     return () => {
       window.removeEventListener('resize', handleResize);
       clearStickyStyles();
     };
-  }, [children, stickyTopOffset, fallbackOffset]); // Re-runs when header height is found
+  }, [children, stickyTopOffset, fallbackOffset]);
 
-  return <div ref={containerRef}>{children}</div>;
+  return (
+    <motion.div
+      ref={containerRef}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      {children}
+    </motion.div>
+  );
 }
