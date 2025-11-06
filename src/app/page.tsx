@@ -15,7 +15,7 @@ const ProjectsComponent = memo(({ lang }: { lang: 'en' | 'tr' }) => {
       {projects(lang)
         .slice(0, 4)
         .map((p) => (
-          <ProjectCard key={`${p.slug}-${lang}`} {...p} />
+          <ProjectCard key={`${p.slug}-${lang}`} {...p} href={`/projects`} />
         ))}
     </Grid>
   );

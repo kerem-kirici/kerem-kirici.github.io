@@ -178,7 +178,7 @@ export default function ProjectCard({ title, description, href, image, tags }: P
               variant="secondary"
               size="sm"
               rounded="full"
-              newTab
+              newTab={href.startsWith('http')}
               onClick={(e) => e.stopPropagation()}
               className="mt-4 ml-auto text-xs"
             >
