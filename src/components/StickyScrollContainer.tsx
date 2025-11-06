@@ -157,12 +157,6 @@ export default function StickyScrollContainer({
       }, 10);
     };
 
-    const handleScroll = () => {
-      if (checkScreenSize()) {
-        applyStickyStyles();
-      }
-    };
-
     /**
      * Removes all inline styles added by this component.
      */
@@ -203,11 +197,9 @@ export default function StickyScrollContainer({
     handleResize();
 
     // Add scroll listener to update stuck card in real-time
-    window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', handleResize, { passive: true });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
       clearStickyStyles();
     };

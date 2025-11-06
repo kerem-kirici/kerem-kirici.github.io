@@ -11,7 +11,7 @@ import { memo } from 'react';
 
 const ProjectsComponent = memo(({ lang }: { lang: 'en' | 'tr' }) => {
   return (
-    <Grid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} gap="md" className="mt-6 gap-y-80 sm:gap-y-5">
+    <Grid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} gap="md" className="mt-6 gap-y-10 sm:gap-y-5">
       {projects(lang)
         .slice(0, 4)
         .map((p) => (

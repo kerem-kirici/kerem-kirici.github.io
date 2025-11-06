@@ -113,7 +113,7 @@ export default function ProjectCard({ title, description, href, image, tags }: P
       {/* The Flipper Container */}
       <div
         style={{ transform: isFlipped ? 'rotateY(180deg)' : 'none' }}
-        className="relative w-full aspect-[9/16] [transform-style:preserve-3d] transition-all duration-700 sm:!transform-none md:group-hover:scale-[1.02]"
+        className="relative w-full aspect-[4/5] [transform-style:preserve-3d] transition-all duration-700 sm:!transform-none md:group-hover:scale-[1.02]"
       >
         {/* === CARD FRONT === */}
         {/* FIX: Added [transform:translateZ(0)] to fix the title "bleeding" through */}
