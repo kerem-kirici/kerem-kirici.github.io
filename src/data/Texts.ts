@@ -21,7 +21,7 @@ const TEXT_DICTIONARY = {
     en: 'A Developer, Student, and Future Senior iOS Developer',
     tr: 'Şimdiki Yazılım Tutkunu, Öğrenci, Geleceğin Senior iOS Geliştiricisi',
   },
-  'hero.cta': { en: 'Get in touch', tr: 'İletişime geç' },
+  'hero.cta': { en: 'Email', tr: 'Email' },
   'hero.linkedin': { en: 'LinkedIn', tr: 'LinkedIn' },
   'hero.github': { en: 'GitHub', tr: 'GitHub' },
   'home.featured': { en: 'Featured projects', tr: 'Öne çıkan projeler' },

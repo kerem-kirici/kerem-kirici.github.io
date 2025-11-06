@@ -94,7 +94,7 @@ export default function ProjectCard({ title, description, href, image, tags }: P
         scrollToCard();
         setTimeout(() => {
           setFlipped((prev) => !prev);
-        }, 300);
+        }, 50);
       } else {
         // On larger screens, just flip the card
         setFlipped((prev) => !prev);
