@@ -140,17 +140,20 @@ export default function ProjectCard({ title, description, href, image, tags, slu
           )}
 
           {/* Title Overlay (Front Side) - visible on all screens */}
-          <div className="absolute bottom-0 left-0 right-0 z-10 p-5">
-            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
-            <Heading
-              as="h3"
-              size="md"
-              weight="semibold"
-              tracking="tight"
-              className="relative text-white"
-            >
-              {title}
-            </Heading>
+          <div className="absolute bottom-0 left-0 right-0 z-10">
+            {/* Glassy background extending from above title area to bottom - ensures coverage for 2-line titles */}
+            <div className="absolute inset-x-0 bottom-0 top-[30%] backdrop-blur-md bg-white/50 dark:bg-zinc-900/50" />
+            <div className="relative p-5 pt-7">
+              <Heading
+                as="h3"
+                size="md"
+                weight="semibold"
+                tracking="tight"
+                className="text-zinc-900 dark:text-zinc-50"
+              >
+                {title}
+              </Heading>
+            </div>
           </div>
         </div>
 
