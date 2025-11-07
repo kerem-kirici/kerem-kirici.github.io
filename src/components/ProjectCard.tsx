@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
 export default function ProjectCard({ title, description, href, image, tags, slug }: Project) {
-  const [imageSrc] = image;
+  const [imageSrc, imageOrientation] = image;
 
   const [isFlipped, setFlipped] = useState(false);
 
@@ -131,7 +131,7 @@ export default function ProjectCard({ title, description, href, image, tags, slu
                 src={imageSrc}
                 alt={title}
                 fill
-                className="object-cover"
+                className={`object-cover ${imageOrientation === 'landscape' ? 'object-left' : 'object-center'}`}
                 priority={false}
               />
             </div>
