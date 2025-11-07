@@ -13,10 +13,7 @@ export default function ProjectsPage() {
   const allProjects = projects(lang);
 
   return (
-    <PageLayout
-      title="Projects – Kerem Kırıcı"
-      description="Selected work, case studies, and experiments."
-    >
+    <PageLayout title={t('projects.page_title')} description={t('projects.page_description')}>
       <Section padding="lg" container="xl">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
           <div className="space-y-6">
@@ -62,14 +59,18 @@ export default function ProjectsPage() {
                   {t('projects.project_types')}
                 </Text>
                 <div className="mt-2 flex flex-wrap gap-2">
-                  {['Native iOS', 'Frontend UX', 'AI & Algorithms', 'Tooling'].map((type) => (
-                    <span
-                      key={type}
-                      className="rounded-full border border-black/10 bg-zinc-50 px-3 py-1 text-xs font-medium text-zinc-700 dark:border-white/10 dark:bg-zinc-800 dark:text-zinc-200"
-                    >
-                      {type}
-                    </span>
-                  ))}
+                  <span className="rounded-full border border-black/10 bg-zinc-50 px-3 py-1 text-xs font-medium text-zinc-700 dark:border-white/10 dark:bg-zinc-800 dark:text-zinc-200">
+                    {t('projects.type.native_ios')}
+                  </span>
+                  <span className="rounded-full border border-black/10 bg-zinc-50 px-3 py-1 text-xs font-medium text-zinc-700 dark:border-white/10 dark:bg-zinc-800 dark:text-zinc-200">
+                    {t('projects.type.frontend_ux')}
+                  </span>
+                  <span className="rounded-full border border-black/10 bg-zinc-50 px-3 py-1 text-xs font-medium text-zinc-700 dark:border-white/10 dark:bg-zinc-800 dark:text-zinc-200">
+                    {t('projects.type.ai_algorithms')}
+                  </span>
+                  <span className="rounded-full border border-black/10 bg-zinc-50 px-3 py-1 text-xs font-medium text-zinc-700 dark:border-white/10 dark:bg-zinc-800 dark:text-zinc-200">
+                    {t('projects.type.tooling')}
+                  </span>
                 </div>
               </div>
 

@@ -25,9 +25,41 @@ const TEXT_DICTIONARY = {
   'hero.linkedin': { en: 'LinkedIn', tr: 'LinkedIn' },
   'hero.github': { en: 'GitHub', tr: 'GitHub' },
   'home.featured': { en: 'Featured projects', tr: 'Öne çıkan projeler' },
+  // --- Home Page Meta & Aside ---
+  'home.page_title': {
+    en: 'Kerem Kırıcı – Frontend Developer',
+    tr: 'Kerem Kırıcı – Frontend Geliştirici',
+  },
+  'home.page_description': {
+    en: 'Portfolio of Kerem Kırıcı: projects, experience, and contact information.',
+    tr: 'Kerem Kırıcı portfolyosu: projeler, deneyim ve iletişim bilgileri.',
+  },
+  'home.recent_focus_title': { en: 'Recent Focus', tr: 'Güncel Odak' },
+  'home.recent_focus_text': {
+    en: 'Building polished native iOS experiences and high-impact web products that ship fast.',
+    tr: 'Özenle hazırlanmış yerel iOS deneyimleri ve hızlıca yayımlanan, yüksek etkili web ürünleri geliştiriyorum.',
+  },
+  'home.currently_working_with': {
+    en: 'Currently working with',
+    tr: 'Şu anda çalıştığım teknolojiler',
+  },
+  'home.availability': { en: 'Availability', tr: 'Müsaitlik' },
+  'home.availability_text': {
+    en: 'Open to collaborations on native iOS products, complex interfaces, and high-impact frontend systems.',
+    tr: 'Yerel iOS ürünleri, karmaşık arayüzler ve yüksek etkili frontend sistemleri üzerine işbirliğine açığım.',
+  },
+  'home.collaboration_style': { en: 'Collaboration style', tr: 'İşbirliği tarzı' },
+  'home.collaboration_style_text': {
+    en: 'Remote-first, async-friendly teams that value craft, rigor, and shipping thoughtfully.',
+    tr: 'Zanaate, titizliğe ve düşünceli şekilde yayınlamaya değer veren, uzaktan-öncelikli ve asenkron çalışmaya uygun ekiplerle.',
+  },
   'hero.description': {
-    en: "Hey, I\'m Kerem! I\'m a 3rd-year engineering student at ITU who also works as a Junior Software Developer at Tatilsepeti. It\'s a unique position where I get to build real-world features for large-scale React apps. I love building things that people find genuinely useful - a perspective that was really shaped by my long-term work experience in the U.S. While I enjoy my work in React, my true passion is mastering native iOS development with Swift and SwiftUI.",
-    tr: "Selam, ben Kerem! İTÜ'de 3. sınıf Elektronik ve Haberleşme Müh. öğrencisiyim ve aynı zamanda Tatilsepeti'nde Junior Software Developer olarak çalışıyorum. Bu, büyük ölçekli React uygulamaları için gerçek dünya özellikleri geliştirdiğim eşsiz bir pozisyon. İnsanların gerçekten işine yarayan şeyler yapmayı seviyorum; bu, ABD'deki uzun süreli çalışma deneyimimle şekillenen bir bakış açısı. React'teki işimi sevsem de, asıl tutkum Swift ve SwiftUI ile native iOS geliştirmede uzmanlaşmak.",
+    en: "Hi, I'm Kerem! I'm a 3rd-year Electronics and Communication Engineering student at ITU, and I also work as a Junior Software Developer at Tatilsepeti. At Tatilsepeti, I'm working on a large-scale React project, which allows me to both grow my skills and gain a foothold in the industry, and I'm excited to be taking these first steps in my career. I love creating things that solve people's problems and are genuinely useful to them. This has become a core philosophy for me—a perspective that spans everything from my dreams of building large-scale, user-friendly projects that meet real needs, all the way to the lessons I learned from my long-term work experience in the U.S. service industry. While I enjoy my work with React, my true passion is mastering native iOS development with Swift and SwiftUI, and I'm actively working to steer my career in this direction.",
+    tr: "Merhaba, ben Kerem! İTÜ'de 3. sınıf Elektronik ve Haberleşme Mühendisliği öğrencisiyim ve aynı zamanda Tatilsepeti'nde Junior Software Developer olarak çalışıyorum. Tatilsepeti'nde büyük ölçekli bir React projesinde çalışarak hem kendimi geliştirebiliyorum hem de sektörde yer edinerek kariyerimin ilk adımlarını atmaktan dolayı heyecan duyuyorum. İnsanların ihtiyaçlarına çözüm üretebilecek ve işlerine yarayacak çalışmalar yapmayı seviyorum; bu, bireysel kullanıcı dostu ve ihtiyaçları giderecek büyük proje hayallerinden ABD'de geçirdiğim uzun süreli hizmet sektöründe çalışma deneyimlerime kadar kapsamlı hale gelmiş, hayat mottom olmuş bir bakış açısı. React'teki işimi sevsem de, asıl tutkum Swift ve SwiftUI ile native iOS geliştirmede uzmanlaşmak. Kariyerimi bu yönde şekillendirmek için çalışmalarıma devam ediyorum.",
+  },
+  'hero.lets_connect': {
+    en: "Let's connect!",
+    tr: 'Bağlantı Yolla!',
   },
   'about.title': {
     en: 'About',
@@ -41,6 +73,12 @@ const TEXT_DICTIONARY = {
     en: "Hello, I\'m Kerem Kırıcı. Thanks for stopping by. I\'m a software developer and a 3rd-year Electronics and Communication Engineering student at ITU. I\'m the kind of person who thrives on solving complex problems, which has led me to a unique and challenging opportunity.\n\nMy path has also given me a broad perspective. From a long-term stay working in the U.S. service industry, I learned invaluable lessons about communication, adaptability, and understanding user needs, skills I bring to every tech project I tackle.\n\nWhile still completing my degree, I\'ve earned a role as a Junior Software Developer at Tatilsepeti, one of Turkey\'s major tech companies. This position has been a significant step beyond a typical internship; I independently develop and maintain frontend features for a large-scale Next.js and React.js control panel that serves over 500 hotel partners. Balancing this high-impact role with my studies has proven my ability to manage advanced responsibilities and deliver in a professional, agile environment.\n\nMy experience at Tatilsepeti and my personal projects have given me a strong foundation in React, React Native, and full-stack development. However, my true passion is now firmly set on native iOS development.\n\nThis is why I\'m actively steering my career in this direction. To build a strong foundation, I\'ve dedicated myself to mastering the Apple ecosystem. I recently earned a META &quot;Create the User Interface with SwiftUI&quot; certificate and immediately applied these new skills by building \'pokerist\', a native iOS application from the ground up. This project was my hands-on way to move from theory to a complex, functional product. It\'s a powerful Texas Hold\'em hand analyzer that calculates win probabilities against up to 6 opponents by running a 10,000-game Monte Carlo simulation asynchronously. To build it, I implemented a clean MVVM architecture, managed reactive state with SwiftUI and Combine, and designed a modern \'liquid glass\' UI that fully supports light and dark modes.\n\nI am excited and prepared to bring my proven discipline from the web world, and my user-focused perspective, to a full-time role where I can grow as a Swift and SwiftUI developer.",
     tr: "Merhaba, ben Kerem Kırıcı. Uğradığınız için teşekkürler! Ben bir yazılım geliştiriciyim ve İTÜ'de 3. sınıf Elektronik ve Haberleşme Mühendisliği öğrencisiyim. Karmaşık problemleri çözmekten keyif alan bir yapım var, bu da beni eşsiz ve zorlu bir fırsata yönlendirdi.\n\nBu yolculuk bana geniş bir bakış açısı da kazandırdı. ABD'de hizmet sektöründeki uzun süreli çalışma deneyimim sayesinde iletişim, uyum sağlama ve kullanıcı ihtiyaçlarını anlama konusunda paha biçilmez dersler öğrendim; bu becerileri üstlendiğim her teknoloji projesine taşıyorum.\n\nHâlâ eğitimimi tamamlıyorken, Türkiye'nin önde gelen teknoloji şirketlerinden biri olan Tatilsepeti'nde Junior Software Developer olarak bir rol edindim. Bu pozisyon, tipik bir stajın çok ötesinde önemli bir adım oldu; 500'den fazla otel ortağına hizmet veren büyük ölçekli bir Next.js ve React.js kontrol paneli için bağımsız olarak frontend özellikleri geliştiriyor ve bakımını yapıyorum. Bu yüksek sorumluluktaki rolü eğitimimle dengelemek, ileri düzey sorumlulukları yönetebilme ve profesyonel, çevik (agile) bir ortamda sonuç üretebilme yeteneğimi kanıtladı.\n\nTatilsepeti'ndeki deneyimim ve kişisel projelerim bana React, React Native ve full-stack geliştirme konusunda güçlü bir temel sağladı. Ancak, asıl tutkum artık tamamen native iOS geliştirmeye odaklanmış durumda.\n\nİşte bu yüzden kariyerimi aktif olarak bu yöne doğru yönlendiriyorum. Güçlü bir temel oluşturmak için kendimi Apple ekosisteminde uzmanlaşmaya adadım. Yakın zamanda META'nın \"Create the User Interface with SwiftUI\" sertifikasını aldım ve bu yeni becerileri hemen, 'pokerist' adında sıfırdan bir native iOS uygulaması geliştirerek uyguladım. Bu proje, teoriden karmaşık ve işlevsel bir ürüne geçiş yapmam için benim uygulamalı yolumdu. Bu, 6 rakibe kadar kazanma olasılıklarını eşzamansız (asynchronously) olarak 10.000 oyunluk bir Monte Carlo simülasyonu çalıştırarak hesaplayan güçlü bir Texas Hold'em el analiz aracıdır. Bunu geliştirmek için temiz bir MVVM mimarisi uyguladım, SwiftUI ve Combine ile reaktif durum yönetimini sağladım ve aydınlık/karanlık modları tam destekleyen modern bir 'liquid glass' (akışkan cam) kullanıcı arayüzü tasarladım.\n\nWeb dünyasından getirdiğim kanıtlanmış disiplinimi ve kullanıcı odaklı bakış açımı, bir Swift ve SwiftUI geliştiricisi olarak büyüyebileceğim tam zamanlı bir role taşımak için heyecanlı ve hazırım.",
   },
+  // --- About Page Meta ---
+  'about.page_title': { en: 'About – Kerem Kırıcı', tr: 'Hakkımda – Kerem Kırıcı' },
+  'about.page_description': {
+    en: 'About Kerem Kırıcı, frontend developer.',
+    tr: 'Frontend geliştirici Kerem Kırıcı hakkında.',
+  },
 
   // --- Project: Projects Page ---
   'projects.title': {
@@ -50,6 +88,12 @@ const TEXT_DICTIONARY = {
   'projects.description': {
     en: 'A curated mix of production work, experiments, and technical explorations spanning native iOS, React, and full-stack problem solving. Each project dives into the product goals, the technical stack, and the decisions that shaped the outcome.',
     tr: 'Üretim çalışmaları, deneyler ve teknik keşiflerin bir karışımı, yerel iOS, React ve tam stack problem çözme konusunda. Her proje, ürün hedeflerini, teknik yığını ve sonucu şekillenen kararları açıklar.',
+  },
+  // --- Projects Page Meta ---
+  'projects.page_title': { en: 'Projects – Kerem Kırıcı', tr: 'Projeler – Kerem Kırıcı' },
+  'projects.page_description': {
+    en: 'Selected work, case studies, and experiments.',
+    tr: 'Seçilmiş çalışmalar, vaka incelemeleri ve deneyler.',
   },
   'projects.explore_more': {
     en: 'Explore more',
@@ -75,6 +119,10 @@ const TEXT_DICTIONARY = {
     en: 'Project types',
     tr: 'Proje tipleri',
   },
+  'projects.type.native_ios': { en: 'Native iOS', tr: 'Yerel iOS' },
+  'projects.type.frontend_ux': { en: 'Frontend UX', tr: 'Frontend UX' },
+  'projects.type.ai_algorithms': { en: 'AI & Algorithms', tr: 'Yapay Zeka ve Algoritmalar' },
+  'projects.type.tooling': { en: 'Tooling', tr: 'Araçlar' },
   'projects.collaboration': {
     en: 'Collaboration',
     tr: 'İşbirliği',
@@ -119,6 +167,12 @@ const TEXT_DICTIONARY = {
     en: 'Gallery',
     tr: 'Galeri',
   },
+  'projects.gallery_image_alt': {
+    en: '{title} screenshot {index} {orientation}',
+    tr: '{title} ekran görüntüsü {index} {orientation}',
+  },
+  'orientation.portrait': { en: 'portrait', tr: 'dikey' },
+  'orientation.landscape': { en: 'landscape', tr: 'yatay' },
   // --- Project: Sudoku React Native ---
   'projects.sudokumobileapp.title': {
     en: 'Sudoku - React Native App',

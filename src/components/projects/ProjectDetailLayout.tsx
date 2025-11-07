@@ -159,7 +159,13 @@ export default function ProjectDetailLayout({ project }: ProjectDetailLayoutProp
                 <ImageComponent
                   key={`${imageSrc}-${orientation}`}
                   src={imageSrc}
-                  alt={`${project.title} screenshot ${index + 1} ${orientation}`}
+                  alt={t('projects.gallery_image_alt', {
+                    title: project.title,
+                    index: String(index + 1),
+                    orientation: t(
+                      orientation === 'portrait' ? 'orientation.portrait' : 'orientation.landscape',
+                    ),
+                  })}
                   ratio={orientation === 'portrait' ? '3/4' : '4/3'}
                   rounded="2xl"
                   shadow="md"

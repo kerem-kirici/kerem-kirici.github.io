@@ -9,7 +9,7 @@ export default function AboutPage() {
   const { t } = useLanguage();
 
   return (
-    <PageLayout title="About – Kerem Kırıcı" description="About Kerem Kırıcı, frontend developer.">
+    <PageLayout title={t('about.page_title')} description={t('about.page_description')}>
       <Section padding="md">
         <Heading as="h1" size="xl" weight="semibold" tracking="tight">
           {t('about.title')}
