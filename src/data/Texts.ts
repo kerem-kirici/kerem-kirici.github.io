@@ -41,6 +41,84 @@ const TEXT_DICTIONARY = {
     en: "Hello, I\'m Kerem Kırıcı. Thanks for stopping by. I\'m a software developer and a 3rd-year Electronics and Communication Engineering student at ITU. I\'m the kind of person who thrives on solving complex problems, which has led me to a unique and challenging opportunity.\n\nMy path has also given me a broad perspective. From a long-term stay working in the U.S. service industry, I learned invaluable lessons about communication, adaptability, and understanding user needs, skills I bring to every tech project I tackle.\n\nWhile still completing my degree, I\'ve earned a role as a Junior Software Developer at Tatilsepeti, one of Turkey\'s major tech companies. This position has been a significant step beyond a typical internship; I independently develop and maintain frontend features for a large-scale Next.js and React.js control panel that serves over 500 hotel partners. Balancing this high-impact role with my studies has proven my ability to manage advanced responsibilities and deliver in a professional, agile environment.\n\nMy experience at Tatilsepeti and my personal projects have given me a strong foundation in React, React Native, and full-stack development. However, my true passion is now firmly set on native iOS development.\n\nThis is why I\'m actively steering my career in this direction. To build a strong foundation, I\'ve dedicated myself to mastering the Apple ecosystem. I recently earned a META &quot;Create the User Interface with SwiftUI&quot; certificate and immediately applied these new skills by building \'pokerist\', a native iOS application from the ground up. This project was my hands-on way to move from theory to a complex, functional product. It\'s a powerful Texas Hold\'em hand analyzer that calculates win probabilities against up to 6 opponents by running a 10,000-game Monte Carlo simulation asynchronously. To build it, I implemented a clean MVVM architecture, managed reactive state with SwiftUI and Combine, and designed a modern \'liquid glass\' UI that fully supports light and dark modes.\n\nI am excited and prepared to bring my proven discipline from the web world, and my user-focused perspective, to a full-time role where I can grow as a Swift and SwiftUI developer.",
     tr: "Merhaba, ben Kerem Kırıcı. Uğradığınız için teşekkürler! Ben bir yazılım geliştiriciyim ve İTÜ'de 3. sınıf Elektronik ve Haberleşme Mühendisliği öğrencisiyim. Karmaşık problemleri çözmekten keyif alan bir yapım var, bu da beni eşsiz ve zorlu bir fırsata yönlendirdi.\n\nBu yolculuk bana geniş bir bakış açısı da kazandırdı. ABD'de hizmet sektöründeki uzun süreli çalışma deneyimim sayesinde iletişim, uyum sağlama ve kullanıcı ihtiyaçlarını anlama konusunda paha biçilmez dersler öğrendim; bu becerileri üstlendiğim her teknoloji projesine taşıyorum.\n\nHâlâ eğitimimi tamamlıyorken, Türkiye'nin önde gelen teknoloji şirketlerinden biri olan Tatilsepeti'nde Junior Software Developer olarak bir rol edindim. Bu pozisyon, tipik bir stajın çok ötesinde önemli bir adım oldu; 500'den fazla otel ortağına hizmet veren büyük ölçekli bir Next.js ve React.js kontrol paneli için bağımsız olarak frontend özellikleri geliştiriyor ve bakımını yapıyorum. Bu yüksek sorumluluktaki rolü eğitimimle dengelemek, ileri düzey sorumlulukları yönetebilme ve profesyonel, çevik (agile) bir ortamda sonuç üretebilme yeteneğimi kanıtladı.\n\nTatilsepeti'ndeki deneyimim ve kişisel projelerim bana React, React Native ve full-stack geliştirme konusunda güçlü bir temel sağladı. Ancak, asıl tutkum artık tamamen native iOS geliştirmeye odaklanmış durumda.\n\nİşte bu yüzden kariyerimi aktif olarak bu yöne doğru yönlendiriyorum. Güçlü bir temel oluşturmak için kendimi Apple ekosisteminde uzmanlaşmaya adadım. Yakın zamanda META'nın \"Create the User Interface with SwiftUI\" sertifikasını aldım ve bu yeni becerileri hemen, 'pokerist' adında sıfırdan bir native iOS uygulaması geliştirerek uyguladım. Bu proje, teoriden karmaşık ve işlevsel bir ürüne geçiş yapmam için benim uygulamalı yolumdu. Bu, 6 rakibe kadar kazanma olasılıklarını eşzamansız (asynchronously) olarak 10.000 oyunluk bir Monte Carlo simülasyonu çalıştırarak hesaplayan güçlü bir Texas Hold'em el analiz aracıdır. Bunu geliştirmek için temiz bir MVVM mimarisi uyguladım, SwiftUI ve Combine ile reaktif durum yönetimini sağladım ve aydınlık/karanlık modları tam destekleyen modern bir 'liquid glass' (akışkan cam) kullanıcı arayüzü tasarladım.\n\nWeb dünyasından getirdiğim kanıtlanmış disiplinimi ve kullanıcı odaklı bakış açımı, bir Swift ve SwiftUI geliştiricisi olarak büyüyebileceğim tam zamanlı bir role taşımak için heyecanlı ve hazırım.",
   },
+
+  // --- Project: Projects Page ---
+  'projects.title': {
+    en: 'Projects',
+    tr: 'Projeler',
+  },
+  'projects.description': {
+    en: 'A curated mix of production work, experiments, and technical explorations spanning native iOS, React, and full-stack problem solving. Each project dives into the product goals, the technical stack, and the decisions that shaped the outcome.',
+    tr: 'Üretim çalışmaları, deneyler ve teknik keşiflerin bir karışımı, yerel iOS, React ve tam stack problem çözme konusunda. Her proje, ürün hedeflerini, teknik yığını ve sonucu şekillenen kararları açıklar.',
+  },
+  'projects.explore_more': {
+    en: 'Explore more',
+    tr: 'Daha fazla keşfet',
+  },
+  'projects.view_highlighted_case': {
+    en: 'View highlighted case',
+    tr: 'Öne çıkan örneği görüntüle',
+  },
+  'projects.github_profile': {
+    en: 'GitHub profile',
+    tr: 'GitHub profili',
+  },
+  'projects.what_to_expect': {
+    en: 'What to expect',
+    tr: 'Ne bekleyebilirsiniz',
+  },
+  'projects.what_to_expect_description': {
+    en: 'Detailed write-ups with implementation highlights, lessons learned, and visuals that capture the final experience.',
+    tr: 'Uygulama detayları, öğrenilen dersler ve sonuçlarını yakalamak için görselleştirmelerle birlikte detaylı yazılar.',
+  },
+  'projects.project_types': {
+    en: 'Project types',
+    tr: 'Proje tipleri',
+  },
+  'projects.collaboration': {
+    en: 'Collaboration',
+    tr: 'İşbirliği',
+  },
+  'projects.collaboration_description': {
+    en: 'Available for product collaborations that value thoughtful design, measurable outcomes, and technical rigor.',
+    tr: 'Düşünceli tasarım, ölçülebilir sonuçlar ve teknik zorluk değerlendiren ürün işbirliği için mevcut.',
+  },
+  'projects.back_to_projects': {
+    en: 'Back to projects',
+    tr: 'Projelere dön',
+  },
+  'projects.project_snapshot': {
+    en: 'Project snapshot',
+    tr: 'Proje anasayfası',
+  },
+  'projects.project_snapshot_description': {
+    en: 'A quick overview of the project details and relevant links.',
+    tr: 'Proje detayları ve ilgili bağlantıların bir genel bakışı.',
+  },
+  'projects.tech_stack': {
+    en: 'Tech stack',
+    tr: 'Teknik yığın',
+  },
+  'projects.repository': {
+    en: 'Repository',
+    tr: 'Depo',
+  },
+  'projects.view_on_github': {
+    en: 'View on GitHub',
+    tr: "GitHub'da görüntüle",
+  },
+  'projects.share': {
+    en: 'Share',
+    tr: 'Paylaş',
+  },
+  'projects.copy_link_to_share_description': {
+    en: 'Copy the link below to share this project.',
+    tr: 'Bu proje paylaşmak için aşağıdaki bağlantıyı kopyalayın.',
+  },
+  'projects.gallery': {
+    en: 'Gallery',
+    tr: 'Galeri',
+  },
   // --- Project: Sudoku React Native ---
   'projects.sudokumobileapp.title': {
     en: 'Sudoku - React Native App',

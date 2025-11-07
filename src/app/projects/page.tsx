@@ -1,16 +1,16 @@
+'use client';
+
 import ProjectCard from '@/components/ProjectCard';
+import { useLanguage } from '@/components/i18n/LanguageProvider';
 import { Actions, Grid, PageLayout, Section } from '@/components/layout';
 import { ButtonLink } from '@/components/links';
 import { Heading, Text } from '@/components/texts';
 import { projects } from '@/data/projects';
 
-export const metadata = {
-  title: 'Projects – Kerem Kırıcı',
-  description: 'A selection of work and experiments.',
-};
-
 export default function ProjectsPage() {
-  const allProjects = projects('en');
+  const { t, lang } = useLanguage();
+
+  const allProjects = projects(lang);
 
   return (
     <PageLayout
@@ -21,20 +21,18 @@ export default function ProjectsPage() {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
           <div className="space-y-6">
             <Heading as="h1" size="2xl" weight="semibold" tracking="tight">
-              Projects
+              {t('projects.title')}
             </Heading>
             <Text size="lg" tone="muted" className="max-w-4xl leading-relaxed">
-              A curated mix of production work, experiments, and technical explorations spanning
-              native iOS, React, and full-stack problem solving. Each project dives into the product
-              goals, the technical stack, and the decisions that shaped the outcome.
+              {t('projects.description')}
             </Text>
             <div className="space-y-4">
               <Text size="sm" tone="subtle" className="uppercase tracking-wider">
-                Explore more
+                {t('projects.explore_more')}
               </Text>
               <Actions gap="md">
                 <ButtonLink href="/projects/pokerist" variant="primary" size="md">
-                  View highlighted case
+                  {t('projects.view_highlighted_case')}
                 </ButtonLink>
                 <ButtonLink
                   href="https://github.com/kerem-kirici"
@@ -42,7 +40,7 @@ export default function ProjectsPage() {
                   size="md"
                   newTab
                 >
-                  GitHub profile
+                  {t('projects.github_profile')}
                 </ButtonLink>
               </Actions>
             </div>
@@ -51,18 +49,17 @@ export default function ProjectsPage() {
           <aside className="space-y-6 rounded-3xl border border-black/10 bg-white/80 p-6 shadow-lg backdrop-blur-sm dark:border-white/10 dark:bg-zinc-900/70">
             <div className="space-y-3">
               <Heading as="h2" size="sm" weight="semibold" tracking="tight">
-                What to expect
+                {t('projects.what_to_expect')}
               </Heading>
               <Text size="sm" leading="relaxed" tone="muted">
-                Detailed write-ups with implementation highlights, lessons learned, and visuals that
-                capture the final experience.
+                {t('projects.what_to_expect_description')}
               </Text>
             </div>
 
             <div className="space-y-4">
               <div>
                 <Text size="xs" tone="subtle" className="uppercase tracking-wider">
-                  Project types
+                  {t('projects.project_types')}
                 </Text>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {['Native iOS', 'Frontend UX', 'AI & Algorithms', 'Tooling'].map((type) => (
@@ -78,11 +75,10 @@ export default function ProjectsPage() {
 
               <div>
                 <Text size="xs" tone="subtle" className="uppercase tracking-wider">
-                  Collaboration
+                  {t('projects.collaboration')}
                 </Text>
                 <Text size="sm" leading="relaxed" tone="muted" className="mt-2">
-                  Available for product collaborations that value thoughtful design, measurable
-                  outcomes, and technical rigor.
+                  {t('projects.collaboration_description')}
                 </Text>
               </div>
             </div>

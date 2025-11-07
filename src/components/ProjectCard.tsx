@@ -7,7 +7,9 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
-export default function ProjectCard({ title, description, href, image, tags }: Project) {
+export default function ProjectCard({ title, description, href, image, tags, slug }: Project) {
+  const [imageSrc] = image;
+
   const [isFlipped, setFlipped] = useState(false);
 
   const [isXSmallScreen, setIsXSmallScreen] = useState(false);
@@ -122,9 +124,16 @@ export default function ProjectCard({ title, description, href, image, tags }: P
         {/* === CARD FRONT === */}
         <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:translateZ(0)] overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-zinc-900">
           {/* Image */}
-          {image ? (
+          {imageSrc ? (
             <div className="absolute inset-0">
-              <Image src={image} alt={title} fill className="object-cover" />
+              <Image
+                key={`${slug}-${imageSrc}`}
+                src={imageSrc}
+                alt={title}
+                fill
+                className="object-cover"
+                priority={false}
+              />
             </div>
           ) : (
             <div className="absolute inset-0 bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900" />
