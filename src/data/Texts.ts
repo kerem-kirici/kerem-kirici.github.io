@@ -99,6 +99,10 @@ const TEXT_DICTIONARY = {
     en: "These are the key projects that have helped me advance my algorithmic thinking, particularly through mobile apps developed with both native iOS and React Native; in every project, I strive to build large-scale, user-experience-optimized applications by adhering to technical architecture and applying the experience I've gained in professional environments to my personal work.",
     tr: 'Hem iOS hem de React Native ile geliştirilmiş mobil uygulamalar başta olmak üzere Algoritma mantığı konusunda da kendimi geliştirmem yarayan başlıca projeler. Her proje geliştirmesinde teknik yapıya uyarak ve profesyonel ortamlarda edindiğim deneyimleri bireysel projelerimde de kullanarak, kullanıcı deneyimini optimize etmeye çalışan büyük ölçekli projeler geliştirmeye çalışıyorum.',
   },
+  'projects.details': {
+    en: 'Details',
+    tr: 'Detaylar',
+  },
   // --- Projects Page Meta ---
   'projects.page_title': { en: 'Projects – Kerem Kırıcı', tr: 'Projeler – Kerem Kırıcı' },
   'projects.page_description': {

@@ -1,14 +1,25 @@
 'use client';
 
+import { useLanguage } from '@/components/i18n/LanguageProvider';
 import { ButtonLink } from '@/components/links';
-import { Heading, Tag, Text } from '@/components/texts';
+import { DateText, Heading, Tag, Text } from '@/components/texts';
 import type { Project } from '@/data/projects';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
-export default function ProjectCard({ title, description, href, image, tags, slug }: Project) {
+export default function ProjectCard({
+  title,
+  description,
+  href,
+  image,
+  tags,
+  slug,
+  date,
+}: Project) {
   const [imageSrc, imageOrientation] = image;
+
+  const { t } = useLanguage();
 
   const [isFlipped, setFlipped] = useState(false);
 
@@ -180,18 +191,21 @@ export default function ProjectCard({ title, description, href, image, tags, slu
                 ))}
               </div>
             )}
-            {/* Details Button */}
-            <ButtonLink
-              href={href}
-              variant="secondary"
-              size="sm"
-              rounded="full"
-              newTab={href.startsWith('http')}
-              onClick={(e) => e.stopPropagation()}
-              className="mt-4 ml-auto text-xs"
-            >
-              Details
-            </ButtonLink>
+            {/* Date and Details Button row */}
+            <div className="mt-4 flex items-center justify-between">
+              <DateText value={date} size="xs" />
+              <ButtonLink
+                href={href}
+                variant="secondary"
+                size="sm"
+                rounded="full"
+                newTab={href.startsWith('http')}
+                onClick={(e) => e.stopPropagation()}
+                className="text-xs"
+              >
+                {t('projects.details')}
+              </ButtonLink>
+            </div>
           </div>
         </div>
       </motion.div>

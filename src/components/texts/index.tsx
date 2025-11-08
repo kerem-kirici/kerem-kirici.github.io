@@ -1,4 +1,5 @@
 export { default as Article } from './Article';
+export { default as DateText } from './DateText';
 export { default as Heading } from './Heading';
 export { default as ImageComponent } from './ImageComponent';
 export { default as Kicker } from './Kicker';

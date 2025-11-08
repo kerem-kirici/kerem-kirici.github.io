@@ -6,6 +6,7 @@ export type Project = {
   title: string;
   description: string;
   long_explanation: string;
+  date: string;
   href: string;
   githubUrl: string;
   tags: string[];
@@ -59,6 +60,7 @@ export const projects = (language: Lang = 'en'): Project[] => {
         TEXT_DICTIONARY[`projects.${slug}.long_explanation` as keyof typeof TEXT_DICTIONARY][
           language
         ],
+      date: '06/2004',
       href: `/projects/${slug}`,
       githubUrl: `https://github.com/kerem-kirici/${slug}`,
       tags,

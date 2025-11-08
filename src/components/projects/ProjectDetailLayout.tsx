@@ -2,7 +2,7 @@
 
 import { Aside, PageLayout, Section } from '@/components/layout';
 import { ButtonLink } from '@/components/links';
-import { Article, Heading, ImageComponent, Tag, Text } from '@/components/texts';
+import { Article, DateText, Heading, ImageComponent, Tag, Text } from '@/components/texts';
 import type { Project } from '@/data/projects';
 import { useEffect, useState } from 'react';
 import { useLanguage } from '../i18n/LanguageProvider';
@@ -41,9 +41,12 @@ export default function ProjectDetailLayout({ project }: ProjectDetailLayoutProp
       <Section padding="lg" container="xl">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
           <div className="space-y-6">
-            <Heading as="h1" size="xl" weight="semibold" tracking="tight">
-              {project.title}
-            </Heading>
+            <div className="flex items-baseline justify-between gap-4">
+              <Heading as="h1" size="xl" weight="semibold" tracking="tight">
+                {project.title}
+              </Heading>
+              <DateText value={project.date} />
+            </div>
             <Text size="lg" leading="relaxed" tone="subtle" className="max-w-4xl">
               {project.description}
             </Text>
