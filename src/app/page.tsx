@@ -1,11 +1,11 @@
 'use client';
 
 import { useLanguage } from '@/components/i18n/LanguageProvider';
-import { Actions, Grid, PageLayout, Section } from '@/components/layout';
+import { Actions, Aside, Grid, PageLayout, Section } from '@/components/layout';
 import { ButtonLink } from '@/components/links';
 import ProjectCard from '@/components/ProjectCard';
 import StickyScrollContainer from '@/components/StickyScrollContainer';
-import { Heading, Subheading, Text } from '@/components/texts';
+import { Article, Heading, Subheading, Tag, Text } from '@/components/texts';
 import { projects } from '@/data/projects';
 import { memo } from 'react';
 
@@ -27,25 +27,64 @@ export default function Home() {
   const { t, lang } = useLanguage();
 
   return (
-    <PageLayout
-      title="Kerem Kırıcı – Frontend Developer"
-      description="Portfolio of Kerem Kırıcı: projects, experience, and contact information."
-    >
+    <PageLayout title={t('home.page_title')} description={t('home.page_description')}>
       <Section padding="lg" container="xl">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
-          <div className="space-y-6">
-            <Heading as="h1" size="2xl" weight="semibold" tracking="tight">
-              {t('hero.title')}
-            </Heading>
-            <Subheading as="h2" size="lg" weight="semibold" tracking="tight">
-              {t('hero.subtitle')}
-            </Subheading>
+        <div className="space-y-6">
+          <Heading as="h1" size="2xl" weight="semibold" tracking="tight">
+            {t('hero.title')}
+          </Heading>
+          <Subheading as="h2" size="lg" weight="semibold" tracking="tight">
+            {t('hero.subtitle')}
+          </Subheading>
+        </div>
+
+        <div className="mt-8 flex flex-col gap-10 lg:clearfix lg:space-y-0 lg:block">
+          <Aside
+            heading={
+              <div className="space-y-3">
+                <Heading as="h3" size="sm" weight="semibold" tracking="tight">
+                  {t('home.recent_focus_title')}
+                </Heading>
+                <Text size="sm" leading="relaxed" tone="muted">
+                  {t('home.recent_focus_text')}
+                </Text>
+              </div>
+            }
+            information={
+              <div className="space-y-4">
+                <div>
+                  <Text size="xs" tone="subtle" className="uppercase tracking-wider">
+                    {t('home.currently_working_with')}
+                  </Text>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {['SwiftUI', 'Swift', 'React Native', 'Next.js', 'React', 'TypeScript'].map(
+                      (skill) => (
+                        <Tag key={skill}>{skill}</Tag>
+                      ),
+                    )}
+                  </div>
+                </div>
+              </div>
+            }
+            details={
+              <div>
+                <Text size="xs" tone="subtle" className="uppercase tracking-wider">
+                  {t('home.current_position')}
+                </Text>
+                <Text size="sm" leading="relaxed" tone="muted" className="mt-2">
+                  {t('home.current_position_text')}
+                </Text>
+              </div>
+            }
+          />
+
+          <Article spacing="md" className="order-1 lg:order-none lg:pr-4">
             <Text size="lg" tone="muted" className="max-w-4xl leading-relaxed">
               {t('hero.description')}
             </Text>
-            <div className="space-y-4">
-              <Text size="sm" tone="subtle" className="uppercase tracking-wider">
-                Let’s connect
+            <div className="space-y-4 mt-6">
+              <Text size="md" tone="subtle" className="tracking-wider">
+                {t('hero.lets_connect')}
               </Text>
               <Actions gap="sm">
                 <ButtonLink
@@ -74,57 +113,7 @@ export default function Home() {
                 </ButtonLink>
               </Actions>
             </div>
-          </div>
-
-          <aside className="space-y-6 rounded-3xl border border-black/10 bg-white/80 p-6 shadow-lg backdrop-blur-sm dark:border-white/10 dark:bg-zinc-900/70">
-            <div className="space-y-3">
-              <Heading as="h3" size="sm" weight="semibold" tracking="tight">
-                Recent Focus
-              </Heading>
-              <Text size="sm" leading="relaxed" tone="muted">
-                Building polished native iOS experiences and high-impact web products that ship
-                fast.
-              </Text>
-            </div>
-
-            <div className="space-y-4">
-              <div>
-                <Text size="xs" tone="subtle" className="uppercase tracking-wider">
-                  Currently working with
-                </Text>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {['SwiftUI', 'Swift', 'React', 'Next.js'].map((skill) => (
-                    <span
-                      key={skill}
-                      className="rounded-full border border-black/10 bg-zinc-50 px-3 py-1 text-xs font-medium text-zinc-700 dark:border-white/10 dark:bg-zinc-800 dark:text-zinc-200"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <Text size="xs" tone="subtle" className="uppercase tracking-wider">
-                  Availability
-                </Text>
-                <Text size="sm" leading="relaxed" tone="muted" className="mt-2">
-                  Open to collaborations on native iOS products, complex interfaces, and high-impact
-                  frontend systems.
-                </Text>
-              </div>
-
-              <div>
-                <Text size="xs" tone="subtle" className="uppercase tracking-wider">
-                  Collaboration style
-                </Text>
-                <Text size="sm" leading="relaxed" tone="muted" className="mt-2">
-                  Remote-first, async-friendly teams that value craft, rigor, and shipping
-                  thoughtfully.
-                </Text>
-              </div>
-            </div>
-          </aside>
+          </Article>
         </div>
       </Section>
 

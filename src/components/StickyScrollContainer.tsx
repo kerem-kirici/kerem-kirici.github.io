@@ -83,9 +83,9 @@ export default function StickyScrollContainer({
       // Find the title (Heading) element
       const titleEl = containerRef.current.querySelector('h2') as HTMLElement;
 
-      if (!titleEl) {
-        console.warn('StickyScrollContainer: No h2 title found.');
-      } else {
+      const hasTitleElement = !!titleEl;
+
+      if (hasTitleElement) {
         titleRef.current = titleEl;
       }
 
@@ -106,12 +106,13 @@ export default function StickyScrollContainer({
 
       const headerHeight = parseFloat(stickyTopOffset.replace('px', '')) || 0;
 
-      const titleTopOffset = headerHeight + 16; // Add 16px gap for title
+      // Only add title offset if title exists
+      const baseTopOffset = hasTitleElement ? headerHeight + 16 : headerHeight;
 
-      // Apply sticky positioning to title at the very top
-      if (titleEl) {
+      // Apply sticky positioning to title only if it exists
+      if (hasTitleElement && titleEl) {
         titleEl.style.position = 'sticky';
-        titleEl.style.top = `${titleTopOffset}px`;
+        titleEl.style.top = `${baseTopOffset}px`;
         titleEl.style.zIndex = `${cards.length + 1}`;
 
         // Make title background transparent
@@ -123,6 +124,8 @@ export default function StickyScrollContainer({
         if (!containerRef.current) return;
 
         const titleEl = containerRef.current.querySelector('h2') as HTMLElement;
+
+        const hasTitleElement = !!titleEl;
 
         const gridContainer = containerRef.current.querySelector('.grid') as HTMLElement;
 
@@ -140,11 +143,13 @@ export default function StickyScrollContainer({
           const cardGap = index * 24 + 16;
 
           // Get title height if it exists, otherwise 0
-          const titleHeight = titleEl ? titleEl.getBoundingClientRect().height : 0;
+          const titleHeight =
+            hasTitleElement && titleEl ? titleEl.getBoundingClientRect().height : 0;
 
-          const titleBottomGap = 4; // Gap between title and first card
+          // Only add gap between title and first card if title exists
+          const titleBottomGap = hasTitleElement ? 4 : 0;
 
-          const topPosition = `${titleTopOffset + titleHeight + titleBottomGap + cardGap}px`;
+          const topPosition = `${baseTopOffset + titleHeight + titleBottomGap + cardGap}px`;
 
           cardElement.style.position = 'sticky';
           cardElement.style.top = topPosition;

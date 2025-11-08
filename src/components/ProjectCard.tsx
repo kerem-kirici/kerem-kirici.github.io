@@ -1,13 +1,26 @@
 'use client';
 
+import { useLanguage } from '@/components/i18n/LanguageProvider';
 import { ButtonLink } from '@/components/links';
-import { Heading, Text } from '@/components/texts';
+import { DateText, Heading, Tag, Text } from '@/components/texts';
 import type { Project } from '@/data/projects';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
-export default function ProjectCard({ title, description, href, image, tags }: Project) {
+export default function ProjectCard({
+  title,
+  description,
+  href,
+  image,
+  tags,
+  slug,
+  date,
+}: Project) {
+  const [imageSrc, imageOrientation] = image;
+
+  const { t } = useLanguage();
+
   const [isFlipped, setFlipped] = useState(false);
 
   const [isXSmallScreen, setIsXSmallScreen] = useState(false);
@@ -122,26 +135,37 @@ export default function ProjectCard({ title, description, href, image, tags }: P
         {/* === CARD FRONT === */}
         <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:translateZ(0)] overflow-hidden rounded-3xl border border-black/10 bg-white shadow-sm dark:border-white/10 dark:bg-zinc-900">
           {/* Image */}
-          {image ? (
+          {imageSrc ? (
             <div className="absolute inset-0">
-              <Image src={image} alt={title} fill className="object-cover" />
+              <Image
+                key={`${slug}-${imageSrc}`}
+                src={imageSrc}
+                alt={title}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                className={`object-cover ${imageOrientation === 'landscape' ? 'object-left' : 'object-center'}`}
+                priority={false}
+              />
             </div>
           ) : (
             <div className="absolute inset-0 bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900" />
           )}
 
           {/* Title Overlay (Front Side) - visible on all screens */}
-          <div className="absolute bottom-0 left-0 right-0 z-10 p-5">
-            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
-            <Heading
-              as="h3"
-              size="md"
-              weight="semibold"
-              tracking="tight"
-              className="relative text-white"
-            >
-              {title}
-            </Heading>
+          <div className="absolute bottom-0 left-0 right-0 z-10">
+            {/* Glassy background extending from above title area to bottom - ensures coverage for 2-line titles */}
+            <div className="absolute inset-x-0 bottom-0 top-[30%] backdrop-blur-md bg-white/50 dark:bg-zinc-900/50" />
+            <div className="relative p-5 pt-7">
+              <Heading
+                as="h3"
+                size="md"
+                weight="semibold"
+                tracking="tight"
+                className="text-zinc-900 dark:text-zinc-50"
+              >
+                {title}
+              </Heading>
+            </div>
           </div>
         </div>
 
@@ -163,27 +187,25 @@ export default function ProjectCard({ title, description, href, image, tags }: P
             {isXSmallScreen && tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mt-3">
                 {tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-black/10 px-2 py-0.5 text-xs text-zinc-700 dark:border-white/15 dark:text-zinc-300"
-                  >
-                    {tag}
-                  </span>
+                  <Tag key={tag}>{tag}</Tag>
                 ))}
               </div>
             )}
-            {/* Details Button */}
-            <ButtonLink
-              href={href}
-              variant="secondary"
-              size="sm"
-              rounded="full"
-              newTab={href.startsWith('http')}
-              onClick={(e) => e.stopPropagation()}
-              className="mt-4 ml-auto text-xs"
-            >
-              Details
-            </ButtonLink>
+            {/* Date and Details Button row */}
+            <div className="mt-4 flex items-center justify-between">
+              <DateText value={date} size="xs" />
+              <ButtonLink
+                href={href}
+                variant="secondary"
+                size="sm"
+                rounded="full"
+                newTab={href.startsWith('http')}
+                onClick={(e) => e.stopPropagation()}
+                className="text-xs"
+              >
+                {t('projects.details')}
+              </ButtonLink>
+            </div>
           </div>
         </div>
       </motion.div>

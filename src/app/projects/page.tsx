@@ -1,40 +1,70 @@
+'use client';
+
 import ProjectCard from '@/components/ProjectCard';
-import { Actions, Grid, PageLayout, Section } from '@/components/layout';
+import StickyScrollContainer from '@/components/StickyScrollContainer';
+import { useLanguage } from '@/components/i18n/LanguageProvider';
+import { Actions, Aside, Grid, PageLayout, Section } from '@/components/layout';
 import { ButtonLink } from '@/components/links';
-import { Heading, Text } from '@/components/texts';
+import { Article, Heading, Tag, Text } from '@/components/texts';
 import { projects } from '@/data/projects';
 
-export const metadata = {
-  title: 'Projects – Kerem Kırıcı',
-  description: 'A selection of work and experiments.',
-};
-
 export default function ProjectsPage() {
-  const allProjects = projects('en');
+  const { t, lang } = useLanguage();
+
+  const allProjects = projects(lang);
 
   return (
-    <PageLayout
-      title="Projects – Kerem Kırıcı"
-      description="Selected work, case studies, and experiments."
-    >
+    <PageLayout title={t('projects.page_title')} description={t('projects.page_description')}>
       <Section padding="lg" container="xl">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
-          <div className="space-y-6">
-            <Heading as="h1" size="2xl" weight="semibold" tracking="tight">
-              Projects
-            </Heading>
+        <div className="space-y-6">
+          <Heading as="h1" size="2xl" weight="semibold" tracking="tight">
+            {t('projects.title')}
+          </Heading>
+        </div>
+        <div className="mt-8 flex flex-col gap-10 lg:clearfix lg:space-y-0 lg:block">
+          <Aside
+            heading={
+              <div className="space-y-3">
+                <Heading as="h2" size="sm" weight="semibold" tracking="tight">
+                  {t('projects.what_to_expect')}
+                </Heading>
+                <Text size="sm" leading="relaxed" tone="muted">
+                  {t('projects.what_to_expect_description')}
+                </Text>
+              </div>
+            }
+            information={
+              <div>
+                <Text size="xs" tone="subtle" className="uppercase tracking-wider">
+                  {t('projects.project_types')}
+                </Text>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {(
+                    [
+                      'projects.type.native_ios',
+                      'projects.type.react_native',
+                      'projects.type.frontend_ux',
+                      'projects.type.ai_algorithms',
+                      'projects.type.tooling',
+                    ] as const
+                  ).map((type) => (
+                    <Tag key={type}>{t(type)}</Tag>
+                  ))}
+                </div>
+              </div>
+            }
+          />
+          <Article spacing="md" className="order-1 lg:order-none lg:pr-4">
             <Text size="lg" tone="muted" className="max-w-4xl leading-relaxed">
-              A curated mix of production work, experiments, and technical explorations spanning
-              native iOS, React, and full-stack problem solving. Each project dives into the product
-              goals, the technical stack, and the decisions that shaped the outcome.
+              {t('projects.description')}
             </Text>
             <div className="space-y-4">
               <Text size="sm" tone="subtle" className="uppercase tracking-wider">
-                Explore more
+                {t('projects.explore_more')}
               </Text>
               <Actions gap="md">
                 <ButtonLink href="/projects/pokerist" variant="primary" size="md">
-                  View highlighted case
+                  {t('projects.view_highlighted_case')}
                 </ButtonLink>
                 <ButtonLink
                   href="https://github.com/kerem-kirici"
@@ -42,60 +72,22 @@ export default function ProjectsPage() {
                   size="md"
                   newTab
                 >
-                  GitHub profile
+                  {t('projects.github_profile')}
                 </ButtonLink>
               </Actions>
             </div>
-          </div>
-
-          <aside className="space-y-6 rounded-3xl border border-black/10 bg-white/80 p-6 shadow-lg backdrop-blur-sm dark:border-white/10 dark:bg-zinc-900/70">
-            <div className="space-y-3">
-              <Heading as="h2" size="sm" weight="semibold" tracking="tight">
-                What to expect
-              </Heading>
-              <Text size="sm" leading="relaxed" tone="muted">
-                Detailed write-ups with implementation highlights, lessons learned, and visuals that
-                capture the final experience.
-              </Text>
-            </div>
-
-            <div className="space-y-4">
-              <div>
-                <Text size="xs" tone="subtle" className="uppercase tracking-wider">
-                  Project types
-                </Text>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {['Native iOS', 'Frontend UX', 'AI & Algorithms', 'Tooling'].map((type) => (
-                    <span
-                      key={type}
-                      className="rounded-full border border-black/10 bg-zinc-50 px-3 py-1 text-xs font-medium text-zinc-700 dark:border-white/10 dark:bg-zinc-800 dark:text-zinc-200"
-                    >
-                      {type}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <Text size="xs" tone="subtle" className="uppercase tracking-wider">
-                  Collaboration
-                </Text>
-                <Text size="sm" leading="relaxed" tone="muted" className="mt-2">
-                  Available for product collaborations that value thoughtful design, measurable
-                  outcomes, and technical rigor.
-                </Text>
-              </div>
-            </div>
-          </aside>
+          </Article>
         </div>
       </Section>
 
       <Section padding="md" container="xl" className="pt-0">
-        <Grid cols={{ base: 1, sm: 2 }} gap="md" className="mt-8 gap-y-10 sm:gap-y-12">
-          {allProjects.map((project) => (
-            <ProjectCard key={project.slug} {...project} />
-          ))}
-        </Grid>
+        <StickyScrollContainer>
+          <Grid cols={{ base: 1, sm: 2 }} gap="md" className="mt-8 gap-y-10 sm:gap-y-12">
+            {allProjects.map((project) => (
+              <ProjectCard key={project.slug} {...project} />
+            ))}
+          </Grid>
+        </StickyScrollContainer>
       </Section>
     </PageLayout>
   );
