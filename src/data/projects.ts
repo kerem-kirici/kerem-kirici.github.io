@@ -40,6 +40,13 @@ const projectGallery: Record<string, [string, 'portrait' | 'landscape'][]> = {
 export const projects = (language: Lang = 'en'): Project[] => {
   const projectSlugs = ['pokerist', 'sudokumobileapp', '2048-playing-algorithm', 'sudokugenerator'];
 
+  const projectDates = {
+    pokerist: '09/2025',
+    sudokumobileapp: '07/2025',
+    '2048-playing-algorithm': '04/2023',
+    sudokugenerator: '07/2021',
+  };
+
   return projectSlugs.map((slug) => {
     const tags = TEXT_DICTIONARY[`projects.${slug}.tags` as keyof typeof TEXT_DICTIONARY][language]
       .split(',')
@@ -60,7 +67,7 @@ export const projects = (language: Lang = 'en'): Project[] => {
         TEXT_DICTIONARY[`projects.${slug}.long_explanation` as keyof typeof TEXT_DICTIONARY][
           language
         ],
-      date: '06/2004',
+      date: projectDates[slug as keyof typeof projectDates],
       href: `/projects/${slug}`,
       githubUrl: `https://github.com/kerem-kirici/${slug}`,
       tags,
