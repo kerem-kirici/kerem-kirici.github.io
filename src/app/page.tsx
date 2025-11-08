@@ -1,69 +1,129 @@
 'use client';
 
 import { useLanguage } from '@/components/i18n/LanguageProvider';
-import { Actions, Grid, PageLayout, Section } from '@/components/layout';
+import { Actions, Aside, Grid, PageLayout, Section } from '@/components/layout';
 import { ButtonLink } from '@/components/links';
-import { Heading, Subheading, Text } from '@/components/texts';
+import ProjectCard from '@/components/ProjectCard';
+import StickyScrollContainer from '@/components/StickyScrollContainer';
+import { Article, Heading, Subheading, Tag, Text } from '@/components/texts';
 import { projects } from '@/data/projects';
+import { memo } from 'react';
+
+const ProjectsComponent = memo(({ lang }: { lang: 'en' | 'tr' }) => {
+  return (
+    <Grid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} gap="md" className="mt-6 gap-y-10 sm:gap-y-20">
+      {projects(lang)
+        .slice(0, 4)
+        .map((p) => (
+          <ProjectCard key={`${p.slug}-${lang}`} {...p} />
+        ))}
+    </Grid>
+  );
+});
+
+ProjectsComponent.displayName = 'ProjectsComponent';
 
 export default function Home() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   return (
-    <PageLayout
-      title="Kerem Kırıcı – Frontend Developer"
-      description="Portfolio of Kerem Kırıcı: projects, experience, and contact information."
-    >
-      <Section padding="lg">
-        <Heading as="h1" size="2xl" weight="semibold" tracking="tight">
-          {t('hero.title')}
-        </Heading>
-        <Subheading as="h2" size="lg" weight="semibold" tracking="tight">
-          {t('hero.subtitle')}
-        </Subheading>
-        <Text size="lg" tone="muted" className="mt-4 max-w-3xl">
-          {t('hero.description')}
-        </Text>
-        <Actions gap="md" className="mt-8">
-          <ButtonLink
-            href="https://github.com/kerem-kirici"
-            variant="outline"
-            size="sm"
-            newTab
-            className="opacity-80 hover:opacity-100"
-          >
-            {t('hero.github')}
-          </ButtonLink>
-          <ButtonLink
-            href="https://www.linkedin.com/in/kerem-kırıcı-b191711b9/"
-            variant="outline"
-            size="sm"
-            newTab
-            className="opacity-80 hover:opacity-100"
-          >
-            {t('hero.linkedin')}
-          </ButtonLink>
-          <ButtonLink
-            href="mailto:kerem.kirici36@gmail.com"
-            variant="outline"
-            size="sm"
-            className="opacity-80 hover:opacity-100"
-          >
-            {t('hero.cta')}
-          </ButtonLink>
-        </Actions>
+    <PageLayout title={t('home.page_title')} description={t('home.page_description')}>
+      <Section padding="lg" container="xl">
+        <div className="space-y-6">
+          <Heading as="h1" size="2xl" weight="semibold" tracking="tight">
+            {t('hero.title')}
+          </Heading>
+          <Subheading as="h2" size="lg" weight="semibold" tracking="tight">
+            {t('hero.subtitle')}
+          </Subheading>
+        </div>
+
+        <div className="mt-8 flex flex-col gap-10 lg:clearfix lg:space-y-0 lg:block">
+          <Aside
+            heading={
+              <div className="space-y-3">
+                <Heading as="h3" size="sm" weight="semibold" tracking="tight">
+                  {t('home.recent_focus_title')}
+                </Heading>
+                <Text size="sm" leading="relaxed" tone="muted">
+                  {t('home.recent_focus_text')}
+                </Text>
+              </div>
+            }
+            information={
+              <div className="space-y-4">
+                <div>
+                  <Text size="xs" tone="subtle" className="uppercase tracking-wider">
+                    {t('home.currently_working_with')}
+                  </Text>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {['SwiftUI', 'Swift', 'React Native', 'Next.js', 'React', 'TypeScript'].map(
+                      (skill) => (
+                        <Tag key={skill}>{skill}</Tag>
+                      ),
+                    )}
+                  </div>
+                </div>
+              </div>
+            }
+            details={
+              <div>
+                <Text size="xs" tone="subtle" className="uppercase tracking-wider">
+                  {t('home.current_position')}
+                </Text>
+                <Text size="sm" leading="relaxed" tone="muted" className="mt-2">
+                  {t('home.current_position_text')}
+                </Text>
+              </div>
+            }
+          />
+
+          <Article spacing="md" className="order-1 lg:order-none lg:pr-4">
+            <Text size="lg" tone="muted" className="max-w-4xl leading-relaxed">
+              {t('hero.description')}
+            </Text>
+            <div className="space-y-4 mt-6">
+              <Text size="md" tone="subtle" className="tracking-wider">
+                {t('hero.lets_connect')}
+              </Text>
+              <Actions gap="sm">
+                <ButtonLink
+                  href="mailto:kerem.kirici36@gmail.com"
+                  variant="outline"
+                  size="md"
+                  className="shadow-sm"
+                >
+                  {t('hero.cta')}
+                </ButtonLink>
+                <ButtonLink
+                  href="https://github.com/kerem-kirici"
+                  variant="outline"
+                  size="md"
+                  newTab
+                >
+                  {t('hero.github')}
+                </ButtonLink>
+                <ButtonLink
+                  href="https://www.linkedin.com/in/kerem-kırıcı-b191711b9/"
+                  variant="outline"
+                  size="md"
+                  newTab
+                >
+                  {t('hero.linkedin')}
+                </ButtonLink>
+              </Actions>
+            </div>
+          </Article>
+        </div>
       </Section>
 
-      <Section padding="md" className="pb-20">
-        <Heading as="h2" size="lg" weight="semibold" tracking="tight">
-          {t('home.featured')} DAHA YAPILACAK
-        </Heading>
-        <Grid cols={{ base: 1, sm: 2 }} gap="md" className="mt-6">
-          {projects.slice(0, 4).map((p) => (
-            //<ProjectCard key={p.slug} {...p} href={`/project/${p.slug}`} />
-            <div key={p.slug}>{p.title}</div>
-          ))}
-        </Grid>
+      <Section padding="md" container="xl" className="pb-0">
+        <StickyScrollContainer>
+          <Heading as="h2" size="lg" weight="semibold" tracking="tight">
+            {t('home.featured')}
+          </Heading>
+          <ProjectsComponent lang={lang} />
+        </StickyScrollContainer>
       </Section>
     </PageLayout>
   );

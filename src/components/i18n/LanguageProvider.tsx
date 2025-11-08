@@ -16,7 +16,7 @@ const LanguageContext = createContext<Ctx | null>(null);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   // Session-only language; defaults to English on first render to match SSR
-  const [lang, setLang] = useState<Lang>('en');
+  const [lang, setLang] = useState<Lang>('tr');
 
   const t = useMemo(
     () => (key: TextKey, params?: TextParams) =>

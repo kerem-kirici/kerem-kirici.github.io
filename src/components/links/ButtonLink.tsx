@@ -24,6 +24,7 @@ export type ButtonLinkProps = {
   prefetch?: boolean;
   ariaLabel?: string;
   className?: string;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 };
 
 function classNames(...classes: Array<string | false | null | undefined>) {
@@ -86,6 +87,7 @@ export function ButtonLink({
   prefetch,
   ariaLabel,
   className,
+  onClick,
 }: ButtonLinkProps) {
   const content = (
     <span className="inline-flex items-center gap-2">
@@ -102,6 +104,7 @@ export function ButtonLink({
       aria-label={ariaLabel}
       target={newTab ? '_blank' : undefined}
       rel={newTab ? 'noopener noreferrer' : undefined}
+      onClick={onClick}
       className={classNames(
         baseClasses,
         sizeToClasses[size],
