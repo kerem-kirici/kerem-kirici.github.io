@@ -148,19 +148,15 @@ const TEXT_DICTIONARY = {
   },
   'projects.project_snapshot': {
     en: 'Project snapshot',
-    tr: 'Proje anasayfası',
-  },
-  'projects.project_snapshot_description': {
-    en: 'A quick overview of the project details and relevant links.',
-    tr: 'Proje detayları ve ilgili bağlantıların bir genel bakışı.',
+    tr: 'Proje özeti',
   },
   'projects.tech_stack': {
     en: 'Tech stack',
-    tr: 'Teknik yığın',
+    tr: 'Teknolojiler',
   },
   'projects.repository': {
     en: 'Repository',
-    tr: 'Depo',
+    tr: 'Repository',
   },
   'projects.view_on_github': {
     en: 'View on GitHub',
@@ -213,7 +209,7 @@ const TEXT_DICTIONARY = {
   },
   'projects.pokerist.long_explanation': {
     en: "A native iOS application for Texas Hold'em players, built entirely with SwiftUI. The app provides real-time hand analysis and calculates win probabilities by running a 10,000-game Monte Carlo simulation asynchronously against up to 6 opponents. Its core features include an advanced 'Smart Possible Hands' calculator that details distinct draw scenarios, smart card selection to prevent duplicates, and a 'liquid glass' UI with light/dark modes. The architecture uses modern SwiftUI patterns like @Observable for state management, Task-based concurrency for background calculations, and smart caching to ensure a responsive user experience.",
-    tr: "Tamamen SwiftUI ile oluşturulmuş, Texas Hold'em oyuncuları için yerel bir iOS uygulaması. Uygulama, 6 rakibe karşı asenkron olarak 10.000 oyunluk bir Monte Carlo simülasyonu çalıştırarak gerçek zamanlı el analizi ve kazanma olasılığı hesaplamaları sunar. Temel özellikleri arasında, farklı çekiliş senaryolarını detaylandıran gelişmiş bir 'Akıllı Olası Eller' hesaplayıcısı, kopyaları önlemek için akıllı kart seçimi ve açık/koyu modları destekleyen 'liquid glass' bir kullanıcı arayüzü bulunur. Mimari, durum yönetimi için @Observable gibi modern SwiftUI kalıplarını, arka plan hesaplamaları için Görev tabanlı eşzamanlılığı ve duyarlı bir kullanıcı deneyimi sağlamak için akıllı önbelleğe almayı kullanır.",
+    tr: "Tamamen SwiftUI ile oluşturulmuş, Texas Hold'em oyuncuları için yerel bir iOS uygulaması. Uygulama, 6 rakibe karşı asynchronously olarak 10.000 oyunluk bir Monte Carlo simülasyonu çalıştırarak gerçek zamanlı el analizi ve kazanma olasılığı hesaplamaları sunar. Temel özellikleri arasında, farklı çekiliş senaryolarını detaylandıran gelişmiş bir 'Akıllı Olası Eller' hesaplayıcısı, kopyaları önlemek için akıllı kart seçimi ve açık/koyu modları destekleyen 'liquid glass' bir kullanıcı arayüzü bulunur. Mimari, durum yönetimi için @Observable gibi modern SwiftUI kalıplarını, arka plan hesaplamaları için Görev tabanlı eşzamanlılığı ve duyarlı bir kullanıcı deneyimi sağlamak için akıllı önbelleğe almayı kullanır.",
   },
   'projects.pokerist.tags': {
     en: 'iOS, SwiftUI, Swift',
@@ -231,7 +227,7 @@ const TEXT_DICTIONARY = {
   },
   'projects.2048-playing-algorithm.long_explanation': {
     en: "A C++ console application that allows a user to either play the game 2048 or deploy an AI to play it for them. The AI is a multi-level tree-search algorithm based on 'Decision Levels' (player moves) and 'Probability Levels' (random tile spawns). It analyzes future states by calculating a 'chance of death' and 'point of gain' for each possible move, effectively choosing the path with the lowest risk and highest reward. Based on simulations (100 games, 3-layer depth), this algorithm achieves the '2048' tile 94% of the time and the '4096' tile 38% of the time.",
-    tr: "Kullanıcının 2048 oynamasına veya oyunu oynaması için bir yapay zeka dağıtmasına izin veren bir C++ konsol uygulaması. Yapay zeka, 'Karar Seviyeleri' (oyuncu hamleleri) ve 'Olasılık Seviyeleri' (rastgele taş çıkması) üzerine kurulu çok seviyeli bir ağaç arama algoritmasıdır. Her olası hamle için bir 'ölüm şansı' ve 'kazanç puanı' hesaplayarak gelekteki durumları analiz eder, etkili bir şekilde en düşük riskli ve en yüksek ödüllü yolu seçer. Simülasyonlara (100 oyun, 3 katman derinlik) dayanarak, bu algoritma %94 oranında '2048' taşına ve %38 oranında '4096' taşına ulaşmaktadır.",
+    tr: "Kullanıcının 2048 oynamasına veya oyunu oynaması için bir yapay zeka algoritmasını çalıştırmasına izin veren bir C++ konsol uygulaması. Yapay zeka, 'Karar Seviyeleri' (oyuncu hamleleri) ve 'Olasılık Seviyeleri' (rastgele taş çıkması) üzerine kurulu çok seviyeli bir ağaç arama algoritmasıdır. Her olası hamle için bir 'ölüm şansı' ve 'kazanç puanı' hesaplayarak gelekteki durumları analiz eder, etkili bir şekilde en düşük riskli ve en yüksek ödüllü yolu seçer. Simülasyonlara (100 oyun, 3 katman derinlik) dayanarak, bu algoritma %94 oranında '2048' taşına ve %38 oranında '4096' taşına ulaşmaktadır.",
   },
   'projects.2048-playing-algorithm.tags': {
     en: 'C++, AI, Minimax Algorithm',

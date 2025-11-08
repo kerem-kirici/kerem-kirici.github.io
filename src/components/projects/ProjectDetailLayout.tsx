@@ -1,10 +1,9 @@
 'use client';
 
-import { Section } from '@/components/layout';
+import { Aside, PageLayout, Section } from '@/components/layout';
 import { ButtonLink } from '@/components/links';
-import { Article, Heading, ImageComponent, Text } from '@/components/texts';
+import { Article, Heading, ImageComponent, Tag, Text } from '@/components/texts';
 import type { Project } from '@/data/projects';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useLanguage } from '../i18n/LanguageProvider';
 
@@ -38,72 +37,49 @@ export default function ProjectDetailLayout({ project }: ProjectDetailLayoutProp
   }, []);
 
   return (
-    <>
+    <PageLayout title={project.title} description={project.description}>
       <Section padding="lg" container="xl">
-        <div className="space-y-10">
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-2 text-sm font-medium text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-          >
-            <span aria-hidden className="text-lg">
-              ←
-            </span>
-            {t('projects.back_to_projects')}
-          </Link>
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
+          <div className="space-y-6">
+            <Heading as="h1" size="xl" weight="semibold" tracking="tight">
+              {project.title}
+            </Heading>
+            <Text size="lg" leading="relaxed" tone="subtle" className="max-w-4xl">
+              {project.description}
+            </Text>
 
-          <div className="space-y-10">
-            <header className="space-y-5">
-              <Heading as="h1" size="xl" weight="semibold" tracking="tight">
-                {project.title}
-              </Heading>
-              <Text size="lg" leading="relaxed" tone="subtle" className="max-w-4xl">
-                {project.description}
-              </Text>
-
-              {project.tags.length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-black/10 bg-white px-3 py-1 text-sm font-medium text-zinc-700 shadow-sm dark:border-white/10 dark:bg-zinc-900 dark:text-zinc-200"
-                    >
-                      <Text size="sm" leading="relaxed" tone="muted">
-                        {tag}
-                      </Text>
-                    </span>
-                  ))}
-                </div>
-              )}
-            </header>
-
-            <div className="flex flex-col gap-10 lg:clearfix lg:space-y-0 lg:block">
-              <aside className="order-2 h-max space-y-6 rounded-3xl border border-black/10 bg-white/80 p-6 shadow-lg backdrop-blur-sm dark:border-white/10 dark:bg-zinc-900/70 lg:order-none lg:float-right lg:ml-12 lg:w-[22rem] lg:max-w-full">
+            <Article
+              spacing="md"
+              className="order-1 lg:order-none border-t border-black/10 dark:border-white/10 pt-6"
+            >
+              {paragraphs.map((paragraph, index) => (
+                <Text key={index} size="lg" leading="relaxed" tone="subtle" preserveNewlines>
+                  {paragraph}
+                </Text>
+              ))}
+            </Article>
+          </div>
+          <div className="mt-8 flex flex-col gap-10 lg:clearfix lg:space-y-0 lg:block">
+            <Aside
+              heading={
                 <div className="space-y-3">
                   <Heading as="h2" size="sm" weight="semibold" tracking="tight">
                     {t('projects.project_snapshot')}
                   </Heading>
-                  <Text size="sm" leading="relaxed" tone="muted">
-                    {t('projects.project_snapshot_description')}
-                  </Text>
-                </div>
-
-                <div className="space-y-4">
                   <div>
                     <Text size="xs" tone="subtle" className="uppercase tracking-wider">
                       {t('projects.tech_stack')}
                     </Text>
                     <div className="mt-2 flex flex-wrap gap-2">
                       {project.tags.map((tag) => (
-                        <span
-                          key={`aside-${tag}`}
-                          className="rounded-full border border-black/10 bg-zinc-50 px-3 py-1 text-xs font-medium text-zinc-700 dark:border-white/10 dark:bg-zinc-800 dark:text-zinc-200"
-                        >
-                          {tag}
-                        </span>
+                        <Tag key={`aside-${tag}`}>{tag}</Tag>
                       ))}
                     </div>
                   </div>
-
+                </div>
+              }
+              information={
+                <div className="space-y-4">
                   <div>
                     <Text size="xs" tone="subtle" className="uppercase tracking-wider">
                       {t('projects.repository')}
@@ -119,38 +95,32 @@ export default function ProjectDetailLayout({ project }: ProjectDetailLayoutProp
                       {t('projects.view_on_github')}
                     </ButtonLink>
                   </div>
-
-                  {!isXSmallScreen && (
-                    <div className="break-words">
-                      <Text size="xs" tone="subtle" className="uppercase tracking-wider">
-                        {t('projects.share')}
-                      </Text>
-                      <div className="mt-2 space-y-2 text-sm text-zinc-600 break-words dark:text-zinc-300">
-                        <p>{t('projects.copy_link_to_share_description')}</p>
-                        <code className="block rounded-lg bg-zinc-100 px-3 py-2 text-xs font-medium text-zinc-700 break-words dark:bg-zinc-800 dark:text-zinc-200">
-                          {`https://${process.env.NEXT_PUBLIC_DOMAIN ?? 'keremkirici.com'}${project.href}`}
-                        </code>
-                      </div>
-                    </div>
-                  )}
                 </div>
-              </aside>
-
-              <Article spacing="md" className="order-1 lg:order-none lg:pr-4">
-                {paragraphs.map((paragraph, index) => (
-                  <Text key={index} size="lg" leading="relaxed" tone="subtle" preserveNewlines>
-                    {paragraph}
-                  </Text>
-                ))}
-              </Article>
-            </div>
+              }
+              details={
+                !isXSmallScreen ? (
+                  <div className="break-words">
+                    <Text size="xs" tone="subtle" className="uppercase tracking-wider">
+                      {t('projects.share')}
+                    </Text>
+                    <div className="mt-2 space-y-2 text-sm text-zinc-600 break-words dark:text-zinc-300">
+                      <p>{t('projects.copy_link_to_share_description')}</p>
+                      <code className="block rounded-lg bg-zinc-100 px-3 py-2 text-xs font-medium text-zinc-700 break-words dark:bg-zinc-800 dark:text-zinc-200">
+                        {`https://${process.env.NEXT_PUBLIC_DOMAIN ?? 'keremkirici.com'}${project.href}`}
+                      </code>
+                    </div>
+                  </div>
+                ) : undefined
+              }
+            />
           </div>
         </div>
       </Section>
-      {project.gallery.length && (
-        <Section padding="md" container="xl" className="pt-0">
+
+      {project.gallery.length > 0 && (
+        <Section padding="md" container="xl" className="pb-0">
           <div className="space-y-5">
-            <Heading as="h2" size="md" weight="semibold" tracking="tight">
+            <Heading as="h2" size="lg" weight="semibold" tracking="tight">
               {t('projects.gallery')}
             </Heading>
 
@@ -177,6 +147,6 @@ export default function ProjectDetailLayout({ project }: ProjectDetailLayoutProp
           </div>
         </Section>
       )}
-    </>
+    </PageLayout>
   );
 }
