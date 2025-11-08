@@ -105,7 +105,7 @@ export default function ProjectDetailLayout({ project }: ProjectDetailLayoutProp
                   <div className="mt-2 space-y-2 text-sm text-zinc-600 break-words dark:text-zinc-300">
                     <p>{t('projects.copy_link_to_share_description')}</p>
                     <code className="block rounded-lg bg-zinc-100 px-3 py-2 text-xs font-medium text-zinc-700 break-words dark:bg-zinc-800 dark:text-zinc-200">
-                      {`https://'kerem-kirici.github.io'}${project.href}`}
+                      {`https://kerem-kirici.github.io${project.href}`}
                     </code>
                   </div>
                 </div>
