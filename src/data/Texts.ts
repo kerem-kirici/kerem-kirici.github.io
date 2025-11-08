@@ -222,8 +222,8 @@ const TEXT_DICTIONARY = {
 
   // --- Project: 2048 Playing Algorithm ---
   'projects.2048-playing-algorithm.title': {
-    en: '2048 Playing Algorithm',
-    tr: '2048 Oynama Algoritması',
+    en: '2048 Playing AI Algorithm',
+    tr: '2048 Yapay Zeka Algoritması',
   },
   'projects.2048-playing-algorithm.description': {
     en: 'A C++ console app with a 2048 AI algorithm that achieves a 94% win rate using a tree-search method.',
@@ -240,8 +240,8 @@ const TEXT_DICTIONARY = {
 
   // --- Project: SudokuGenerator ---
   'projects.sudokugenerator.title': {
-    en: 'SudokuGenerator',
-    tr: 'SudokuÜretici',
+    en: 'Sudoku Generator',
+    tr: 'Sudoku Üretici',
   },
   'projects.sudokugenerator.description': {
     en: 'A C++ and Python project that generates, solves, and visualizes Sudoku puzzles using backtracking algorithms.',
