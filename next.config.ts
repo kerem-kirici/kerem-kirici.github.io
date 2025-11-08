@@ -1,7 +1,14 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // This is the crucial line for GitHub Pages
+  output: 'export',
+
+  // This is required because GitHub Pages can't run
+  // the server-side Next.js image optimizer.
+  images: {
+    unoptimized: true,
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
