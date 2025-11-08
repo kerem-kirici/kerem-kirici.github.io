@@ -1,6 +1,7 @@
 'use client';
 
 import ProjectCard from '@/components/ProjectCard';
+import StickyScrollContainer from '@/components/StickyScrollContainer';
 import { useLanguage } from '@/components/i18n/LanguageProvider';
 import { Actions, Aside, Grid, PageLayout, Section } from '@/components/layout';
 import { ButtonLink } from '@/components/links';
@@ -55,34 +56,23 @@ export default function ProjectsPage() {
                 </div>
               }
               information={
-                <div className="space-y-4">
-                  <div>
-                    <Text size="xs" tone="subtle" className="uppercase tracking-wider">
-                      {t('projects.project_types')}
-                    </Text>
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      {(
-                        [
-                          'projects.type.native_ios',
-                          'projects.type.frontend_ux',
-                          'projects.type.ai_algorithms',
-                          'projects.type.tooling',
-                        ] as const
-                      ).map((type) => (
-                        <Tag key={type}>{t(type)}</Tag>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              }
-              details={
                 <div>
                   <Text size="xs" tone="subtle" className="uppercase tracking-wider">
-                    {t('projects.collaboration')}
+                    {t('projects.project_types')}
                   </Text>
-                  <Text size="sm" leading="relaxed" tone="muted" className="mt-2">
-                    {t('projects.collaboration_description')}
-                  </Text>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {(
+                      [
+                        'projects.type.native_ios',
+                        'projects.type.react_native',
+                        'projects.type.frontend_ux',
+                        'projects.type.ai_algorithms',
+                        'projects.type.tooling',
+                      ] as const
+                    ).map((type) => (
+                      <Tag key={type}>{t(type)}</Tag>
+                    ))}
+                  </div>
                 </div>
               }
             />
@@ -91,11 +81,13 @@ export default function ProjectsPage() {
       </Section>
 
       <Section padding="md" container="xl" className="pt-0">
-        <Grid cols={{ base: 1, sm: 2 }} gap="md" className="mt-8 gap-y-10 sm:gap-y-12">
-          {allProjects.map((project) => (
-            <ProjectCard key={project.slug} {...project} />
-          ))}
-        </Grid>
+        <StickyScrollContainer>
+          <Grid cols={{ base: 1, sm: 2 }} gap="md" className="mt-8 gap-y-10 sm:gap-y-12">
+            {allProjects.map((project) => (
+              <ProjectCard key={project.slug} {...project} />
+            ))}
+          </Grid>
+        </StickyScrollContainer>
       </Section>
     </PageLayout>
   );

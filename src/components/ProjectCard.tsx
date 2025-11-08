@@ -131,6 +131,7 @@ export default function ProjectCard({ title, description, href, image, tags, slu
                 src={imageSrc}
                 alt={title}
                 fill
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 className={`object-cover ${imageOrientation === 'landscape' ? 'object-left' : 'object-center'}`}
                 priority={false}
               />

@@ -170,6 +170,7 @@ export default function ProjectDetailLayout({ project }: ProjectDetailLayoutProp
                   rounded="2xl"
                   shadow="md"
                   hover
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               ))}
             </div>

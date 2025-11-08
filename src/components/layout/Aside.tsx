@@ -1,6 +1,8 @@
 'use client';
 
+import { TextKey } from '@/data/Texts';
 import { useEffect, useState } from 'react';
+import { useLanguage } from '../i18n/LanguageProvider';
 
 type AsideProps = {
   heading: React.ReactNode;
@@ -10,6 +12,8 @@ type AsideProps = {
 
 export default function Aside({ heading, information, details }: AsideProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const { t } = useLanguage();
 
   const [isXSmallScreen, setIsXSmallScreen] = useState(false);
 
@@ -37,7 +41,7 @@ export default function Aside({ heading, information, details }: AsideProps) {
                 className="flex w-full items-center justify-between text-left text-sm font-medium text-zinc-700 transition hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-zinc-100"
                 aria-expanded={isExpanded}
               >
-                <span>More details</span>
+                <span>{t(`aside.${isExpanded ? 'less_details' : 'more_details'}` as TextKey)}</span>
                 <span
                   className={`transition-transform duration-200 ${isExpanded ? 'rotate-180' : 'rotate-0'}`}
                   aria-hidden

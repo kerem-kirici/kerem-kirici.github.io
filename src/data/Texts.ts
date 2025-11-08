@@ -80,14 +80,24 @@ const TEXT_DICTIONARY = {
     tr: 'Frontend geliştirici Kerem Kırıcı hakkında.',
   },
 
+  'aside.more_details': {
+    en: 'More details',
+    tr: 'Daha fazla detay',
+  },
+
+  'aside.less_details': {
+    en: 'Less details',
+    tr: 'Daha az detay',
+  },
+
   // --- Project: Projects Page ---
   'projects.title': {
     en: 'Projects',
     tr: 'Projeler',
   },
   'projects.description': {
-    en: 'A curated mix of production work, experiments, and technical explorations spanning native iOS, React, and full-stack problem solving. Each project dives into the product goals, the technical stack, and the decisions that shaped the outcome.',
-    tr: 'Üretim çalışmaları, deneyler ve teknik keşiflerin bir karışımı, yerel iOS, React ve tam stack problem çözme konusunda. Her proje, ürün hedeflerini, teknik yığını ve sonucu şekillenen kararları açıklar.',
+    en: "These are the key projects that have helped me advance my algorithmic thinking, particularly through mobile apps developed with both native iOS and React Native; in every project, I strive to build large-scale, user-experience-optimized applications by adhering to technical architecture and applying the experience I've gained in professional environments to my personal work.",
+    tr: 'Hem iOS hem de React Native ile geliştirilmiş mobil uygulamalar başta olmak üzere Algoritma mantığı konusunda da kendimi geliştirmem yarayan başlıca projeler. Her proje geliştirmesinde teknik yapıya uyarak ve profesyonel ortamlarda edindiğim deneyimleri bireysel projelerimde de kullanarak, kullanıcı deneyimini optimize etmeye çalışan büyük ölçekli projeler geliştirmeye çalışıyorum.',
   },
   // --- Projects Page Meta ---
   'projects.page_title': { en: 'Projects – Kerem Kırıcı', tr: 'Projeler – Kerem Kırıcı' },
@@ -109,17 +119,18 @@ const TEXT_DICTIONARY = {
   },
   'projects.what_to_expect': {
     en: 'What to expect',
-    tr: 'Ne bekleyebilirsiniz',
+    tr: 'Neler bulacaksınız',
   },
   'projects.what_to_expect_description': {
-    en: 'Detailed write-ups with implementation highlights, lessons learned, and visuals that capture the final experience.',
-    tr: 'Uygulama detayları, öğrenilen dersler ve sonuçlarını yakalamak için görselleştirmelerle birlikte detaylı yazılar.',
+    en: 'Project details, technical architectures, the technologies and algorithms used during the development process, along with images and detailed descriptions that showcase the final products or visualize the algorithms.',
+    tr: 'Projelerin detayları, teknik yapıları, geliştirilme sürecinde kullanılan teknolojiler ve algoritmalar. Sonuç ürünleri ortaya koyan veya kullanılan algoritmaları görselleştiren resimler ve detaylı açıklamalar.',
   },
   'projects.project_types': {
     en: 'Project types',
-    tr: 'Proje tipleri',
+    tr: 'Proje türleri',
   },
-  'projects.type.native_ios': { en: 'Native iOS', tr: 'Yerel iOS' },
+  'projects.type.native_ios': { en: 'Native iOS', tr: "iOS'a özel" },
+  'projects.type.react_native': { en: 'React Native', tr: 'React Native' },
   'projects.type.frontend_ux': { en: 'Frontend UX', tr: 'Frontend UX' },
   'projects.type.ai_algorithms': { en: 'AI & Algorithms', tr: 'Yapay Zeka ve Algoritmalar' },
   'projects.type.tooling': { en: 'Tooling', tr: 'Araçlar' },
