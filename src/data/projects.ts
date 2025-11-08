@@ -25,7 +25,7 @@ const projectGallery: Record<string, [string, 'portrait' | 'landscape'][]> = {
   '2048-playing-algorithm': [
     ['/projects/2048-playing-algorithm/image.png', 'landscape'],
     ['/projects/2048-playing-algorithm/image2.png', 'landscape'],
-    ['/projects/2048-playing-algorithm/image3.jpg', 'landscape'],
+    ['/projects/2048-playing-algorithm/image3.png', 'landscape'],
   ],
   sudokumobileapp: [
     ['/projects/sudokumobileapp/image.png', 'portrait'],
