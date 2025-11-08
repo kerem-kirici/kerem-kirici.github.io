@@ -1,7 +1,7 @@
 'use client';
 
 import { ButtonLink } from '@/components/links';
-import { Heading, Text } from '@/components/texts';
+import { Heading, Tag, Text } from '@/components/texts';
 import type { Project } from '@/data/projects';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -175,12 +175,7 @@ export default function ProjectCard({ title, description, href, image, tags, slu
             {isXSmallScreen && tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mt-3">
                 {tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-black/10 px-2 py-0.5 text-xs text-zinc-700 dark:border-white/15 dark:text-zinc-300"
-                  >
-                    {tag}
-                  </span>
+                  <Tag key={tag}>{tag}</Tag>
                 ))}
               </div>
             )}
