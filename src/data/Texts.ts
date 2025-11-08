@@ -51,7 +51,7 @@ const TEXT_DICTIONARY = {
   'home.current_position': { en: 'Current position', tr: 'Mevcut Pozisyonum' },
   'home.current_position_text': {
     en: 'Junior Software Developer at Tatilsepeti, working full time on a large-scale React/Next.js project.',
-    tr: "Tatilsepeti'nde Junior Software Developer olarak tam zamanlı olarak büyük ölçekli bir React/Next.js projesinde çalışıyorum.",
+    tr: "Tatilsepeti'nde Junior Software Developer pozisyonunda tam zamanlı olarak büyük ölçekli bir React/Next.js projesinde çalışıyorum.",
   },
   'hero.description': {
     en: "Hi, I'm Kerem! I'm a 3rd-year Electronics and Communication Engineering student at ITU, and I also work as a Junior Software Developer at Tatilsepeti. At Tatilsepeti, I'm working on a large-scale React/Next.js project, which allows me to both grow my skills and gain a foothold in the industry, and I'm excited to be taking these first steps in my career. I love creating things that solve people's problems and are genuinely useful to them. This has become a core philosophy for me—a perspective that spans everything from my dreams of building large-scale, user-friendly projects that meet real needs, all the way to the lessons I learned from my long-term work experience in the U.S. service industry. While I enjoy my work with React, my true passion is mastering native iOS development with Swift and SwiftUI, and I'm actively working to steer my career in this direction.",
