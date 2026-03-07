@@ -118,12 +118,18 @@ export default function Home() {
       </Section>
 
       <Section padding="md" container="xl" className="pb-0">
-        <StickyScrollContainer>
           <Heading as="h2" size="lg" weight="semibold" tracking="tight">
             {t('home.featured')}
           </Heading>
-          <ProjectsComponent lang={lang} />
-        </StickyScrollContainer>
+        <ScrollStack useWindowScroll>
+          {projects(lang)
+            .slice(0, 4)
+            .map((p) => (
+              <ScrollStackItem key={`${p.slug}-${lang}`}>
+                <ProjectCard {...p} />
+              </ScrollStackItem>
+            ))}
+        </ScrollStack>
       </Section>
     </PageLayout>
   );
