@@ -121,7 +121,7 @@ export default function Home() {
           <Heading as="h2" size="lg" weight="semibold" tracking="tight">
             {t('home.featured')}
           </Heading>
-        <ScrollStack useWindowScroll>
+        <ScrollStack useWindowScroll desktopColumns={2}>
           {projects(lang)
             .slice(0, 4)
             .map((p) => (
