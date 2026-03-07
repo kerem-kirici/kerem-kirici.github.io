@@ -33,6 +33,8 @@ export default function ProjectDetailLayout({ project }: ProjectDetailLayoutProp
 
   const [isXSmallScreen, setIsXSmallScreen] = useState(false);
 
+  const [copied, setCopied] = useState(false);
+
   useEffect(() => {
     const checkScreenSize = () => {
       setIsXSmallScreen(window.innerWidth < 640);
@@ -104,9 +106,54 @@ export default function ProjectDetailLayout({ project }: ProjectDetailLayoutProp
                   </Text>
                   <div className="mt-2 space-y-2 text-sm text-zinc-600 break-words dark:text-zinc-300">
                     <p>{t('projects.copy_link_to_share_description')}</p>
-                    <code className="block rounded-lg bg-zinc-100 px-3 py-2 text-xs font-medium text-zinc-700 break-words dark:bg-zinc-800 dark:text-zinc-200">
-                      {`https://kerem-kirici.github.io${project.href}`}
-                    </code>
+                    <div className="relative">
+                      <code className="block rounded-lg bg-zinc-100 px-3 py-2 pr-10 text-xs font-medium text-zinc-700 break-words dark:bg-zinc-800 dark:text-zinc-200">
+                        {`https://kerem-kirici.github.io${project.href}`}
+                      </code>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          navigator.clipboard.writeText(
+                            `https://kerem-kirici.github.io${project.href}`,
+                          );
+                          setCopied(true);
+                          setTimeout(() => setCopied(false), 2000);
+                        }}
+                        className="absolute top-1/2 right-2 -translate-y-1/2 rounded-md p-1 text-zinc-500 transition-colors hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-100"
+                        aria-label="Copy link"
+                      >
+                        {copied ? (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <polyline points="20 6 9 17 4 12" />
+                          </svg>
+                        ) : (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                          </svg>
+                        )}
+                      </button>
+                    </div>
                   </div>
                 </div>
               ) : undefined
