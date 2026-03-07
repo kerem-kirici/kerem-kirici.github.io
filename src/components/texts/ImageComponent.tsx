@@ -1,7 +1,15 @@
 'use client';
 
+import type { SpringOptions } from 'motion/react';
+import { motion, useMotionValue, useSpring } from 'motion/react';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+const tiltSpring: SpringOptions = {
+  damping: 15,
+  stiffness: 100,
+  mass: 2,
+};
 
 type ImageRatio = '1/1' | '3/4' | '4/3' | '16/9' | '9/16' | '21/9' | 'auto';
 type ImageRounded = 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | 'full';
@@ -17,6 +25,7 @@ export type ImageComponentProps = {
   fit?: ImageFit;
   border?: boolean;
   hover?: boolean;
+  tilt?: boolean;
   priority?: boolean;
   sizes?: string;
   className?: string;
@@ -72,6 +81,7 @@ export function ImageComponent({
   fit = 'cover',
   border = true,
   hover = true,
+  tilt = true,
   priority = false,
   sizes = '(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw',
   className,
@@ -79,6 +89,42 @@ export function ImageComponent({
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [zoom, setZoom] = useState(1);
+
+  const cardRef = useRef<HTMLElement>(null);
+
+  const rotateX = useSpring(useMotionValue(0), tiltSpring);
+
+  const rotateY = useSpring(useMotionValue(0), tiltSpring);
+
+  const tiltScale = useSpring(1, tiltSpring);
+
+  const rotateAmplitude = 14;
+
+  const scaleOnHover = 1.05;
+
+  function handleMouse(e: React.MouseEvent<HTMLElement>) {
+    if (!tilt || !cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+
+    const offsetX = e.clientX - rect.left - rect.width / 2;
+
+    const offsetY = e.clientY - rect.top - rect.height / 2;
+
+    rotateX.set((offsetY / (rect.height / 2)) * -rotateAmplitude);
+    rotateY.set((offsetX / (rect.width / 2)) * rotateAmplitude);
+  }
+
+  function handleMouseEnter() {
+    if (!tilt) return;
+    tiltScale.set(scaleOnHover);
+  }
+
+  function handleMouseLeave() {
+    if (!tilt) return;
+    tiltScale.set(1);
+    rotateX.set(0);
+    rotateY.set(0);
+  }
 
   // Handle ESC key and prevent background scrolling
   useEffect(() => {
@@ -138,34 +184,58 @@ export function ImageComponent({
     setZoom(1);
   };
 
+  const imageContent = (
+    <div
+      className={classNames(
+        'group relative overflow-hidden',
+        roundedToClasses[rounded],
+        shadowToClasses[shadow],
+        border ? 'border border-black/10 dark:border-white/15' : undefined,
+        'bg-white dark:bg-zinc-900',
+        hover ? 'transition hover:shadow-lg' : undefined,
+      )}
+    >
+      <div className={classNames('relative w-full', ratioToClasses[ratio])}>
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          priority={priority}
+          className={classNames(
+            fitToClasses[fit],
+            'transition duration-300',
+            hover && !tilt ? 'group-hover:scale-105' : undefined,
+          )}
+          sizes={sizes}
+        />
+      </div>
+    </div>
+  );
+
   return (
     <>
       <figure
+        ref={cardRef}
         onClick={handleImageClick}
+        onMouseMove={tilt ? handleMouse : undefined}
+        onMouseEnter={tilt ? handleMouseEnter : undefined}
+        onMouseLeave={tilt ? handleMouseLeave : undefined}
         className={classNames(
-          'group relative overflow-hidden cursor-pointer',
-          roundedToClasses[rounded],
-          shadowToClasses[shadow],
-          border ? 'border border-black/10 dark:border-white/15' : undefined,
-          'bg-white dark:bg-zinc-900',
-          hover ? 'transition hover:shadow-lg' : undefined,
+          'cursor-pointer',
+          tilt ? '[perspective:800px]' : undefined,
           className,
         )}
       >
-        <div className={classNames('relative w-full', ratioToClasses[ratio])}>
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            priority={priority}
-            className={classNames(
-              fitToClasses[fit],
-              'transition duration-300',
-              hover ? 'group-hover:scale-105' : undefined,
-            )}
-            sizes={sizes}
-          />
-        </div>
+        {tilt ? (
+          <motion.div
+            className="[transform-style:preserve-3d]"
+            style={{ rotateX, rotateY, scale: tiltScale }}
+          >
+            {imageContent}
+          </motion.div>
+        ) : (
+          imageContent
+        )}
       </figure>
 
       {/* Full Screen Modal */}
