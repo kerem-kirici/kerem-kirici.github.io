@@ -57,46 +57,32 @@ export default function ProjectCard({
   }, []);
 
   /**
-   * Scrolls the card into view at its sticky position.
-   * Calculates the proper scroll position based on the card's offset, header height, and sticky gap.
+   * Scrolls the card into view at its sticky position within the ScrollStack.
+   * Walks the offsetParent chain to get the true layout position (unaffected by
+   * CSS transforms applied by the scroll stack).
    */
   const scrollToCard = () => {
     if (!cardRef.current || typeof window === 'undefined') return;
 
-    const header = document.querySelector('header') as HTMLElement;
+    const stackCard = cardRef.current.closest('.scroll-stack-card') as HTMLElement | null;
+
+    if (!stackCard) return;
+
+    const header = document.querySelector('header') as HTMLElement | null;
 
     const headerHeight = header ? header.getBoundingClientRect().height : 0;
 
-    const gridContainer = cardRef.current.closest('.grid');
+    let documentTop = 0;
 
-    if (!gridContainer) return;
+    let el: HTMLElement | null = stackCard;
 
-    const cards = Array.from(gridContainer.children);
-
-    const cardIndex = cards.indexOf(cardRef.current);
-
-    if (cardIndex === -1) return;
-
-    const stickyGap = (cardIndex + 1) * 24 + 16;
-
-    const verticalGap = window.innerWidth < 640 ? 40 : 80;
-
-    let cardTopInGrid = 0;
-
-    for (let i = 0; i < cardIndex; i++) {
-      const prevCard = cards[i] as HTMLElement;
-
-      cardTopInGrid += prevCard.offsetHeight + verticalGap;
+    while (el) {
+      documentTop += el.offsetTop;
+      el = el.offsetParent as HTMLElement | null;
     }
 
-    const gridTop = (gridContainer as HTMLElement).offsetTop;
-
-    const cardOriginalTop = gridTop + cardTopInGrid;
-
-    const scrollPosition = cardOriginalTop - headerHeight - stickyGap;
-
     window.scrollTo({
-      top: Math.max(0, scrollPosition),
+      top: Math.max(0, documentTop - headerHeight - 24),
       behavior: 'smooth',
     });
   };
@@ -126,12 +112,8 @@ export default function ProjectCard({
 
   const handleCardClick = () => {
     if (typeof window !== 'undefined') {
-      if (isXSmallScreen) {
-        scrollToCard();
-        setTimeout(() => setFlipped((prev) => !prev), 50);
-      } else {
-        setFlipped((prev) => !prev);
-      }
+      scrollToCard();
+      setTimeout(() => setFlipped((prev) => !prev), 50);
     }
   };
 
