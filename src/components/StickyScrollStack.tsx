@@ -21,7 +21,7 @@ export const ScrollStackItem: React.FC<ScrollStackItemProps> = ({
   itemClassName = '',
 }) => (
   <div
-    className={`scroll-stack-card relative w-full h-80 my-4 sm:my-8 p-4 sm:p-8 lg:p-12 rounded-2xl sm:rounded-3xl lg:rounded-[40px] shadow-[0_0_30px_rgba(0,0,0,0.1)] box-border origin-top will-change-transform ${itemClassName}`.trim()}
+    className={`scroll-stack-card relative w-full h-80 my-4 sm:my-8 p-4 sm:p-8 lg:p-12 rounded-2xl sm:rounded-3xl lg:rounded-[40px] origin-top will-change-transform ${itemClassName}`.trim()}
     style={{
       backfaceVisibility: 'hidden',
       transformStyle: 'preserve-3d',
@@ -51,7 +51,7 @@ interface ScrollStackProps {
 const ScrollStack: React.FC<ScrollStackProps> = ({
   children,
   className = '',
-  itemDistance = 100,
+  itemDistance = 160,
   itemScale = 0.03,
   itemStackDistance = 30,
   stackPosition = '20%',
@@ -425,8 +425,8 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       }}
     >
       <div
-        className={`scroll-stack-inner pt-[10vh] sm:pt-[15vh] lg:pt-[20vh] px-2 sm:px-6 lg:px-12 pb-[50rem] min-h-screen ${
-          columnCount > 1 ? 'grid grid-cols-2 gap-x-20' : ''
+        className={`scroll-stack-inner pt-[4vh] sm:pt-[6vh] lg:pt-[8vh] px-2 sm:px-6 lg:px-12 pb-[25rem] min-h-screen ${
+          columnCount > 1 ? 'grid grid-cols-2 gap-x-5' : ''
         }`}
       >
         {children}

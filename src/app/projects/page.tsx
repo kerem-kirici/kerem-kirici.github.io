@@ -1,9 +1,9 @@
 'use client';
 
 import ProjectCard from '@/components/ProjectCard';
-import StickyScrollContainer from '@/components/StickyScrollContainer';
+import ScrollStack, { ScrollStackItem } from '@/components/StickyScrollStack';
 import { useLanguage } from '@/components/i18n/LanguageProvider';
-import { Actions, Aside, Grid, PageLayout, Section } from '@/components/layout';
+import { Actions, Aside, PageLayout, Section } from '@/components/layout';
 import { ButtonLink } from '@/components/links';
 import { Article, Heading, Tag, Text } from '@/components/texts';
 import { projects } from '@/data/projects';
@@ -81,13 +81,13 @@ export default function ProjectsPage() {
       </Section>
 
       <Section padding="md" container="xl" className="pt-0">
-        <StickyScrollContainer>
-          <Grid cols={{ base: 1, sm: 2 }} gap="md" className="mt-8 gap-y-10 sm:gap-y-12">
-            {allProjects.map((project) => (
-              <ProjectCard key={project.slug} {...project} />
-            ))}
-          </Grid>
-        </StickyScrollContainer>
+        <ScrollStack useWindowScroll desktopColumns={2}>
+          {allProjects.map((project) => (
+            <ScrollStackItem key={project.slug}>
+              <ProjectCard {...project} />
+            </ScrollStackItem>
+          ))}
+        </ScrollStack>
       </Section>
     </PageLayout>
   );

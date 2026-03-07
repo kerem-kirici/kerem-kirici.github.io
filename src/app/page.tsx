@@ -1,27 +1,12 @@
 'use client';
 
 import { useLanguage } from '@/components/i18n/LanguageProvider';
-import { Actions, Aside, Grid, PageLayout, Section } from '@/components/layout';
+import { Actions, Aside, PageLayout, Section } from '@/components/layout';
 import { ButtonLink } from '@/components/links';
 import ProjectCard from '@/components/ProjectCard';
-import StickyScrollContainer from '@/components/StickyScrollContainer';
+import ScrollStack, { ScrollStackItem } from '@/components/StickyScrollStack';
 import { Article, Heading, Subheading, Tag, Text } from '@/components/texts';
 import { projects } from '@/data/projects';
-import { memo } from 'react';
-
-const ProjectsComponent = memo(({ lang }: { lang: 'en' | 'tr' }) => {
-  return (
-    <Grid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} gap="md" className="mt-6 gap-y-10 sm:gap-y-20">
-      {projects(lang)
-        .slice(0, 4)
-        .map((p) => (
-          <ProjectCard key={`${p.slug}-${lang}`} {...p} />
-        ))}
-    </Grid>
-  );
-});
-
-ProjectsComponent.displayName = 'ProjectsComponent';
 
 export default function Home() {
   const { t, lang } = useLanguage();
@@ -118,9 +103,9 @@ export default function Home() {
       </Section>
 
       <Section padding="md" container="xl" className="pb-0">
-          <Heading as="h2" size="lg" weight="semibold" tracking="tight">
-            {t('home.featured')}
-          </Heading>
+        <Heading as="h2" size="lg" weight="semibold" tracking="tight">
+          {t('home.featured')}
+        </Heading>
         <ScrollStack useWindowScroll desktopColumns={2}>
           {projects(lang)
             .slice(0, 4)
