@@ -86,12 +86,19 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
 
   const [columnCount, setColumnCount] = useState(1);
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  const effectiveItemDistance = isMobile ? itemDistance / 2 : itemDistance;
+
   useEffect(() => {
     const checkColumns = () => {
-      const count = desktopColumns > 1 && window.innerWidth >= 768 ? desktopColumns : 1;
+      const mobile = window.innerWidth < 768;
+
+      const count = desktopColumns > 1 && !mobile ? desktopColumns : 1;
 
       columnCountRef.current = count;
       setColumnCount(count);
+      setIsMobile(mobile);
     };
 
     checkColumns();
@@ -357,7 +364,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       const isLastRow = i >= lastRowStart;
 
       if (!isLastRow) {
-        card.style.marginBottom = `${itemDistance}px`;
+        card.style.marginBottom = `${effectiveItemDistance}px`;
       }
       card.style.willChange = 'transform, filter';
       card.style.transformOrigin = 'top center';
@@ -395,7 +402,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     };
   }, [
     columnCount,
-    itemDistance,
+    effectiveItemDistance,
     itemScale,
     itemStackDistance,
     stackPosition,
