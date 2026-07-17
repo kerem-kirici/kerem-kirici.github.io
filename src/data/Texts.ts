@@ -37,7 +37,7 @@ const TEXT_DICTIONARY = {
   'home.recent_focus_title': { en: 'Recent Focus', tr: 'Çalışma Alanlarım' },
   'home.recent_focus_text': {
     en: 'Building full-stack web products, backend services and API integrations, mobile apps with native iOS and React Native, and test automation & data engineering pipelines.',
-    tr: "Full-stack web ürünleri, backend servisleri ve API entegrasyonları, native iOS ve React Native ile mobil uygulamalar; bunların yanında test otomasyonu ve veri mühendisliği üzerine çalışıyorum.",
+    tr: 'Full-stack web ürünleri, backend servisleri ve API entegrasyonları, native iOS ve React Native ile mobil uygulamalar; bunların yanında test otomasyonu ve veri mühendisliği üzerine çalışıyorum.',
   },
   'home.currently_working_with': {
     en: 'Mostly working with',
