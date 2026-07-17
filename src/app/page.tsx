@@ -7,6 +7,14 @@ import ProjectCard from '@/components/ProjectCard';
 import ScrollStack, { ScrollStackItem } from '@/components/StickyScrollStack';
 import { Article, Heading, Subheading, Tag, Text } from '@/components/texts';
 import { projects } from '@/data/projects';
+import { TextKey } from '@/data/Texts';
+
+const SKILL_GROUPS: { labelKey: TextKey; skills: string[] }[] = [
+  { labelKey: 'skills.frontend', skills: ['Vue.js', 'Next.js', 'React', 'TypeScript'] },
+  { labelKey: 'skills.backend_data', skills: ['.NET', 'Node.js', 'Python', 'MongoDB'] },
+  { labelKey: 'skills.mobile', skills: ['React Native', 'SwiftUI', 'Flutter'] },
+  { labelKey: 'skills.tools', skills: ['Jenkins (CI/CD)', 'Git/GitLab', 'Agile'] },
+];
 
 export default function Home() {
   const { t, lang } = useLanguage();
@@ -37,18 +45,21 @@ export default function Home() {
             }
             information={
               <div className="space-y-4">
-                <div>
-                  <Text size="xs" tone="subtle" className="uppercase tracking-wider">
-                    {t('home.currently_working_with')}
-                  </Text>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {['SwiftUI', 'Swift', 'React Native', 'Next.js', 'React', 'TypeScript'].map(
-                      (skill) => (
+                <Text size="xs" tone="subtle" className="uppercase tracking-wider">
+                  {t('home.currently_working_with')}
+                </Text>
+                {SKILL_GROUPS.map(({ labelKey, skills }) => (
+                  <div key={labelKey}>
+                    <Text as="span" size="xs" weight="medium" tone="muted">
+                      {t(labelKey)}
+                    </Text>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {skills.map((skill) => (
                         <Tag key={skill}>{skill}</Tag>
-                      ),
-                    )}
+                      ))}
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
             }
             details={

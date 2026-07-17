@@ -18,8 +18,8 @@ const TEXT_DICTIONARY = {
     tr: 'Merhaba! Portfolyoma Hoşgeldiniz.',
   },
   'hero.subtitle': {
-    en: 'A Developer, Student, and Future Senior iOS Developer',
-    tr: 'Şimdiki Yazılım Tutkunu, Öğrenci, Geleceğin Senior iOS Geliştiricisi',
+    en: 'Full-Stack & Mobile Software Developer, Engineering Student',
+    tr: 'Full-Stack ve Mobil Yazılım Geliştirici, Mühendislik Öğrencisi',
   },
   'hero.cta': { en: 'Email', tr: 'Email' },
   'hero.linkedin': { en: 'LinkedIn', tr: 'LinkedIn' },
@@ -27,8 +27,8 @@ const TEXT_DICTIONARY = {
   'home.featured': { en: 'Featured projects', tr: 'Öne çıkan projeler' },
   // --- Home Page Meta & Aside ---
   'home.page_title': {
-    en: 'Kerem Kırıcı – Frontend Developer',
-    tr: 'Kerem Kırıcı – Frontend Geliştirici',
+    en: 'Kerem Kırıcı – Full-Stack & Mobile Developer',
+    tr: 'Kerem Kırıcı – Full-Stack ve Mobil Geliştirici',
   },
   'home.page_description': {
     en: 'Portfolio of Kerem Kırıcı: projects, experience, and contact information.',
@@ -36,8 +36,8 @@ const TEXT_DICTIONARY = {
   },
   'home.recent_focus_title': { en: 'Recent Focus', tr: 'Çalışma Alanlarım' },
   'home.recent_focus_text': {
-    en: 'Building polished both native iOS and React Native mobile applications, along with high-impact web products that ship fast.',
-    tr: "Özenle hazırlanmış iOS'a özel ve React Native ile her platforma mobil uygulama geliştirmek, ayrıca hızlıca yayımlanan, yüksek etkili web ürünleri geliştiriyorum.",
+    en: 'Building full-stack web products, backend services and API integrations, mobile apps with native iOS and React Native, and test automation & data engineering pipelines.',
+    tr: "Full-stack web ürünleri, backend servisleri ve API entegrasyonları, native iOS ve React Native ile mobil uygulamalar; bunların yanında test otomasyonu ve veri mühendisliği üzerine çalışıyorum.",
   },
   'home.currently_working_with': {
     en: 'Mostly working with',
@@ -45,17 +45,17 @@ const TEXT_DICTIONARY = {
   },
   'home.availability': { en: 'Availability', tr: 'Müsaitlik' },
   'home.availability_text': {
-    en: 'Open to collaborations on native iOS products, complex interfaces, and high-impact frontend systems.',
-    tr: 'Yerel iOS ürünleri, karmaşık arayüzler ve yüksek etkili frontend sistemleri üzerine işbirliğine açığım.',
+    en: 'Open to collaborations on full-stack web, mobile, and data-driven products.',
+    tr: 'Full-stack web, mobil ve veri odaklı ürünler üzerine işbirliğine açığım.',
   },
   'home.current_position': { en: 'Current position', tr: 'Mevcut Pozisyonum' },
   'home.current_position_text': {
-    en: 'Junior Software Developer at Tatilsepeti, working full time on a large-scale React/Next.js project.',
-    tr: "Tatilsepeti'nde Junior Software Developer pozisyonunda tam zamanlı olarak büyük ölçekli bir React/Next.js projesinde çalışıyorum.",
+    en: 'AI & Data Engineering Intern at İş Bankası (Master Class 2026), building a full-stack test automation platform with Vue.js and .NET. Previously Junior Software Developer at Tatilsepeti on a large-scale Next.js backoffice platform.',
+    tr: "İş Bankası'nda (Master Class 2026 programı) AI & Data Engineering stajyeri olarak Vue.js ve .NET ile full-stack bir test otomasyon platformu geliştiriyorum. Öncesinde Tatilsepeti'nde Junior Software Developer olarak büyük ölçekli bir Next.js backoffice platformunda çalıştım.",
   },
   'hero.description': {
-    en: "Hi, I'm Kerem! I'm a 3rd-year Electronics and Communication Engineering student at ITU, and I also work as a Junior Software Developer at Tatilsepeti. At Tatilsepeti, I'm working on a large-scale React/Next.js project, which allows me to both grow my skills and gain a foothold in the industry, and I'm excited to be taking these first steps in my career. I love creating things that solve people's problems and are genuinely useful to them. This has become a core philosophy for me—a perspective that spans everything from my dreams of building large-scale, user-friendly projects that meet real needs, all the way to the lessons I learned from my long-term work experience in the U.S. service industry. While I enjoy my work with React, my true passion is mastering native iOS development with Swift and SwiftUI, and I'm actively working to steer my career in this direction.",
-    tr: "Merhaba, ben Kerem! İTÜ'de 3. sınıf Elektronik ve Haberleşme Mühendisliği öğrencisiyim ve aynı zamanda Tatilsepeti'nde Junior Software Developer olarak çalışıyorum. Tatilsepeti'nde büyük ölçekli bir React/Next.js projesinde çalışarak hem kendimi geliştirebiliyorum hem de sektörde yer edinerek kariyerimin ilk adımlarını atmaktan dolayı heyecan duyuyorum. İnsanların ihtiyaçlarına çözüm üretebilecek ve işlerine yarayacak çalışmalar yapmayı seviyorum; bu, bireysel kullanıcı dostu ve ihtiyaçları giderecek büyük proje hayallerinden ABD'de geçirdiğim uzun süreli hizmet sektöründe çalışma deneyimlerime kadar kapsamlı hale gelmiş, hayat mottom olmuş bir bakış açısı. React'teki işimi sevsem de, asıl tutkum Swift ve SwiftUI ile native iOS geliştirmede uzmanlaşmak. Kariyerimi bu yönde şekillendirmek için çalışmalarıma devam ediyorum.",
+    en: "Hi, I'm Kerem! I'm an Electronics and Communication Engineering student at ITU and a software developer with 2+ years of professional experience across full-stack web, backend, mobile, and data engineering. Right now I'm an AI & Data Engineering Intern at İş Bankası, building a test automation platform end to end — Vue.js on the frontend, .NET and MongoDB on the backend, Jenkins for CI/CD. Before that I worked as a Junior Software Developer at Tatilsepeti on a large-scale Next.js backoffice used by hundreds of employees, and led the development of a greenfield React Native app at VISIGHT Technology. I love building things that solve real problems and are genuinely useful to people — a philosophy shaped by everything from my product work to the lessons I learned working in the U.S. service industry. Whether it's a web dashboard, a backend API, or a native iOS app in SwiftUI, I care about clean architecture and user-focused design in equal measure.",
+    tr: "Merhaba, ben Kerem! İTÜ'de Elektronik ve Haberleşme Mühendisliği okuyorum ve full-stack web, backend, mobil ve veri mühendisliği alanlarında 2+ yıllık profesyonel deneyime sahip bir yazılım geliştiricisiyim. Şu anda İş Bankası'nda AI & Data Engineering stajyeri olarak uçtan uca bir test otomasyon platformu geliştiriyorum — frontend'de Vue.js, backend'de .NET ve MongoDB, CI/CD için Jenkins. Öncesinde Tatilsepeti'nde Junior Software Developer olarak yüzlerce çalışanın kullandığı büyük ölçekli bir Next.js backoffice projesinde çalıştım, VISIGHT Technology'de ise sıfırdan bir React Native uygulamasının geliştirilmesine liderlik ettim. İnsanların gerçek problemlerine çözüm üreten, işlerine gerçekten yarayan şeyler geliştirmeyi seviyorum; bu bakış açısı, ürün geliştirme deneyimlerimden ABD'de hizmet sektöründe çalışırken öğrendiklerime kadar uzanan bir birikimin sonucu. İster bir web paneli, ister bir backend API'ı, ister SwiftUI ile native bir iOS uygulaması olsun; temiz mimariye ve kullanıcı odaklı tasarıma aynı ölçüde önem veriyorum.",
   },
   'hero.lets_connect': {
     en: "Let's connect!",
@@ -66,19 +66,122 @@ const TEXT_DICTIONARY = {
     tr: 'Hakkımda',
   },
   'about.subtitle': {
-    en: 'Software Developer, Student, and Future iOS Pro',
-    tr: 'Yazılım Tutkunu, Öğrenci, ve Bir Gelecek iOS Geliştirici',
+    en: 'Full-Stack & Mobile Software Developer, ITU Engineering Student',
+    tr: 'Full-Stack ve Mobil Yazılım Geliştirici, İTÜ Mühendislik Öğrencisi',
   },
   'about.description': {
-    en: "Hello, I\'m Kerem Kırıcı. Thanks for stopping by. I\'m a software developer and a 3rd-year Electronics and Communication Engineering student at ITU. I\'m the kind of person who thrives on solving complex problems, which has led me to a unique and challenging opportunity.\n\nMy path has also given me a broad perspective. From a long-term stay working in the U.S. service industry, I learned invaluable lessons about communication, adaptability, and understanding user needs, skills I bring to every tech project I tackle.\n\nWhile still completing my degree, I\'ve earned a role as a Junior Software Developer at Tatilsepeti, one of Turkey\'s major tech companies. This position has been a significant step beyond a typical internship; I independently develop and maintain frontend features for a large-scale Next.js and React.js control panel that serves over 500 hotel partners. Balancing this high-impact role with my studies has proven my ability to manage advanced responsibilities and deliver in a professional, agile environment.\n\nMy experience at Tatilsepeti and my personal projects have given me a strong foundation in React, React Native, and full-stack development. However, my true passion is now firmly set on native iOS development.\n\nThis is why I\'m actively steering my career in this direction. To build a strong foundation, I\'ve dedicated myself to mastering the Apple ecosystem. I recently earned a META &quot;Create the User Interface with SwiftUI&quot; certificate and immediately applied these new skills by building \'pokerist\', a native iOS application from the ground up. This project was my hands-on way to move from theory to a complex, functional product. It\'s a powerful Texas Hold\'em hand analyzer that calculates win probabilities against up to 6 opponents by running a 10,000-game Monte Carlo simulation asynchronously. To build it, I implemented a clean MVVM architecture, managed reactive state with SwiftUI and Combine, and designed a modern \'liquid glass\' UI that fully supports light and dark modes.\n\nI am excited and prepared to bring my proven discipline from the web world, and my user-focused perspective, to a full-time role where I can grow as a Swift and SwiftUI developer.",
-    tr: "Merhaba, ben Kerem Kırıcı. Uğradığınız için teşekkürler! Ben bir yazılım geliştiriciyim ve İTÜ'de 3. sınıf Elektronik ve Haberleşme Mühendisliği öğrencisiyim. Karmaşık problemleri çözmekten keyif alan bir yapım var, bu da beni eşsiz ve zorlu bir fırsata yönlendirdi.\n\nBu yolculuk bana geniş bir bakış açısı da kazandırdı. ABD'de hizmet sektöründeki uzun süreli çalışma deneyimim sayesinde iletişim, uyum sağlama ve kullanıcı ihtiyaçlarını anlama konusunda paha biçilmez dersler öğrendim; bu becerileri üstlendiğim her teknoloji projesine taşıyorum.\n\nHâlâ eğitimimi tamamlıyorken, Türkiye'nin önde gelen teknoloji şirketlerinden biri olan Tatilsepeti'nde Junior Software Developer olarak bir rol edindim. Bu pozisyon, tipik bir stajın çok ötesinde önemli bir adım oldu; 500'den fazla otel ortağına hizmet veren büyük ölçekli bir Next.js ve React.js kontrol paneli için bağımsız olarak frontend özellikleri geliştiriyor ve bakımını yapıyorum. Bu yüksek sorumluluktaki rolü eğitimimle dengelemek, ileri düzey sorumlulukları yönetebilme ve profesyonel, çevik (agile) bir ortamda sonuç üretebilme yeteneğimi kanıtladı.\n\nTatilsepeti'ndeki deneyimim ve kişisel projelerim bana React, React Native ve full-stack geliştirme konusunda güçlü bir temel sağladı. Ancak, asıl tutkum artık tamamen native iOS geliştirmeye odaklanmış durumda.\n\nİşte bu yüzden kariyerimi aktif olarak bu yöne doğru yönlendiriyorum. Güçlü bir temel oluşturmak için kendimi Apple ekosisteminde uzmanlaşmaya adadım. Yakın zamanda META'nın \"Create the User Interface with SwiftUI\" sertifikasını aldım ve bu yeni becerileri hemen, 'pokerist' adında sıfırdan bir native iOS uygulaması geliştirerek uyguladım. Bu proje, teoriden karmaşık ve işlevsel bir ürüne geçiş yapmam için benim uygulamalı yolumdu. Bu, 6 rakibe kadar kazanma olasılıklarını eşzamansız (asynchronously) olarak 10.000 oyunluk bir Monte Carlo simülasyonu çalıştırarak hesaplayan güçlü bir Texas Hold'em el analiz aracıdır. Bunu geliştirmek için temiz bir MVVM mimarisi uyguladım, SwiftUI ve Combine ile reaktif durum yönetimini sağladım ve aydınlık/karanlık modları tam destekleyen modern bir 'liquid glass' (akışkan cam) kullanıcı arayüzü tasarladım.\n\nWeb dünyasından getirdiğim kanıtlanmış disiplinimi ve kullanıcı odaklı bakış açımı, bir Swift ve SwiftUI geliştiricisi olarak büyüyebileceğim tam zamanlı bir role taşımak için heyecanlı ve hazırım.",
+    en: "Hello, I'm Kerem Kırıcı — thanks for stopping by. I'm a software developer and an Electronics and Communication Engineering student at Istanbul Technical University, with 2+ years of professional experience building scalable full-stack, web, and mobile applications in both large corporate environments and startup teams.\n\nMy path has given me a broad perspective. From long-term work in the U.S. service industry I learned communication, adaptability, and how to understand what users actually need — skills I bring to every project I take on.\n\nMy professional journey started at VISIGHT Technology, where I led the end-to-end development of a greenfield React Native app: I owned the architecture and delivered the MVP within a strict four-month timeline, using Redux Toolkit for state management and Firebase for authentication and real-time data.\n\nFrom there I joined Tatilsepeti, one of Turkey's major travel-tech companies, as an intern — and was promoted to full-time Junior Software Developer after a single month. In a team of three frontend developers, I helped modernize a legacy backoffice platform end to end with Next.js and Material UI, serving around 300 employees. I built dashboards for the Sales, Marketing, and SEO teams that handle millions of records without sacrificing performance, executed API integrations that replaced manual reporting with real-time data visualization, and authored the technical documentation standardizing the new component library.\n\nToday I'm at İş Bankası as an AI & Data Engineering Intern in the Master Class 2026 program, engineering a full-stack test automation platform for QA operations: responsive Vue.js interfaces on the frontend, .NET and MongoDB services on the backend, data cleaning with PyMongo, and Jenkins orchestrating the automated test runs.\n\nAlongside my professional work, I keep building on my own. I earned META's “Create the User Interface with SwiftUI” certificate and applied it by building Pokerist, a native iOS Texas Hold'em analyzer that runs a 10,000-game Monte Carlo simulation asynchronously, built on a clean MVVM architecture with a modern “liquid glass” UI. Native iOS remains one of the areas I genuinely enjoy — alongside web, backend, and data engineering, not instead of them.\n\nWhat ties it all together is range with rigor: I move comfortably between a Vue or React frontend, a .NET or Node.js backend, a mobile codebase, and a CI/CD pipeline — writing clean, maintainable code and keeping the user at the center of every layer.",
+    tr: "Merhaba, ben Kerem Kırıcı — uğradığınız için teşekkürler! İstanbul Teknik Üniversitesi'nde Elektronik ve Haberleşme Mühendisliği okuyorum; hem büyük kurumsal ortamlarda hem de startup ekiplerinde ölçeklenebilir full-stack, web ve mobil uygulamalar geliştirdiğim 2+ yıllık profesyonel deneyime sahip bir yazılım geliştiricisiyim.\n\nBu yolculuk bana geniş bir bakış açısı kazandırdı. ABD'de hizmet sektöründeki uzun süreli çalışma deneyimim sayesinde iletişim, uyum sağlama ve kullanıcıların gerçekte neye ihtiyaç duyduğunu anlama konusunda çok şey öğrendim; bu becerileri üstlendiğim her projeye taşıyorum.\n\nProfesyonel yolculuğum VISIGHT Technology'de başladı: Sıfırdan bir React Native uygulamasının uçtan uca geliştirilmesine liderlik ettim; mimariyi ben kurdum ve dört aylık sıkı bir takvimde MVP'yi teslim ettim. State yönetimi için Redux Toolkit, kimlik doğrulama ve gerçek zamanlı veri için Firebase kullandım.\n\nArdından Türkiye'nin önde gelen seyahat teknolojisi şirketlerinden Tatilsepeti'ne stajyer olarak katıldım ve yalnızca bir ay sonra tam zamanlı Junior Software Developer pozisyonuna terfi ettim. Üç kişilik bir frontend ekibinde, yaklaşık 300 çalışanın kullandığı eski bir backoffice platformunun Next.js ve Material UI ile uçtan uca modernizasyonunda çalıştım. Satış, Pazarlama ve SEO ekipleri için milyonlarca kaydı performanstan ödün vermeden işleyen panolar geliştirdim, manuel raporlamayı gerçek zamanlı veri görselleştirmeyle değiştiren API entegrasyonları gerçekleştirdim ve yeni bileşen kütüphanesini standartlaştıran teknik dokümantasyonu yazdım.\n\nBugün İş Bankası'nda, Master Class 2026 programı kapsamında AI & Data Engineering stajyeri olarak QA operasyonları için full-stack bir test otomasyon platformu geliştiriyorum: frontend'de duyarlı Vue.js arayüzleri, backend'de .NET ve MongoDB servisleri, PyMongo ile veri temizleme ve otomatik test görevlerini yöneten Jenkins.\n\nProfesyonel işimin yanında kendi projelerimi de geliştirmeye devam ediyorum. META'nın “Create the User Interface with SwiftUI” sertifikasını aldım ve bu becerileri, 10.000 oyunluk Monte Carlo simülasyonunu asenkron çalıştıran, temiz bir MVVM mimarisi ve modern “liquid glass” arayüzüyle geliştirdiğim native iOS Texas Hold'em analiz aracı Pokerist'i yaparak uyguladım. Native iOS; web, backend ve veri mühendisliğinin yerini alan değil, onların yanında keyifle çalıştığım alanlardan biri olmaya devam ediyor.\n\nTüm bunları birbirine bağlayan şey, disiplinle birleşen çok yönlülük: Bir Vue ya da React frontend'i, bir .NET ya da Node.js backend'i, bir mobil kod tabanı ve bir CI/CD hattı arasında rahatça hareket ediyor; her katmanda temiz, sürdürülebilir kod yazmaya ve kullanıcıyı merkezde tutmaya özen gösteriyorum.",
   },
   // --- About Page Meta ---
   'about.page_title': { en: 'About – Kerem Kırıcı', tr: 'Hakkımda – Kerem Kırıcı' },
   'about.page_description': {
-    en: 'About Kerem Kırıcı, frontend developer.',
-    tr: 'Frontend geliştirici Kerem Kırıcı hakkında.',
+    en: 'About Kerem Kırıcı, full-stack and mobile software developer.',
+    tr: 'Full-stack ve mobil yazılım geliştirici Kerem Kırıcı hakkında.',
   },
+
+  // --- About Page Sections ---
+  'about.experience_title': { en: 'Experience', tr: 'Deneyim' },
+  'about.skills_title': { en: 'Skills', tr: 'Yetkinlikler' },
+  'about.education_title': { en: 'Education', tr: 'Eğitim' },
+  'about.certificates_title': { en: 'Certificates', tr: 'Sertifikalar' },
+  'about.leadership_title': { en: 'Leadership & Volunteering', tr: 'Liderlik ve Gönüllülük' },
+
+  // --- Experience Entries ---
+  'experience.isbankasi.company': { en: 'İş Bankası', tr: 'İş Bankası' },
+  'experience.isbankasi.role': {
+    en: 'AI & Data Engineering Intern — Master Class 2026',
+    tr: 'AI & Data Engineering Stajyeri — Master Class 2026',
+  },
+  'experience.isbankasi.dates': {
+    en: 'June 2026 – Present · Istanbul',
+    tr: 'Haziran 2026 – Halen · İstanbul',
+  },
+  'experience.isbankasi.summary': {
+    en: 'Engineering a full-stack test automation platform for QA operations: Vue.js frontend, .NET + MongoDB backend, data preprocessing with PyMongo, and Jenkins-orchestrated CI/CD test runs.',
+    tr: 'QA operasyonları için full-stack bir test otomasyon platformu geliştiriyorum: Vue.js frontend, .NET + MongoDB backend, PyMongo ile veri ön işleme ve Jenkins ile yönetilen CI/CD test süreçleri.',
+  },
+  'experience.tatilsepeti.company': { en: 'Tatilsepeti', tr: 'Tatilsepeti' },
+  'experience.tatilsepeti.role': {
+    en: 'Jr. Software Developer (promoted from Intern)',
+    tr: 'Jr. Software Developer (stajyerlikten terfi)',
+  },
+  'experience.tatilsepeti.dates': {
+    en: 'July 2025 – June 2026 · Istanbul',
+    tr: 'Temmuz 2025 – Haziran 2026 · İstanbul',
+  },
+  'experience.tatilsepeti.summary': {
+    en: 'Modernized a legacy backoffice platform end to end with Next.js and Material UI in a three-person frontend team, serving ~300 employees; built dashboards handling millions of records without sacrificing performance and replaced manual reporting with real-time, API-driven data visualization.',
+    tr: 'Üç kişilik bir frontend ekibinde, yaklaşık 300 çalışanın kullandığı eski bir backoffice platformunu Next.js ve Material UI ile uçtan uca modernize ettik; milyonlarca kaydı performanstan ödün vermeden işleyen panolar geliştirdim ve manuel raporlamayı gerçek zamanlı, API tabanlı veri görselleştirmeyle değiştirdim.',
+  },
+  'experience.visight.company': { en: 'VISIGHT Technology', tr: 'VISIGHT Technology' },
+  'experience.visight.role': {
+    en: 'Mobile App Development Intern',
+    tr: 'Mobil Uygulama Geliştirme Stajyeri',
+  },
+  'experience.visight.dates': {
+    en: 'December 2024 – April 2025 · Istanbul',
+    tr: 'Aralık 2024 – Nisan 2025 · İstanbul',
+  },
+  'experience.visight.summary': {
+    en: 'Led end-to-end development of a greenfield React Native app: owned the architecture and delivered the MVP within a strict four-month timeline, using Redux Toolkit for centralized state management and Firebase for authentication and real-time data.',
+    tr: "Sıfırdan bir React Native uygulamasının uçtan uca geliştirilmesine liderlik ettim: Mimariyi üstlenip MVP'yi dört aylık sıkı bir takvimde teslim ettim; merkezi state yönetimi için Redux Toolkit, kimlik doğrulama ve gerçek zamanlı veri için Firebase kullandım.",
+  },
+
+  // --- Education ---
+  'about.education.school': {
+    en: 'Istanbul Technical University',
+    tr: 'İstanbul Teknik Üniversitesi',
+  },
+  'about.education.degree': {
+    en: 'B.Sc. Electronics and Communication Engineering',
+    tr: 'Elektronik ve Haberleşme Mühendisliği (Lisans)',
+  },
+  'about.education.dates': { en: '2022 – Present · GPA 3.10', tr: '2022 – Halen · GNO 3.10' },
+  'about.education.summary': {
+    en: 'Relevant coursework: Mobile App Development, Frontend & Backend Development, Data Structures & Algorithms, Machine Learning, Artificial Neural Networks.',
+    tr: 'İlgili dersler: Mobil Uygulama Geliştirme, Frontend ve Backend Geliştirme, Veri Yapıları ve Algoritmalar, Makine Öğrenmesi, Yapay Sinir Ağları.',
+  },
+
+  // --- Certificates ---
+  'about.cert.meta.title': {
+    en: 'Create the User Interface with SwiftUI',
+    tr: 'Create the User Interface with SwiftUI',
+  },
+  'about.cert.meta.issuer': { en: 'META · 2025', tr: 'META · 2025' },
+  'about.cert.csbridge.title': {
+    en: 'CS-Bridge: Introduction to Computer Science',
+    tr: 'CS-Bridge: Bilgisayar Bilimine Giriş',
+  },
+  'about.cert.csbridge.issuer': {
+    en: 'Stanford University, with Koç University & Czech Technical University · 2020',
+    tr: 'Stanford Üniversitesi, Koç Üniversitesi ve Çek Teknik Üniversitesi iş birliğiyle · 2020',
+  },
+
+  // --- Leadership ---
+  'about.leadership.role': {
+    en: 'Board Member & Committee Coordinator',
+    tr: 'Yönetim Kurulu Üyesi ve Komite Koordinatörü',
+  },
+  'about.leadership.org': { en: 'ITU Alumni Association Club', tr: 'İTÜ Mezunlar Derneği Kulübü' },
+  'about.leadership.dates': {
+    en: 'Sep 2024 – Jun 2025 · Istanbul',
+    tr: 'Eylül 2024 – Haziran 2025 · İstanbul',
+  },
+  'about.leadership.text': {
+    en: 'Organized 10+ corporate visits per semester to companies like Turkish Technic and İş Bankası, giving 250+ students access to career insights, and built long-term partnerships with company representatives and alumni.',
+    tr: "Her dönem Turkish Technic ve İş Bankası gibi şirketlere 10'dan fazla kurumsal ziyaret düzenleyerek 250'den fazla öğrencinin kariyer içgörülerine erişmesini sağladım; şirket temsilcileri ve mezunlarla uzun vadeli iş birlikleri kurdum.",
+  },
+
+  // --- Skill Group Labels ---
+  'skills.languages': { en: 'Languages', tr: 'Diller' },
+  'skills.frontend': { en: 'Frontend & Web', tr: 'Frontend ve Web' },
+  'skills.mobile': { en: 'Mobile', tr: 'Mobil' },
+  'skills.backend': { en: 'Backend', tr: 'Backend' },
+  'skills.backend_data': { en: 'Backend & Data', tr: 'Backend ve Veri' },
+  'skills.data': { en: 'Data & Databases', tr: 'Veri ve Veritabanları' },
+  'skills.ai_ml': { en: 'AI / ML', tr: 'Yapay Zeka / ML' },
+  'skills.tools': { en: 'Tools & Practices', tr: 'Araçlar ve Pratikler' },
 
   'aside.more_details': {
     en: 'More details',
