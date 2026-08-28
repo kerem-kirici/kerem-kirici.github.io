@@ -21,13 +21,26 @@ function classNames(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(' ');
 }
 
+// Body copy sits near zero tracking; small text gets a touch more to stay
+// legible. `type-*` also sets `text-wrap: pretty`, which keeps orphans out of
+// the last line.
+const sizeToClasses = {
+  lg: 'text-lg type-body',
+  md: 'text-base type-body',
+  sm: 'text-sm type-caption',
+  xs: 'text-xs type-caption',
+} as const;
+
 export function Text<T extends TextAs = 'p'>({
   as,
   size = 'md',
   tone = 'default',
   weight = 'regular',
   leading = 'normal',
-  align = 'justify',
+  // Left, not justified: without hyphenation the browser opens rivers of white
+  // space between words to force the flush edge, which reads as sloppy at any
+  // measure this site uses.
+  align = 'left',
   clamp,
   preserveNewlines = true,
   className,
@@ -38,13 +51,7 @@ export function Text<T extends TextAs = 'p'>({
   return (
     <Component
       className={classNames(
-        size === 'lg'
-          ? 'text-lg'
-          : size === 'md'
-            ? 'text-base'
-            : size === 'sm'
-              ? 'text-sm'
-              : 'text-xs',
+        sizeToClasses[size],
         tone === 'muted'
           ? 'text-zinc-600 dark:text-zinc-400'
           : tone === 'subtle'

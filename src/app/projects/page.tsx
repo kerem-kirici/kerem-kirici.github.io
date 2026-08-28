@@ -15,13 +15,13 @@ export default function ProjectsPage() {
 
   return (
     <PageLayout title={t('projects.page_title')} description={t('projects.page_description')}>
-      <Section padding="lg" container="xl">
+      <Section padding="lg" container="xl" className="pb-0">
         <div className="space-y-6">
           <Heading as="h1" size="2xl" weight="semibold" tracking="tight">
             {t('projects.title')}
           </Heading>
         </div>
-        <div className="mt-8 flex flex-col gap-10 lg:clearfix lg:space-y-0 lg:block">
+        <div className="mt-8 flex flex-col gap-10 lg:flow-root lg:space-y-0 lg:block">
           <Aside
             heading={
               <div className="space-y-3">
@@ -80,8 +80,8 @@ export default function ProjectsPage() {
         </div>
       </Section>
 
-      <Section padding="md" container="xl" className="pt-0">
-        <ScrollStack useWindowScroll desktopColumns={2}>
+      <Section padding="md" container="xl" className="pt-8">
+        <ScrollStack useWindowScroll desktopColumns={2} topPadding="none">
           {allProjects.map((project) => (
             <ScrollStackItem key={project.slug}>
               <ProjectCard {...project} />

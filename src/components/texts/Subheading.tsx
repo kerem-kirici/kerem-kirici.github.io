@@ -26,21 +26,16 @@ function classNames(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(' ');
 }
 
+// Tracking and leading ride along with the size — see Heading for the rationale.
 const sizeToClasses: Record<SubheadingSize, string> = {
-  lg: 'text-xl',
-  md: 'text-lg',
-  sm: 'text-base',
+  lg: 'text-xl type-heading',
+  md: 'text-lg type-subhead',
+  sm: 'text-base type-subhead',
 };
 
 const weightToClasses: Record<SubheadingWeight, string> = {
   semibold: 'font-semibold',
   medium: 'font-medium',
-};
-
-const trackingToClasses: Record<SubheadingTracking, string> = {
-  tight: 'tracking-tight',
-  normal: 'tracking-normal',
-  wide: 'tracking-wide',
 };
 
 const alignToClasses: Record<SubheadingAlign, string> = {
@@ -61,7 +56,7 @@ export function Subheading<T extends SubheadingAs = 'h3'>({
   size = 'md',
   weight = 'semibold',
   align = 'left',
-  tracking = 'normal',
+  tracking = 'tight',
   clamp,
   muted,
   gutter = 'md',
@@ -75,7 +70,12 @@ export function Subheading<T extends SubheadingAs = 'h3'>({
       className={classNames(
         sizeToClasses[size],
         weightToClasses[weight],
-        trackingToClasses[tracking],
+        // `tight` defers to the size's optical tracking; the others override it.
+        tracking === 'normal'
+          ? 'tracking-normal'
+          : tracking === 'wide'
+            ? 'tracking-wide'
+            : undefined,
         alignToClasses[align],
         gutterToClasses[gutter],
         muted ? 'text-zinc-700 dark:text-zinc-300' : 'text-zinc-900 dark:text-zinc-50',

@@ -41,8 +41,8 @@ export const projects = (language: Lang = 'en'): Project[] => {
   const projectSlugs = ['pokerist', 'sudokumobileapp', '2048-playing-algorithm', 'sudokugenerator'];
 
   const projectDates = {
-    pokerist: '09/2025',
-    sudokumobileapp: '07/2025',
+    pokerist: '10/2025',
+    sudokumobileapp: '06/2025',
     '2048-playing-algorithm': '04/2023',
     sudokugenerator: '07/2021',
   };

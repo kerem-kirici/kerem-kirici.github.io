@@ -1,5 +1,9 @@
 'use client';
 
+import { springSnap } from '@/lib/motion';
+import { motion, useReducedMotion } from 'motion/react';
+import { useState } from 'react';
+
 type SwitchSize = 'sm' | 'md' | 'lg';
 
 export type SwitchProps = {
@@ -27,10 +31,12 @@ const knobSize: Record<SwitchSize, string> = {
   lg: 'h-7 w-7',
 };
 
-const translateChecked: Record<SwitchSize, string> = {
-  sm: 'translate-x-4',
-  md: 'translate-x-5',
-  lg: 'translate-x-6',
+/** Knob travel in px, so the position can be driven by a spring rather than a
+ *  fixed-duration CSS transition. */
+const knobTravel: Record<SwitchSize, { off: number; on: number }> = {
+  sm: { off: 2, on: 18 },
+  md: { off: 2, on: 22 },
+  lg: { off: 2, on: 26 },
 };
 
 export function Switch({
@@ -41,6 +47,12 @@ export function Switch({
   ariaLabel,
   className,
 }: SwitchProps) {
+  const reduceMotion = useReducedMotion();
+
+  const [pressed, setPressed] = useState(false);
+
+  const travel = knobTravel[size];
+
   return (
     <button
       type="button"
@@ -48,21 +60,32 @@ export function Switch({
       aria-checked={checked}
       aria-label={ariaLabel}
       disabled={disabled}
+      onPointerDown={() => !disabled && setPressed(true)}
+      onPointerUp={() => setPressed(false)}
+      onPointerCancel={() => setPressed(false)}
+      onPointerLeave={() => setPressed(false)}
       onClick={() => !disabled && onChange(!checked)}
       className={classNames(
-        'relative inline-flex items-center rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
+        'relative inline-flex items-center rounded-full touch-manipulation transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
         trackSize[size],
         checked ? 'bg-black/90 dark:bg-white' : 'bg-zinc-300 dark:bg-zinc-700',
         disabled ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer',
         className,
       )}
     >
-      <span
+      <motion.span
         className={classNames(
-          'pointer-events-none inline-block transform rounded-full bg-white shadow transition-transform dark:bg-black',
+          'pointer-events-none inline-block rounded-full bg-white shadow dark:bg-black',
           knobSize[size],
-          checked ? translateChecked[size] : 'translate-x-1',
         )}
+        // The knob stretches toward the side it is about to travel to, so the
+        // press already hints at the outcome before the state flips.
+        style={{ originX: checked ? 1 : 0 }}
+        animate={{
+          x: checked ? travel.on : travel.off,
+          scaleX: pressed && !reduceMotion ? 1.14 : 1,
+        }}
+        transition={reduceMotion ? { duration: 0 } : { type: 'spring', ...springSnap }}
       />
     </button>
   );
