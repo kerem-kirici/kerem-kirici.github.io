@@ -10,7 +10,9 @@ type TextProps<T extends TextAs = 'p'> = {
   tone?: 'default' | 'muted' | 'subtle';
   weight?: 'regular' | 'medium';
   leading?: 'tight' | 'normal' | 'relaxed';
-  align?: 'left' | 'center' | 'right' | 'justify';
+  /** `auto` (the default) justifies on phone widths and falls back to left
+   *  from `md` up. The explicit values apply at every width. */
+  align?: 'auto' | 'left' | 'center' | 'right' | 'justify';
   clamp?: 1 | 2 | 3 | 4;
   preserveNewlines?: boolean;
   className?: string;
@@ -37,10 +39,7 @@ export function Text<T extends TextAs = 'p'>({
   tone = 'default',
   weight = 'regular',
   leading = 'normal',
-  // Left, not justified: without hyphenation the browser opens rivers of white
-  // space between words to force the flush edge, which reads as sloppy at any
-  // measure this site uses.
-  align = 'left',
+  align = 'auto',
   clamp,
   preserveNewlines = true,
   className,
@@ -63,13 +62,19 @@ export function Text<T extends TextAs = 'p'>({
           : leading === 'relaxed'
             ? 'leading-relaxed'
             : 'leading-normal',
+        // On a phone the measure is short enough that flush edges read as tidy,
+        // and `hyphens: auto` is what keeps the browser from opening rivers of
+        // white space to reach them. Wider columns go back to a ragged right,
+        // where justification would have to stretch far more per line.
         align === 'center'
           ? 'text-center'
           : align === 'right'
             ? 'text-right'
             : align === 'justify'
-              ? 'text-justify'
-              : 'text-left',
+              ? 'text-justify hyphens-auto'
+              : align === 'left'
+                ? 'text-left'
+                : 'text-justify hyphens-auto md:text-left md:hyphens-none',
         clamp ? `line-clamp-${clamp}` : undefined,
         preserveNewlines ? 'whitespace-pre-line' : undefined,
         className,

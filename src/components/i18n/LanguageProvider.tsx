@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useMemo, useState } from 'react';
+import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 import TEXT_DICTIONARY, { TextKey, TextParams } from '@/data/Texts';
 
@@ -17,6 +17,12 @@ const LanguageContext = createContext<Ctx | null>(null);
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   // Session-only language; defaults to English on first render to match SSR
   const [lang, setLang] = useState<Lang>('tr');
+
+  // Hyphenation and screen-reader pronunciation both key off this, and the
+  // static export can only ship one value in the markup.
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   const t = useMemo(
     () => (key: TextKey, params?: TextParams) =>
