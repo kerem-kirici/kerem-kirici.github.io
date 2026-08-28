@@ -56,7 +56,7 @@ export function TextLink({
       rel={newTab ? 'noopener noreferrer' : undefined}
       onClick={onClick}
       className={classNames(
-        'inline-flex items-center gap-1',
+        'inline-flex items-center gap-1 touch-manipulation transition-opacity duration-150 ease-out active:opacity-60',
         weight === 'medium' ? 'font-medium' : 'font-normal',
         underlineClass,
         toneClass,

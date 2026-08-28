@@ -56,7 +56,9 @@ export function IconButtonLink({
       target={newTab ? '_blank' : undefined}
       rel={newTab ? 'noopener noreferrer' : undefined}
       className={classNames(
-        'inline-flex items-center justify-center',
+        'inline-flex items-center justify-center select-none touch-manipulation',
+        'transition duration-150 ease-out active:scale-[0.92] motion-reduce:active:scale-100',
+        'focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
         sizeToClasses[size],
         shape === 'circle' ? 'rounded-full' : 'rounded-md',
         getVariantClasses(variant),

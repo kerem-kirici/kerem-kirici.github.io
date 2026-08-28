@@ -3,6 +3,19 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Translucent chrome. Weight encodes hierarchy: `chrome` is the floating
+     structural layer (header, drawer), `raised` is content sitting on top of
+     the page. Both are tokens so reduced-transparency can solidify them in one
+     place instead of in every component. */
+  --material-chrome: rgb(255 255 255 / 0.62);
+  --material-raised: rgb(255 255 255 / 0.8);
+  --material-blur: 20px;
+  --material-saturate: 180%;
+
+  /* A bright top edge reads as light catching the surface of the material. */
+  --material-edge: rgb(255 255 255 / 0.55);
+  --hairline: rgb(0 0 0 / 0.08);
 }
 
 @theme inline {
@@ -16,6 +29,11 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+
+    --material-chrome: rgb(24 24 27 / 0.62);
+    --material-raised: rgb(24 24 27 / 0.78);
+    --material-edge: rgb(255 255 255 / 0.1);
+    --hairline: rgb(255 255 255 / 0.1);
   }
 }
 
@@ -24,6 +42,7 @@ body {
   color: var(--foreground);
   overscroll-behavior: none;
   -webkit-overflow-scrolling: auto !important;
+  font-optical-sizing: auto;
   font-family:
     var(--font-geist-sans),
     ui-sans-serif,
@@ -35,4 +54,145 @@ body {
     Arial,
     'Apple Color Emoji',
     'Segoe UI Emoji';
+}
+
+/* ---------------------------------------------------------------------------
+   Type scale
+
+   Tracking is size-specific, never one value for every size: letters read too
+   far apart as type grows, and too tight as it shrinks. Leading moves the
+   other way — tight on display sizes, generous in body copy. Headings get
+   `text-wrap: balance` so a two-line title breaks evenly; body gets
+   `text-pretty` to avoid orphans.
+   --------------------------------------------------------------------------- */
+
+@layer components {
+  .type-display {
+    letter-spacing: -0.028em;
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+
+  .type-title {
+    letter-spacing: -0.021em;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  .type-heading {
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+
+  .type-subhead {
+    letter-spacing: -0.009em;
+    line-height: 1.35;
+    text-wrap: pretty;
+  }
+
+  .type-body {
+    letter-spacing: 0;
+    text-wrap: pretty;
+  }
+
+  .type-caption {
+    letter-spacing: 0.006em;
+    text-wrap: pretty;
+  }
+
+  /* Small all-caps labels are the one place that wants clearly positive tracking. */
+  .type-micro {
+    letter-spacing: 0.06em;
+  }
+
+  /* ---------------------------------------------------------------------------
+     Materials
+     --------------------------------------------------------------------------- */
+
+  .material-chrome {
+    background: var(--material-chrome);
+    backdrop-filter: blur(var(--material-blur)) saturate(var(--material-saturate));
+    -webkit-backdrop-filter: blur(var(--material-blur)) saturate(var(--material-saturate));
+  }
+
+  .material-raised {
+    background: var(--material-raised);
+    backdrop-filter: blur(calc(var(--material-blur) * 0.6)) saturate(var(--material-saturate));
+    -webkit-backdrop-filter: blur(calc(var(--material-blur) * 0.6))
+      saturate(var(--material-saturate));
+  }
+
+  /* Vibrancy: text over a translucent surface needs more contrast and a touch
+     more weight than text on a solid one, because the backdrop keeps changing. */
+  .material-chrome :where(a, button, span),
+  .material-raised :where(a, button, span) {
+    text-rendering: optimizeLegibility;
+  }
+
+  /* A soft edge where content passes under floating chrome, instead of a 1px
+     rule that is drawn whether or not anything is actually behind it. */
+  .scroll-edge::after {
+    content: '';
+    position: absolute;
+    inset: 100% 0 auto 0;
+    height: 1.25rem;
+    pointer-events: none;
+    background: linear-gradient(to bottom, var(--hairline), transparent 55%);
+    opacity: var(--scroll-edge-opacity, 0);
+    transition: opacity 220ms ease-out;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Accessibility preferences
+   --------------------------------------------------------------------------- */
+
+/* Reduced motion is not "no feedback" — opacity and colour changes stay,
+   because they carry meaning. What goes is travel, parallax and overshoot;
+   components opt in by marking the elements that move. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-motion='travel'] {
+    transform: none !important;
+    transition-property: opacity;
+    transition-duration: 180ms;
+  }
+}
+
+/* Frostier, not see-through: raise the background to opaque and drop the blur. */
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --material-chrome: #ffffff;
+    --material-raised: #ffffff;
+    --material-blur: 0px;
+    --material-saturate: 100%;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --material-chrome: #18181b;
+      --material-raised: #18181b;
+    }
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --material-chrome: #ffffff;
+    --material-raised: #ffffff;
+    --material-blur: 0px;
+    --hairline: rgb(0 0 0 / 0.5);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --material-chrome: #000000;
+      --material-raised: #000000;
+      --hairline: rgb(255 255 255 / 0.5);
+    }
+  }
 }

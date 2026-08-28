@@ -3,8 +3,16 @@
 import { useLanguage } from '@/components/i18n/LanguageProvider';
 import { TextLink } from '@/components/links/TextLink';
 import { Switch } from '@/components/toggles';
+import { projectMomentum, springSheet } from '@/lib/motion';
+import { animate, motion, useMotionValue, useReducedMotion, useTransform } from 'motion/react';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+
+/** Fallback until the panel has been measured (w-72 = 18rem). */
+const DRAWER_WIDTH = 288;
+
+/** Past this fraction of the panel width, a release commits to closing. */
+const DISMISS_THRESHOLD = 0.4;
 
 export default function Header() {
   const { lang, setLang, t } = useLanguage();
@@ -13,6 +21,49 @@ export default function Header() {
 
   const [scrolled, setScrolled] = useState(false);
 
+  const reduceMotion = useReducedMotion();
+
+  const panelRef = useRef<HTMLElement>(null);
+
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  const widthRef = useRef(DRAWER_WIDTH);
+
+  // Mirrored in state because the drag constraints are read during render.
+  const [drawerWidth, setDrawerWidth] = useState(DRAWER_WIDTH);
+
+  // Carries the release velocity of a dismissing flick across the state change,
+  // so the spring that finishes the gesture starts at the speed the finger left.
+  const releaseVelocityRef = useRef(0);
+
+  // 0 = fully open, panel width = fully closed. The drawer's position is a
+  // single continuous value so a drag and an animation are the same thing —
+  // either can take over from the other mid-flight without a jump.
+  const x = useMotionValue(DRAWER_WIDTH);
+
+  // The scrim tracks the panel 1:1 through the whole gesture rather than
+  // fading only once the drag has been released.
+  const scrimOpacity = useTransform(x, (value) =>
+    Math.min(1, Math.max(0, 1 - value / widthRef.current)),
+  );
+
+  const settle = useCallback(
+    (target: number, velocity = 0) => {
+      if (reduceMotion) {
+        x.set(target);
+
+        return;
+      }
+
+      // Hand the release velocity straight to the spring so there is no seam
+      // between the finger letting go and the animation taking over.
+      animate(x, target, { type: 'spring', ...springSheet, velocity });
+    },
+    [reduceMotion, x],
+  );
+
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === 'Escape') setOpen(false);
@@ -20,6 +71,45 @@ export default function Header() {
     if (open) document.addEventListener('keydown', onKey);
 
     return () => document.removeEventListener('keydown', onKey);
+  }, [open]);
+
+  // Drive the panel toward its resting position whenever the open state flips.
+  // Enter and exit run along the same path, so the drawer always leaves the way
+  // it arrived.
+  useEffect(() => {
+    const measure = () => {
+      const width = panelRef.current?.offsetWidth || DRAWER_WIDTH;
+
+      widthRef.current = width;
+      setDrawerWidth(width);
+
+      return width;
+    };
+
+    const velocity = releaseVelocityRef.current;
+
+    releaseVelocityRef.current = 0;
+
+    settle(open ? 0 : measure(), velocity);
+
+    const onResize = () => settle(open ? 0 : measure());
+
+    window.addEventListener('resize', onResize);
+
+    return () => window.removeEventListener('resize', onResize);
+  }, [open, settle]);
+
+  // Move focus into the drawer on open and hand it back to the trigger on
+  // close, so a keyboard user is never stranded behind the panel.
+  const wasOpenRef = useRef(false);
+
+  useEffect(() => {
+    if (open) {
+      closeButtonRef.current?.focus();
+    } else if (wasOpenRef.current) {
+      triggerRef.current?.focus();
+    }
+    wasOpenRef.current = open;
   }, [open]);
 
   // Lock scroll when mobile menu is open and restore on close (preserves position)
@@ -61,7 +151,7 @@ export default function Header() {
       setScrolled(window.scrollY > 0);
     }
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
@@ -71,15 +161,16 @@ export default function Header() {
     // Wrap with a React Fragment because we now have two sibling elements
     <>
       <header
-        className="sticky top-0 z-50 w-full backdrop-blur-md bg-white/50 dark:bg-zinc-900/50 transition-all duration-200 border-b border-white/20 dark:border-zinc-700/30"
-        style={{
-          boxShadow: scrolled
-            ? '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)'
-            : 'none',
-        }}
+        className="material-chrome scroll-edge sticky top-0 z-50 w-full"
+        // A soft edge appears only once content is actually passing underneath;
+        // an always-drawn rule separates the header from nothing.
+        style={{ '--scroll-edge-opacity': scrolled ? 1 : 0 } as React.CSSProperties}
       >
         <div className="mx-auto max-w-4xl px-8 md:px-6 flex items-center justify-between py-8">
-          <Link href="/" className="text-lg font-semibold tracking-tight">
+          <Link
+            href="/"
+            className="text-lg font-semibold type-subhead touch-manipulation transition-opacity duration-150 active:opacity-60"
+          >
             Kerem Kırıcı
           </Link>
           {/* Desktop nav */}
@@ -99,7 +190,10 @@ export default function Header() {
                 {t('nav.about')}
               </TextLink>
             </div>
-            <div className="flex items-center gap-5 pl-4 ml-2 border-l border-zinc-200 dark:border-zinc-800">
+            <div
+              className="flex items-center gap-5 pl-4 ml-2 border-l"
+              style={{ borderColor: 'var(--hairline)' }}
+            >
               <TextLink
                 href="https://github.com/kerem-kirici"
                 underline="always"
@@ -125,7 +219,10 @@ export default function Header() {
                 {t('nav.resume')}
               </TextLink>
             </div>
-            <div className="flex items-center gap-2 pl-4 ml-2 border-l border-zinc-200 dark:border-zinc-800">
+            <div
+              className="flex items-center gap-2 pl-4 ml-2 border-l"
+              style={{ borderColor: 'var(--hairline)' }}
+            >
               <span className="text-xs opacity-70">EN</span>
               <Switch
                 ariaLabel="Toggle language"
@@ -138,10 +235,12 @@ export default function Header() {
           </nav>
           {/* Mobile menu button */}
           <button
+            ref={triggerRef}
             type="button"
             aria-label="Open menu"
+            aria-expanded={open}
             onClick={() => setOpen(true)}
-            className="md:hidden inline-flex items-center justify-center rounded p-2 text-zinc-900 hover:bg-zinc-100 dark:text-zinc-50 dark:hover:bg-zinc-900"
+            className="md:hidden inline-flex items-center justify-center rounded-lg p-2 text-zinc-900 touch-manipulation transition duration-150 ease-out hover:bg-black/5 active:scale-[0.92] motion-reduce:active:scale-100 dark:text-zinc-50 dark:hover:bg-white/10"
           >
             <svg
               width="24"
@@ -161,30 +260,71 @@ export default function Header() {
         </div>
       </header>
 
-      {/* FIX: The mobile sidebar is now OUTSIDE the <header> 
-        so it does not inherit its transparency.
-      */}
+      {/* The drawer lives outside <header> so it does not inherit its material. */}
       <>
-        <div
-          className={`fixed inset-0 z-[1000] md:hidden bg-black/40 backdrop-blur-sm transition-opacity duration-300 ease-in-out overscroll-behavior-none ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        {/* A modal task dims what it covers, so attention lands on the panel. */}
+        <motion.div
+          className={`fixed inset-0 z-[1000] md:hidden bg-black/40 backdrop-blur-sm ${
+            open ? '' : 'pointer-events-none'
+          }`}
+          style={{ opacity: scrimOpacity }}
           onClick={() => setOpen(false)}
+          aria-hidden
         />
-        <aside
-          className={`fixed inset-y-0 right-0 z-[1001] w-72 max-w-full bg-white dark:bg-zinc-900 shadow-lg ring-1 ring-zinc-200 dark:ring-zinc-800 p-6 flex flex-col gap-6 md:hidden transform transition-transform duration-300 ease-in-out ${open ? 'translate-x-0' : 'translate-x-full'}`}
+        <motion.aside
+          ref={panelRef}
+          style={{ x }}
+          drag={reduceMotion ? false : 'x'}
+          dragDirectionLock
+          dragConstraints={{ left: 0, right: drawerWidth }}
+          // Dragging further open meets progressive resistance instead of a
+          // hard stop; dragging closed is unresisted, because that direction
+          // has somewhere to go.
+          dragElastic={{ left: 0.55, right: 0, top: 0, bottom: 0 }}
+          dragMomentum={false}
+          onDragEnd={(_event, info) => {
+            // Snap to where the flick is heading, not to where the finger
+            // happened to stop.
+            const projected = x.get() + projectMomentum(info.velocity.x);
+
+            const shouldClose = projected > widthRef.current * DISMISS_THRESHOLD;
+
+            if (shouldClose === open) {
+              // The open state is about to change, so hand the velocity to the
+              // effect that owns the animation rather than starting a second
+              // one here that it would immediately override.
+              releaseVelocityRef.current = info.velocity.x;
+              setOpen(!shouldClose);
+
+              return;
+            }
+
+            // The gesture did not change the state — finish it here.
+            settle(shouldClose ? widthRef.current : 0, info.velocity.x);
+          }}
+          className="fixed inset-y-0 right-0 z-[1001] w-72 max-w-full touch-pan-y bg-white dark:bg-zinc-900 shadow-2xl p-6 flex flex-col gap-6 md:hidden"
+          aria-label={t('nav.home')}
+          {...(open ? {} : { inert: true })}
         >
+          {/* Grab handle: the affordance that says this panel can be thrown away. */}
+          <span
+            className="absolute inset-y-0 left-1.5 my-auto h-10 w-1 rounded-full bg-zinc-300 dark:bg-zinc-700"
+            aria-hidden
+          />
           <div className="flex items-center justify-between">
             <Link
               href="/"
-              className="text-lg font-semibold tracking-tight"
+              className="text-lg font-semibold type-subhead"
               onClick={() => setOpen(false)}
             >
               Kerem Kırıcı
             </Link>
             <button
+              ref={closeButtonRef}
               type="button"
               aria-label="Close menu"
               onClick={() => setOpen(false)}
-              className="inline-flex items-center justify-center rounded p-2 text-zinc-900 hover:bg-zinc-100 dark:text-zinc-50 dark:hover:bg-zinc-800"
+              className="inline-flex items-center justify-center rounded-lg p-2 text-zinc-900 touch-manipulation transition duration-150 ease-out hover:bg-zinc-100 active:scale-[0.92] motion-reduce:active:scale-100 dark:text-zinc-50 dark:hover:bg-zinc-800"
             >
               <svg
                 width="24"
@@ -227,7 +367,7 @@ export default function Header() {
             >
               {t('nav.about')}
             </TextLink>
-            <div className="h-px bg-zinc-200 dark:bg-zinc-800 my-2" />
+            <div className="h-px my-2" style={{ background: 'var(--hairline)' }} />
             <TextLink
               href="https://github.com/kerem-kirici"
               underline="always"
@@ -252,7 +392,7 @@ export default function Header() {
             >
               {t('nav.resume')}
             </TextLink>
-            <div className="h-px bg-zinc-200 dark:bg-zinc-800 my-2" />
+            <div className="h-px my-2" style={{ background: 'var(--hairline)' }} />
             <div className="flex items-center gap-3">
               <span className="text-xs opacity-70">EN</span>
               <Switch
@@ -264,7 +404,7 @@ export default function Header() {
               <span className="text-xs opacity-70">TR</span>
             </div>
           </nav>
-        </aside>
+        </motion.aside>
       </>
     </> // Close the outer React Fragment
   );

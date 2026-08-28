@@ -31,8 +31,14 @@ function classNames(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(' ');
 }
 
+// Feedback lands on pointer-down, not on release: `:active` fires the moment
+// the press starts, so the control acknowledges the touch before the
+// navigation does. `touch-manipulation` drops the legacy ~300ms tap delay.
 const baseClasses =
-  'inline-flex items-center justify-center font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed';
+  'inline-flex items-center justify-center font-medium select-none touch-manipulation ' +
+  'transition duration-150 ease-out active:scale-[0.97] motion-reduce:active:scale-100 ' +
+  'focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ' +
+  'disabled:opacity-60 disabled:cursor-not-allowed';
 
 const sizeToClasses: Record<ButtonSize, string> = {
   sm: 'px-5 py-2 text-sm',

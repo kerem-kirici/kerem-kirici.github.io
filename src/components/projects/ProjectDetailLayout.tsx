@@ -60,7 +60,7 @@ export default function ProjectDetailLayout({ project }: ProjectDetailLayoutProp
             {project.description}
           </Subheading>
         </div>
-        <div className="mt-8 flex flex-col gap-10 lg:clearfix lg:space-y-0 lg:block">
+        <div className="mt-8 flex flex-col gap-10 lg:flow-root lg:space-y-0 lg:block">
           <Aside
             heading={
               <div className="space-y-3">

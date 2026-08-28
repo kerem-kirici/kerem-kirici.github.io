@@ -1,8 +1,31 @@
 'use client';
 
 import Lenis from 'lenis';
+import { useReducedMotion } from 'motion/react';
 import type { ReactNode } from 'react';
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+
+/**
+ * The Lenis instance currently driving the page, if any.
+ *
+ * Programmatic scrolling has to go through it: Lenis rewrites the scroll
+ * position every frame, so a native `scrollTo({ behavior: 'smooth' })` would be
+ * fighting it for control and land as a stutter.
+ */
+let activeLenis: Lenis | null = null;
+
+export function scrollWindowTo(top: number) {
+  if (activeLenis) {
+    activeLenis.scrollTo(top, { duration: 0.6 });
+
+    return;
+  }
+
+  const prefersReducedMotion =
+    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  window.scrollTo({ top, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+}
 
 interface CardTransform {
   translateY: number;
@@ -46,6 +69,9 @@ interface ScrollStackProps {
   useWindowScroll?: boolean;
   onStackComplete?: () => void;
   desktopColumns?: number;
+  /** Runway above the first card. `none` lets the page own that spacing when
+   *  the stack follows content directly rather than a section heading. */
+  topPadding?: 'default' | 'none';
 }
 
 const ScrollStack: React.FC<ScrollStackProps> = ({
@@ -63,6 +89,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   useWindowScroll = false,
   onStackComplete,
   desktopColumns = 1,
+  topPadding = 'default',
 }) => {
   const scrollerRef = useRef<HTMLDivElement>(null);
 
@@ -87,6 +114,10 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   const [columnCount, setColumnCount] = useState(1);
 
   const [isMobile, setIsMobile] = useState(false);
+
+  // Scroll-driven pinning, scaling and smoothed wheel input are all vestibular
+  // effects. With reduced motion the cards simply flow down the page.
+  const reduceMotion = useReducedMotion();
 
   const effectiveItemDistance = isMobile ? itemDistance / 2 : itemDistance;
 
@@ -293,8 +324,9 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         infinite: false,
         wheelMultiplier: 1,
         lerp: 0.1,
-        syncTouch: true,
-        syncTouchLerp: 0.075,
+        // Touch keeps the platform's own momentum curve — a synthetic one has
+        // to guess at what the finger already told the OS.
+        syncTouch: false,
       });
 
       lenis.on('scroll', handleScroll);
@@ -307,6 +339,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       animationFrameRef.current = requestAnimationFrame(raf);
 
       lenisRef.current = lenis;
+      activeLenis = lenis;
 
       return lenis;
     } else {
@@ -325,8 +358,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         gestureOrientation: 'vertical',
         wheelMultiplier: 1,
         lerp: 0.1,
-        syncTouch: true,
-        syncTouchLerp: 0.075,
+        syncTouch: false,
       });
 
       lenis.on('scroll', handleScroll);
@@ -345,6 +377,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
   }, [handleScroll, useWindowScroll]);
 
   useLayoutEffect(() => {
+    if (reduceMotion) return;
     if (!useWindowScroll && !scrollerRef.current) return;
 
     const container = scrollerRef.current;
@@ -391,6 +424,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         cancelAnimationFrame(animationFrameRef.current);
       }
       if (lenisRef.current) {
+        if (activeLenis === lenisRef.current) activeLenis = null;
         lenisRef.current.destroy();
       }
       stackCompletedRef.current = false;
@@ -416,6 +450,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     getElementOffset,
     setupLenis,
     updateCardTransforms,
+    reduceMotion,
   ]);
 
   return (
@@ -432,7 +467,9 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       }}
     >
       <div
-        className={`scroll-stack-inner pt-[4vh] sm:pt-[6vh] lg:pt-[8vh] px-2 sm:px-6 lg:px-12 pb-[25rem] min-h-screen ${
+        className={`scroll-stack-inner px-2 sm:px-6 lg:px-12 ${
+          topPadding === 'none' ? '' : 'pt-[4vh] sm:pt-[6vh] lg:pt-[8vh]'
+        } ${reduceMotion ? 'pb-12 space-y-8' : 'pb-[25rem] min-h-screen'} ${
           columnCount > 1 ? 'grid grid-cols-2 gap-x-5' : ''
         }`}
       >
