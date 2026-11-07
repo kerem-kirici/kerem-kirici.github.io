@@ -30,7 +30,7 @@ const SKILL_GROUPS: { labelKey: TextKey; skills: string[] }[] = [
       'Web scraping',
       'Selenium',
       'BeautifulSoup',
-      'Bruin (learning)',
+      'Bruin',
     ],
   },
   {
@@ -50,7 +50,7 @@ const SKILL_GROUPS: { labelKey: TextKey; skills: string[] }[] = [
 
 const CERTIFICATE_SLUGS = ['meta', 'csbridge'] as const;
 
-const GOAL_SLUGS = ['startup', 'build', 'growth'] as const;
+const GOAL_SLUGS = ['ownership', 'build', 'growth'] as const;
 
 export default function AboutPage() {
   const { t } = useLanguage();
