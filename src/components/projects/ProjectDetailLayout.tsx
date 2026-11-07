@@ -54,7 +54,10 @@ export default function ProjectDetailLayout({ project }: ProjectDetailLayoutProp
             <Heading as="h1" size="xl" weight="semibold" tracking="tight">
               {project.title}
             </Heading>
-            <DateText value={project.date} />
+            <div className="flex shrink-0 items-baseline gap-3">
+              {project.inProgress && <Tag>{t('projects.in_progress')}</Tag>}
+              <DateText value={project.date} />
+            </div>
           </div>
           <Subheading as="h2" size="md" weight="semibold" tracking="tight">
             {project.description}
@@ -85,16 +88,22 @@ export default function ProjectDetailLayout({ project }: ProjectDetailLayoutProp
                   <Text size="xs" tone="subtle" className="uppercase tracking-wider">
                     {t('projects.repository')}
                   </Text>
-                  <ButtonLink
-                    href={project.githubUrl}
-                    variant="outline"
-                    tone="inverse"
-                    newTab
-                    size="md"
-                    className="mt-2 w-full"
-                  >
-                    {t('projects.view_on_github')}
-                  </ButtonLink>
+                  {project.githubUrl ? (
+                    <ButtonLink
+                      href={project.githubUrl}
+                      variant="outline"
+                      tone="inverse"
+                      newTab
+                      size="md"
+                      className="mt-2 w-full"
+                    >
+                      {t('projects.view_on_github')}
+                    </ButtonLink>
+                  ) : (
+                    <Text size="sm" leading="relaxed" tone="muted" className="mt-2">
+                      {t('projects.private_repo')}
+                    </Text>
+                  )}
                 </div>
               </div>
             }

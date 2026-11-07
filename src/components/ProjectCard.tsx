@@ -26,6 +26,7 @@ export default function ProjectCard({
   tags,
   slug,
   date,
+  inProgress,
 }: Project) {
   const [imageSrc, imageOrientation] = image;
 
@@ -245,7 +246,10 @@ export default function ProjectCard({
                 </div>
               )}
               <div className="mt-4 flex items-center justify-between">
-                <DateText value={date} size="xs" />
+                <div className="flex items-center gap-2">
+                  <DateText value={date} size="xs" />
+                  {inProgress && <Tag>{t('projects.in_progress')}</Tag>}
+                </div>
                 <ButtonLink
                   href={href}
                   variant="secondary"

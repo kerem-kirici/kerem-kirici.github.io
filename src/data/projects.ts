@@ -8,13 +8,19 @@ export type Project = {
   long_explanation: string;
   date: string;
   href: string;
-  githubUrl: string;
+  /** Null when the repository is private. */
+  githubUrl: string | null;
+  inProgress: boolean;
   tags: string[];
   image: [string, 'portrait' | 'landscape'];
   gallery: [string, 'portrait' | 'landscape'][];
 };
 
 const projectGallery: Record<string, [string, 'portrait' | 'landscape'][]> = {
+  pulsewindow: [
+    ['/projects/pulsewindow/image.png', 'landscape'],
+    ['/projects/pulsewindow/image2.png', 'landscape'],
+  ],
   pokerist: [
     ['/projects/pokerist/image.png', 'portrait'],
     ['/projects/pokerist/image2.png', 'portrait'],
@@ -34,16 +40,40 @@ const projectGallery: Record<string, [string, 'portrait' | 'landscape'][]> = {
     ['/projects/sudokumobileapp/image4.png', 'portrait'],
     ['/projects/sudokumobileapp/image5.png', 'portrait'],
   ],
+  'arbitrage-alerts': [['/projects/arbitrage-alerts/image.png', 'landscape']],
   sudokugenerator: [['/projects/sudokugenerator/image.png', 'landscape']],
 };
 
+// Repositories that are private on GitHub, so the site shouldn't link to them.
+const privateRepos = new Set(['pulsewindow']);
+
+// Projects still being built.
+const inProgressProjects = new Set(['pulsewindow']);
+
+// Shown first on the home page: the work closest to full-stack and data engineering.
+export const FEATURED_SLUGS = [
+  'pulsewindow',
+  'pokerist',
+  '2048-playing-algorithm',
+  'arbitrage-alerts',
+] as const;
+
 export const projects = (language: Lang = 'en'): Project[] => {
-  const projectSlugs = ['pokerist', 'sudokumobileapp', '2048-playing-algorithm', 'sudokugenerator'];
+  const projectSlugs = [
+    'pulsewindow',
+    'pokerist',
+    'sudokumobileapp',
+    '2048-playing-algorithm',
+    'arbitrage-alerts',
+    'sudokugenerator',
+  ];
 
   const projectDates = {
+    pulsewindow: '10/2026',
     pokerist: '10/2025',
     sudokumobileapp: '06/2025',
     '2048-playing-algorithm': '04/2023',
+    'arbitrage-alerts': '10/2021',
     sudokugenerator: '07/2021',
   };
 
@@ -69,7 +99,8 @@ export const projects = (language: Lang = 'en'): Project[] => {
         ],
       date: projectDates[slug as keyof typeof projectDates],
       href: `/projects/${slug}`,
-      githubUrl: `https://github.com/kerem-kirici/${slug}`,
+      githubUrl: privateRepos.has(slug) ? null : `https://github.com/kerem-kirici/${slug}`,
+      inProgress: inProgressProjects.has(slug),
       tags,
       gallery,
     } satisfies Project;

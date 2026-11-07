@@ -41,11 +41,11 @@ export default function ProjectsPage() {
                 <div className="mt-2 flex flex-wrap gap-2">
                   {(
                     [
-                      'projects.type.native_ios',
-                      'projects.type.react_native',
-                      'projects.type.frontend_ux',
+                      'projects.type.backend_data',
+                      'projects.type.full_stack',
+                      'projects.type.web_scraping',
                       'projects.type.ai_algorithms',
-                      'projects.type.tooling',
+                      'projects.type.mobile',
                     ] as const
                   ).map((type) => (
                     <Tag key={type}>{t(type)}</Tag>
@@ -63,7 +63,7 @@ export default function ProjectsPage() {
                 {t('projects.explore_more')}
               </Text>
               <Actions gap="md">
-                <ButtonLink href="/projects/pokerist" variant="primary" size="md">
+                <ButtonLink href="/projects/pulsewindow" variant="primary" size="md">
                   {t('projects.view_highlighted_case')}
                 </ButtonLink>
                 <ButtonLink
