@@ -30,7 +30,7 @@ const SKILL_GROUPS: { labelKey: TextKey; skills: string[] }[] = [
       'Web scraping',
       'Selenium',
       'BeautifulSoup',
-      'Bruin (learning)',
+      'Bruin',
     ],
   },
   {
