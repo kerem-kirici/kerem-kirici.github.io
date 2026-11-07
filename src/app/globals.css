@@ -37,6 +37,16 @@
   }
 }
 
+/* Backdrop blur is the most expensive paint on the page, and it costs the most
+   inside a subtree that is being transformed every frame — which is exactly
+   where the project cards put it. Phones get a lighter material. */
+@media (pointer: coarse) {
+  :root {
+    --material-blur: 12px;
+    --material-saturate: 140%;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

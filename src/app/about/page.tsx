@@ -7,31 +7,44 @@ import { Section } from '@/components/layout/Section';
 import { DateText, Heading, Subheading, Tag, Text } from '@/components/texts';
 import { TextKey } from '@/data/Texts';
 
-const EXPERIENCE_SLUGS = ['isbankasi', 'tatilsepeti', 'visight'] as const;
+const EXPERIENCE_SLUGS = ['current', 'isbankasi', 'tatilsepeti', 'visight'] as const;
 
 const SKILL_GROUPS: { labelKey: TextKey; skills: string[] }[] = [
   {
     labelKey: 'skills.languages',
-    skills: ['JavaScript', 'TypeScript', 'Python', 'C#', 'C/C++', 'Swift', 'SQL', 'HTML', 'CSS'],
+    skills: ['Python', 'SQL', 'TypeScript', 'JavaScript', 'C#', 'C/C++', 'Swift'],
   },
   {
-    labelKey: 'skills.frontend',
-    skills: ['React.js', 'Next.js', 'Vue.js', 'Redux Toolkit', 'Material UI'],
+    labelKey: 'skills.backend',
+    skills: ['.NET', 'Node.js', 'REST APIs', 'Server-Sent Events', 'Swagger'],
   },
-  { labelKey: 'skills.mobile', skills: ['React Native', 'SwiftUI', 'Combine', 'Expo', 'Flutter'] },
-  { labelKey: 'skills.backend', skills: ['.NET', 'Node.js'] },
-  { labelKey: 'skills.data', skills: ['MongoDB', 'PyMongo', 'SQL', 'Firebase', 'Supabase'] },
+  {
+    labelKey: 'skills.data',
+    skills: ['PostgreSQL', 'MongoDB', 'PyMongo', 'Redis', 'DuckDB', 'Firebase', 'Supabase'],
+  },
+  {
+    labelKey: 'skills.pipelines',
+    skills: [
+      'Data pipelines',
+      'Data validation',
+      'Web scraping',
+      'Selenium',
+      'BeautifulSoup',
+      'Bruin (learning)',
+    ],
+  },
+  {
+    labelKey: 'skills.cloud',
+    skills: ['Docker', 'Jenkins (CI/CD)', 'GitHub Actions', 'Prometheus', 'Grafana', 'Git/GitLab'],
+  },
+  {
+    labelKey: 'skills.web',
+    skills: ['Next.js', 'React', 'Redux Toolkit', 'Material UI', 'React Native', 'SwiftUI'],
+  },
   { labelKey: 'skills.ai_ml', skills: ['TensorFlow', 'PyTorch'] },
   {
     labelKey: 'skills.tools',
-    skills: [
-      'Jenkins (CI/CD)',
-      'Git/GitLab',
-      'Agile/Scrum',
-      'Swagger',
-      'Automated Testing',
-      'Technical Documentation',
-    ],
+    skills: ['Agile/Scrum', 'Automated Testing', 'Code Review', 'Technical Documentation'],
   },
 ];
 

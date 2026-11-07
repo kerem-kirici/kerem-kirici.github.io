@@ -6,14 +6,17 @@ import { ButtonLink } from '@/components/links';
 import ProjectCard from '@/components/ProjectCard';
 import ScrollStack, { ScrollStackItem } from '@/components/StickyScrollStack';
 import { Article, Heading, Subheading, Tag, Text } from '@/components/texts';
-import { projects } from '@/data/projects';
+import { FEATURED_SLUGS, projects } from '@/data/projects';
 import { TextKey } from '@/data/Texts';
 
 const SKILL_GROUPS: { labelKey: TextKey; skills: string[] }[] = [
-  { labelKey: 'skills.frontend', skills: ['Next.js', 'React', 'TypeScript', 'Vue.js'] },
-  { labelKey: 'skills.backend_data', skills: ['Python', 'MongoDB', 'SQL', '.NET', 'Node.js'] },
-  { labelKey: 'skills.mobile', skills: ['React Native', 'SwiftUI', 'Flutter'] },
-  { labelKey: 'skills.tools', skills: ['Jenkins (CI/CD)', 'Git/GitLab', 'Agile'] },
+  { labelKey: 'skills.backend', skills: ['Python', '.NET', 'Node.js', 'REST APIs'] },
+  {
+    labelKey: 'skills.data',
+    skills: ['SQL', 'PostgreSQL', 'MongoDB', 'Redis', 'Data pipelines', 'Web scraping'],
+  },
+  { labelKey: 'skills.web', skills: ['Next.js', 'React', 'TypeScript'] },
+  { labelKey: 'skills.cloud', skills: ['Docker', 'Jenkins (CI/CD)', 'GitHub Actions', 'Git'] },
 ];
 
 export default function Home() {
@@ -158,7 +161,7 @@ export default function Home() {
       <Section padding="sm" container="xl" className="pt-0 pb-0">
         <ScrollStack useWindowScroll desktopColumns={2}>
           {projects(lang)
-            .slice(0, 4)
+            .filter((p) => (FEATURED_SLUGS as readonly string[]).includes(p.slug))
             .map((p) => (
               <ScrollStackItem key={`${p.slug}-${lang}`}>
                 <ProjectCard {...p} />

@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Kerem Kırıcı – Portfolio',
   description:
-    'Portfolio of Kerem Kırıcı, a full-stack and mobile software engineer working across web, backend, mobile (iOS & React Native), and data engineering.',
+    'Portfolio of Kerem Kırıcı, a full-stack software developer working on backends, data pipelines, databases and web scraping.',
 };
 
 export default function RootLayout({

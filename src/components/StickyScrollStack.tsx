@@ -310,10 +310,6 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     getScrollData,
   ]);
 
-  const handleScroll = useCallback(() => {
-    updateCardTransforms();
-  }, [updateCardTransforms]);
-
   const setupLenis = useCallback(() => {
     if (useWindowScroll) {
       const lenis = new Lenis({
@@ -324,15 +320,13 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         infinite: false,
         wheelMultiplier: 1,
         lerp: 0.1,
-        // Touch keeps the platform's own momentum curve — a synthetic one has
-        // to guess at what the finger already told the OS.
-        syncTouch: false,
+        syncTouch: true,
+        syncTouchLerp: 0.075,
       });
-
-      lenis.on('scroll', handleScroll);
 
       const raf = (time: number) => {
         lenis.raf(time);
+        updateCardTransforms();
         animationFrameRef.current = requestAnimationFrame(raf);
       };
 
@@ -358,13 +352,13 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         gestureOrientation: 'vertical',
         wheelMultiplier: 1,
         lerp: 0.1,
-        syncTouch: false,
+        syncTouch: true,
+        syncTouchLerp: 0.075,
       });
-
-      lenis.on('scroll', handleScroll);
 
       const raf = (time: number) => {
         lenis.raf(time);
+        updateCardTransforms();
         animationFrameRef.current = requestAnimationFrame(raf);
       };
 
@@ -374,7 +368,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
 
       return lenis;
     }
-  }, [handleScroll, useWindowScroll]);
+  }, [updateCardTransforms, useWindowScroll]);
 
   useLayoutEffect(() => {
     if (reduceMotion) return;
@@ -399,7 +393,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       if (!isLastRow) {
         card.style.marginBottom = `${effectiveItemDistance}px`;
       }
-      card.style.willChange = 'transform, filter';
+      card.style.willChange = blurAmount ? 'transform, filter' : 'transform';
       card.style.transformOrigin = 'top center';
       card.style.backfaceVisibility = 'hidden';
       card.style.transform = 'translateZ(0)';

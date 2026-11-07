@@ -18,8 +18,8 @@ const TEXT_DICTIONARY = {
     tr: 'Merhaba! Portfolyoma Hoşgeldiniz.',
   },
   'hero.subtitle': {
-    en: 'Junior Software Developer — Full-Stack, Mobile & Data · ITU Engineering Student',
-    tr: 'Junior Software Developer — Full-Stack, Mobil ve Veri · İTÜ Mühendislik Öğrencisi',
+    en: 'Full-Stack Software Developer — Backend, Data Pipelines & Databases · ITU Engineering Student',
+    tr: 'Full-Stack Yazılım Geliştirici — Backend, Veri Hatları ve Veritabanları · İTÜ Mühendislik Öğrencisi',
   },
   'hero.cta': { en: 'Email', tr: 'Email' },
   'hero.linkedin': { en: 'LinkedIn', tr: 'LinkedIn' },
@@ -27,8 +27,8 @@ const TEXT_DICTIONARY = {
   'home.featured': { en: 'Featured projects', tr: 'Öne çıkan projeler' },
   // --- Home Page Meta & Aside ---
   'home.page_title': {
-    en: 'Kerem Kırıcı – Junior Software Developer',
-    tr: 'Kerem Kırıcı – Junior Software Developer',
+    en: 'Kerem Kırıcı – Full-Stack Software Developer',
+    tr: 'Kerem Kırıcı – Full-Stack Yazılım Geliştirici',
   },
   'home.page_description': {
     en: 'Portfolio of Kerem Kırıcı: projects, experience, and contact information.',
@@ -36,8 +36,8 @@ const TEXT_DICTIONARY = {
   },
   'home.recent_focus_title': { en: 'Recent Focus', tr: 'Çalışma Alanlarım' },
   'home.recent_focus_text': {
-    en: 'Full-stack web products with Next.js and React, backend data pipelines in Python and MongoDB, native iOS and React Native apps, and CI/CD-driven validation and test automation.',
-    tr: 'Next.js ve React ile full-stack web ürünleri, Python ve MongoDB ile backend veri hatları, native iOS ve React Native ile mobil uygulamalar; bunların yanında CI/CD tabanlı doğrulama ve test otomasyonu üzerine çalışıyorum.',
+    en: 'The backend and the data behind a product: pipelines that ingest, validate and move data, the databases it lands in, the scrapers and streaming feeds that collect it, and the web apps that put it in front of people.',
+    tr: 'Bir ürünün backend’i ve arkasındaki veri: veriyi toplayan, doğrulayan ve taşıyan veri hatları, verinin yerleştiği veritabanları, onu toplayan scraper’lar ve canlı veri akışları, ve hepsini insanların önüne koyan web uygulamaları.',
   },
   'home.currently_working_with': {
     en: 'Mostly working with',
@@ -45,17 +45,17 @@ const TEXT_DICTIONARY = {
   },
   'home.availability': { en: "What's next", tr: 'Sırada ne var' },
   'home.availability_text': {
-    en: "I'm looking for an early-stage startup team. I want a small group, real ownership, and a product I can carry from an empty repository to something people actually rely on — across web, mobile, and the backend behind them.",
-    tr: 'Erken aşama bir startup ekibi arıyorum. Küçük bir takım, gerçek sorumluluk ve boş bir repodan insanların gerçekten güvendiği bir ürüne taşıyabileceğim bir iş istiyorum; web, mobil ve arkasındaki backend dahil olmak üzere.',
+    en: 'I’m working toward a Forward Deployed Engineer role: sitting close to the people who use the product, understanding their data and their problem, and shipping the pipeline, the database and the application that solve it, end to end.',
+    tr: 'Hedefim Forward Deployed Engineer rolü: ürünü kullanan insanlara yakın durmak, verilerini ve sorunlarını anlamak, ve o sorunu çözen veri hattını, veritabanını ve uygulamayı uçtan uca hayata geçirmek.',
   },
   'home.current_position': { en: 'Where I am now', tr: 'Şu an neredeyim' },
   'home.current_position_text': {
-    en: 'Just wrapped an AI & Data Engineering internship at İş Bankası (Master Class 2026), where I built the backend data infrastructure and Jenkins-orchestrated validation pipelines behind the Test Automation Team. Before that, a year at Tatilsepeti as a Junior Software Developer on a large-scale Next.js backoffice used by ~300 employees.',
-    tr: "İş Bankası'nda (Master Class 2026 programı) AI & Data Engineering stajımı yeni tamamladım; Test Otomasyon Ekibinin arkasındaki backend veri altyapısını ve Jenkins ile yönetilen doğrulama hatlarını kurdum. Öncesinde bir yıl boyunca Tatilsepeti'nde Junior Software Developer olarak ~300 çalışanın kullandığı büyük ölçekli bir Next.js backoffice projesinde çalıştım.",
+    en: 'Software Developer Intern at a data platform startup, where I contribute to the company’s GitHub projects and its cloud platform and work on data pipelines. Before that: AI & Data Engineering intern at İş Bankası, building validation pipelines for the Test Automation Team, and a year as a Junior Software Developer at Tatilsepeti.',
+    tr: 'Bir veri platformu startup’ında Software Developer Intern olarak şirketin GitHub projelerine ve bulut platformuna katkı veriyor, veri hatları üzerinde çalışıyorum. Öncesinde İş Bankası’nda Test Otomasyon Ekibi için doğrulama hatları kuran AI & Data Engineering stajyeriydim; ondan önce de bir yıl Tatilsepeti’nde Junior Software Developer olarak çalıştım.',
   },
   'hero.description': {
-    en: "Hi, I'm Kerem! I'm an Electronics and Communication Engineering student at ITU and a software developer with 2+ years of professional experience across full-stack web, backend, mobile, and data engineering. I've just finished an AI & Data Engineering internship at İş Bankası, where I engineered the backend data infrastructure for the Test Automation Team — PyMongo flows landing raw SDLC data in MongoDB, automated checks that the processed data reaches SQL intact, email alerting for anything missing, and Jenkins orchestrating all of it. Before that I spent a year at Tatilsepeti, promoted from intern to Junior Software Developer after a single month, rebuilding a legacy backoffice in Next.js and MUI for ~300 employees and shipping dashboards over millions of records. Earlier, at VISIGHT Technology, I led a greenfield React Native app end to end and delivered the MVP in four months. What I want next is a startup: a small team, real ownership, and a product I get to carry from an empty repository to something people genuinely rely on.",
-    tr: "Merhaba, ben Kerem! İTÜ'de Elektronik ve Haberleşme Mühendisliği okuyorum ve full-stack web, backend, mobil ve veri mühendisliği alanlarında 2+ yıllık profesyonel deneyime sahip bir yazılım geliştiricisiyim. İş Bankası'nda AI & Data Engineering stajımı yeni tamamladım; Test Otomasyon Ekibi için backend veri altyapısını kurdum — ham SDLC verisini MongoDB'ye taşıyan PyMongo akışları, işlenmiş verinin SQL'e eksiksiz ulaştığını doğrulayan otomatik kontroller, eksik veri için e-posta uyarıları ve bunların tümünü yöneten Jenkins. Öncesinde Tatilsepeti'nde bir yıl geçirdim; yalnızca bir ay sonra stajyerlikten Junior Software Developer'a terfi ettim, ~300 çalışan için eski bir backoffice'i Next.js ve MUI ile yeniden kurduk ve milyonlarca kayıt üzerinde çalışan panolar geliştirdim. Daha öncesinde VISIGHT Technology'de sıfırdan bir React Native uygulamasını uçtan uca yönettim ve MVP'yi dört ayda teslim ettim. Sırada istediğim şey bir startup: küçük bir ekip, gerçek sorumluluk ve boş bir repodan insanların gerçekten güvendiği bir ürüne taşıyabileceğim bir iş.",
+    en: "Hi, I'm Kerem! I'm a full-stack software developer and an Electronics and Communication Engineering student at ITU, with 2+ years of professional experience. Most of my work now sits behind the interface: data pipelines, databases, web scraping, and the backends and cloud services that tie them together. I'm currently a Software Developer Intern at a data platform startup, contributing to its GitHub projects and cloud platform and learning Bruin for building data pipelines. Before that, at İş Bankası, I built the data infrastructure for the Test Automation Team: PyMongo flows landing raw SDLC data in MongoDB, automated checks that the processed data reaches SQL intact, email alerts for anything missing, and Jenkins running all of it. At Tatilsepeti I spent a year on a Next.js backoffice for ~300 employees, with dashboards over millions of records and API integrations that replaced manual reporting. On my own time I'm building PulseWindow, a .NET, Redis and PostgreSQL service that streams live market data and finds price gaps that survive real fees. Next, I want to grow into a Forward Deployed Engineer: close to the customer, owning the whole path from raw data to a working product.",
+    tr: "Merhaba, ben Kerem! İTÜ'de Elektronik ve Haberleşme Mühendisliği okuyan, 2+ yıllık profesyonel deneyime sahip bir full-stack yazılım geliştiricisiyim. Bugün işimin büyük kısmı arayüzün arkasında: veri hatları, veritabanları, web scraping ve bunları birbirine bağlayan backend ve bulut servisleri. Şu anda bir veri platformu startup'ında Software Developer Intern olarak şirketin GitHub projelerine ve bulut platformuna katkı veriyor, veri hatları kurmak için Bruin'i öğreniyorum. Öncesinde İş Bankası'nda Test Otomasyon Ekibi için veri altyapısını kurdum: ham SDLC verisini MongoDB'ye taşıyan PyMongo akışları, işlenmiş verinin SQL'e eksiksiz ulaştığını doğrulayan otomatik kontroller, eksik veri için e-posta uyarıları ve bunların tümünü çalıştıran Jenkins. Tatilsepeti'nde bir yıl boyunca ~300 çalışanın kullandığı bir Next.js backoffice üzerinde çalıştım; milyonlarca kayıt üzerinde çalışan panolar ve manuel raporlamanın yerini alan API entegrasyonları geliştirdim. Kendi zamanımda ise PulseWindow'u geliştiriyorum: canlı piyasa verisini akış halinde alan ve gerçek komisyonlardan sonra da kârlı kalan fiyat farklarını bulan bir .NET, Redis ve PostgreSQL servisi. Sırada Forward Deployed Engineer olarak büyümek istiyorum: müşteriye yakın, ham veriden çalışan bir ürüne kadar tüm yolun sorumluluğunu alarak.",
   },
   'hero.lets_connect': {
     en: "Let's connect!",
@@ -66,18 +66,18 @@ const TEXT_DICTIONARY = {
     tr: 'Hakkımda',
   },
   'about.subtitle': {
-    en: 'Junior Software Developer — Full-Stack, Mobile & Data · ITU Engineering Student',
-    tr: 'Junior Software Developer — Full-Stack, Mobil ve Veri · İTÜ Mühendislik Öğrencisi',
+    en: 'Full-Stack Software Developer — Backend, Data Pipelines & Databases · ITU Engineering Student',
+    tr: 'Full-Stack Yazılım Geliştirici — Backend, Veri Hatları ve Veritabanları · İTÜ Mühendislik Öğrencisi',
   },
   'about.description': {
-    en: "Hello, I'm Kerem Kırıcı — thanks for stopping by. I'm a software developer and an Electronics and Communication Engineering student at Istanbul Technical University, with 2+ years of professional experience building scalable full-stack, web, and mobile applications across both large enterprise environments and small startup teams.\n\nMy path has given me a broad perspective. From long-term work in the U.S. service industry I learned communication, adaptability, and how to read what people actually need rather than what they say they want — a habit I bring to every product I work on.\n\nMy professional journey started at VISIGHT Technology, a small team where I led the end-to-end development of a greenfield React Native app. I owned the architecture and delivered the MVP within a strict four-month timeline, applying OOP principles and centralized state management with Redux Toolkit to keep the UI modular and scalable, and integrating Firebase with asynchronous patterns for authentication and real-time data. It was my first taste of building something from nothing, and it is still the work I'm proudest of.\n\nFrom there I joined Tatilsepeti, one of Turkey's major travel-tech companies, as an intern — and moved to full-time Junior Software Developer after a single month. In a three-person frontend team I helped modernize a legacy backoffice across the full SDLC with Next.js and Material UI, improving daily workflows for around 300 employees. I built dynamic dashboards for the Sales, Marketing, and SEO teams that track operational metrics across millions of records without sacrificing performance, executed Swagger-driven API integrations that replaced manual reporting with real-time data visualization, worked in a genuine Agile rhythm of sprint planning, stand-ups, and GitLab code reviews, and authored the technical documentation that standardized the new component library.\n\nMost recently I was at İş Bankası as an AI & Data Engineering Intern in the Master Class 2026 program, on the backend side of the Test Automation Team. I engineered the data infrastructure with PyMongo, controlling the flows that log raw SDLC data streams from internal bank applications into MongoDB. I built automated validation systems that verify processed test data transfers into SQL tables intact, with a protocol that detects missing data and reports it to the team by email. I added monitoring across multi-step pipelines to protect data integrity — tracking the ratio of missing metrics while deriving performance indicators at the team, application, and package level — and configured Jenkins to orchestrate the validation jobs, cutting manual overhead and keeping the pipelines continuously reliable.\n\nAlongside professional work I keep building on my own. I earned META's “Create the User Interface with SwiftUI” certificate and applied it in Pokerist, a native iOS Texas Hold'em analyzer built with SwiftUI and Combine on a clean MVVM architecture, running a 10,000-game Monte Carlo simulation asynchronously so the main thread never blocks. Native iOS remains one of the areas I genuinely enjoy — alongside web, backend, and data engineering, not instead of them.\n\nWhat ties it all together is range with rigor: I move comfortably between a React or Next.js frontend, a Python or .NET backend, a mobile codebase, and a CI/CD pipeline — writing clean, maintainable code and keeping the user at the center of every layer.",
-    tr: "Merhaba, ben Kerem Kırıcı — uğradığınız için teşekkürler! İstanbul Teknik Üniversitesi'nde Elektronik ve Haberleşme Mühendisliği okuyorum; hem büyük kurumsal ortamlarda hem de küçük startup ekiplerinde ölçeklenebilir full-stack, web ve mobil uygulamalar geliştirdiğim 2+ yıllık profesyonel deneyime sahip bir yazılım geliştiricisiyim.\n\nBu yolculuk bana geniş bir bakış açısı kazandırdı. ABD'de hizmet sektöründeki uzun süreli çalışma deneyimim bana iletişimi, uyum sağlamayı ve insanların söylediklerinden çok gerçekte neye ihtiyaç duyduklarını okumayı öğretti; bu alışkanlığı üzerinde çalıştığım her ürüne taşıyorum.\n\nProfesyonel yolculuğum, küçük bir ekip olan VISIGHT Technology'de başladı: Sıfırdan bir React Native uygulamasının uçtan uca geliştirilmesine liderlik ettim. Mimariyi ben kurdum ve MVP'yi dört aylık sıkı bir takvimde teslim ettim; arayüzü modüler ve ölçeklenebilir tutmak için OOP prensiplerini ve Redux Toolkit ile merkezi state yönetimini uyguladım, kimlik doğrulama ve gerçek zamanlı veri için Firebase'i asenkron kalıplarla entegre ettim. Yoktan bir şey inşa etmeyi ilk kez orada tattım ve hâlâ en gurur duyduğum iş.\n\nArdından Türkiye'nin önde gelen seyahat teknolojisi şirketlerinden Tatilsepeti'ne stajyer olarak katıldım ve yalnızca bir ay sonra tam zamanlı Junior Software Developer pozisyonuna geçtim. Üç kişilik bir frontend ekibinde, yaklaşık 300 çalışanın günlük iş akışını iyileştirerek eski bir backoffice platformunu Next.js ve Material UI ile tüm SDLC boyunca modernize ettik. Satış, Pazarlama ve SEO ekipleri için milyonlarca kayıt üzerindeki operasyonel metrikleri performanstan ödün vermeden takip eden dinamik panolar geliştirdim; manuel raporlamayı gerçek zamanlı veri görselleştirmeyle değiştiren Swagger tabanlı API entegrasyonları gerçekleştirdim; sprint planlama, günlük stand-up'lar ve GitLab kod incelemelerinden oluşan gerçek bir Agile ritminde çalıştım ve yeni bileşen kütüphanesini standartlaştıran teknik dokümantasyonu yazdım.\n\nEn son İş Bankası'nda, Master Class 2026 programı kapsamında AI & Data Engineering stajyeri olarak Test Otomasyon Ekibinin backend tarafındaydım. Veri altyapısını PyMongo ile kurdum; bankanın iç uygulamalarından gelen ham SDLC veri akışlarını MongoDB'ye kaydeden akışları yönettim. İşlenmiş test verisinin SQL tablolarına eksiksiz aktarıldığını doğrulayan otomatik doğrulama sistemleri geliştirdim ve eksik veriyi tespit edip ekibe e-posta ile raporlayan bir protokol kurdum. Veri bütünlüğünü korumak için çok adımlı hatlar boyunca izleme ekledim — takım, uygulama ve paket seviyesinde türetilmiş performans göstergeleri üretilirken eksik metrik oranını takip ederek — ve doğrulama işlerini yönetmesi için Jenkins'i yapılandırarak manuel yükü azalttım ve hatların sürekli güvenilir kalmasını sağladım.\n\nProfesyonel işimin yanında kendi projelerimi de geliştirmeye devam ediyorum. META'nın “Create the User Interface with SwiftUI” sertifikasını aldım ve bunu Pokerist'te uyguladım: SwiftUI ve Combine ile temiz bir MVVM mimarisi üzerine kurulu, 10.000 oyunluk Monte Carlo simülasyonunu ana thread'i hiç bloklamadan asenkron çalıştıran native bir iOS Texas Hold'em analiz aracı. Native iOS; web, backend ve veri mühendisliğinin yerini alan değil, onların yanında keyifle çalıştığım alanlardan biri olmaya devam ediyor.\n\nTüm bunları birbirine bağlayan şey, disiplinle birleşen çok yönlülük: Bir React ya da Next.js frontend'i, bir Python ya da .NET backend'i, bir mobil kod tabanı ve bir CI/CD hattı arasında rahatça hareket ediyor; her katmanda temiz, sürdürülebilir kod yazmaya ve kullanıcıyı merkezde tutmaya özen gösteriyorum.",
+    en: "Hello, I'm Kerem Kırıcı — thanks for stopping by. I'm a full-stack software developer and an Electronics and Communication Engineering student at Istanbul Technical University, with 2+ years of professional experience across large enterprise teams and small startups. I've built web interfaces and mobile apps, but the work I keep coming back to is underneath them: getting data in, keeping it correct, storing it well, and serving it to the product.\n\nRight now I'm a Software Developer Intern at a data platform startup. I contribute to the company's GitHub projects and its cloud platform, and I'm taking on data pipelines, database management and web scraping work. I'm still early with Bruin, the pipeline tool I use there, and I'm learning it by building with it.\n\nBefore that I was at İş Bankası as an AI & Data Engineering Intern in the Master Class 2026 program, on the backend side of the Test Automation Team. I engineered the data infrastructure with PyMongo, controlling the flows that log raw SDLC data streams from internal bank applications into MongoDB. I built automated validation that checks processed test data reaches SQL tables intact, with a protocol that detects missing data and reports it to the team by email. I added monitoring across multi-step pipelines — tracking the ratio of missing metrics while deriving performance indicators at the team, application and package level — and configured Jenkins to orchestrate the validation jobs, so the pipelines stayed reliable without anyone checking them by hand.\n\nAt Tatilsepeti, one of Turkey's major travel-tech companies, I started as an intern and moved to full-time Junior Software Developer after a single month. In a three-person team I helped modernize a legacy backoffice with Next.js and Material UI for around 300 employees. The part I learned most from was the data: dashboards for the Sales, Marketing and SEO teams over millions of records, and Swagger-driven API integrations that replaced manual reporting with live data.\n\nMy professional start was at VISIGHT Technology, where I led a greenfield React Native app end to end and delivered the MVP in four months, with Firebase handling authentication and real-time data. It taught me what it means to own a product from an empty repository.\n\nOn my own time I build things that pull these threads together. PulseWindow, which I'm building now, streams live order books from several crypto exchanges, computes price gaps after each market's real fees, paper-trades them and shows the results on a Next.js dashboard — a .NET service on Redis and PostgreSQL, run with Docker and watched with Prometheus and Grafana. It is the grown-up version of Arbitrage-Alerts, a Selenium scraper I wrote in 2021 for the same problem.\n\nWhat ties it together is range with rigor: I'm comfortable moving from a database schema to an API to the screen that uses it, and I care that the data underneath is right.",
+    tr: "Merhaba, ben Kerem Kırıcı — uğradığınız için teşekkürler! İstanbul Teknik Üniversitesi'nde Elektronik ve Haberleşme Mühendisliği okuyan, hem büyük kurumsal ekiplerde hem de küçük startup'larda edindiğim 2+ yıllık profesyonel deneyime sahip bir full-stack yazılım geliştiricisiyim. Web arayüzleri ve mobil uygulamalar geliştirdim; ama tekrar tekrar döndüğüm iş onların altında: veriyi içeri almak, doğru tutmak, iyi saklamak ve ürüne sunmak.\n\nŞu anda bir veri platformu startup'ında Software Developer Intern olarak çalışıyorum. Şirketin GitHub projelerine ve bulut platformuna katkı veriyor; veri hatları, veritabanı yönetimi ve web scraping işlerini üstleniyorum. Orada kullandığım veri hattı aracı Bruin'de henüz yeniyim ve onu kullanarak geliştirirken öğreniyorum.\n\nÖncesinde İş Bankası'nda, Master Class 2026 programı kapsamında AI & Data Engineering stajyeri olarak Test Otomasyon Ekibinin backend tarafındaydım. Veri altyapısını PyMongo ile kurdum; bankanın iç uygulamalarından gelen ham SDLC veri akışlarını MongoDB'ye kaydeden akışları yönettim. İşlenmiş test verisinin SQL tablolarına eksiksiz ulaştığını kontrol eden otomatik doğrulamalar geliştirdim ve eksik veriyi tespit edip ekibe e-posta ile raporlayan bir protokol kurdum. Çok adımlı hatlar boyunca izleme ekledim — takım, uygulama ve paket seviyesinde performans göstergeleri türetilirken eksik metrik oranını takip ederek — ve doğrulama işlerini Jenkins ile yöneterek hatların kimse elle kontrol etmeden güvenilir kalmasını sağladım.\n\nTürkiye'nin önde gelen seyahat teknolojisi şirketlerinden Tatilsepeti'nde stajyer olarak başladım ve yalnızca bir ay sonra tam zamanlı Junior Software Developer oldum. Üç kişilik bir ekipte, yaklaşık 300 çalışanın kullandığı eski bir backoffice'i Next.js ve Material UI ile modernize ettik. En çok şey öğrendiğim kısım veriydi: Satış, Pazarlama ve SEO ekipleri için milyonlarca kayıt üzerinde çalışan panolar ve manuel raporlamanın yerini canlı veriyle dolduran, Swagger tabanlı API entegrasyonları.\n\nProfesyonel başlangıcım VISIGHT Technology'deydi: Sıfırdan bir React Native uygulamasını uçtan uca yönettim ve kimlik doğrulama ile gerçek zamanlı veri için Firebase kullanarak MVP'yi dört ayda teslim ettim. Bir ürünü boş bir repodan itibaren sahiplenmenin ne demek olduğunu orada öğrendim.\n\nKendi zamanımda bu parçaları bir araya getiren projeler geliştiriyorum. Şu an üzerinde çalıştığım PulseWindow, birkaç kripto borsasından canlı emir defterlerini akış halinde alıyor, her piyasanın gerçek komisyonlarından sonra kalan fiyat farklarını hesaplıyor, bunlarla kâğıt üzerinde işlem yapıyor ve sonuçları bir Next.js panosunda gösteriyor — Redis ve PostgreSQL üzerinde çalışan, Docker ile ayağa kalkan ve Prometheus ile Grafana üzerinden izlenen bir .NET servisi. 2021'de aynı problem için yazdığım Selenium tabanlı scraper Arbitrage-Alerts'in büyümüş hali.\n\nTüm bunları birbirine bağlayan şey, disiplinle birleşen çok yönlülük: Bir veritabanı şemasından API'ye, oradan onu kullanan ekrana rahatça geçebiliyorum ve en alttaki verinin doğru olmasını önemsiyorum.",
   },
   // --- About Page Meta ---
   'about.page_title': { en: 'About – Kerem Kırıcı', tr: 'Hakkımda – Kerem Kırıcı' },
   'about.page_description': {
-    en: 'About Kerem Kırıcı, full-stack and mobile software developer.',
-    tr: 'Full-stack ve mobil yazılım geliştirici Kerem Kırıcı hakkında.',
+    en: 'About Kerem Kırıcı, full-stack software developer working on backends, data pipelines and databases.',
+    tr: 'Backend, veri hatları ve veritabanları üzerinde çalışan full-stack yazılım geliştirici Kerem Kırıcı hakkında.',
   },
 
   // --- About Page Sections ---
@@ -86,6 +86,26 @@ const TEXT_DICTIONARY = {
   'about.education_title': { en: 'Education', tr: 'Eğitim' },
   'about.certificates_title': { en: 'Certificates', tr: 'Sertifikalar' },
   'about.leadership_title': { en: 'Leadership & Volunteering', tr: 'Liderlik ve Gönüllülük' },
+  'experience.current.company': {
+    en: 'Data platform startup',
+    tr: 'Veri platformu startup’ı',
+  },
+  'experience.current.role': {
+    en: 'Software Developer Intern',
+    tr: 'Software Developer Intern',
+  },
+  'experience.current.dates': {
+    en: '2026 – Present',
+    tr: '2026 – Halen',
+  },
+  'experience.current.summary': {
+    en: 'Contributing to the company’s GitHub projects and its cloud platform, and taking on data pipelines, database management and web scraping work while learning Bruin, the team’s data pipeline tool.',
+    tr: 'Şirketin GitHub projelerine ve bulut platformuna katkı veriyor; ekibin veri hattı aracı Bruin’i öğrenirken veri hatları, veritabanı yönetimi ve web scraping işlerini üstleniyorum.',
+  },
+  'experience.current.highlights': {
+    en: 'Contributing code to the company’s GitHub projects and to its cloud platform.\nBuilding data pipelines that ingest data from external sources, transform it in SQL and feed reporting dashboards.\nTaking responsibility for database management and web scraping work as it comes up.\nRamping up on Bruin by building real pipelines with it.',
+    tr: 'Şirketin GitHub projelerine ve bulut platformuna kod katkısı veriyorum.\nDış kaynaklardan veri alan, SQL ile dönüştüren ve raporlama panolarını besleyen veri hatları kuruyorum.\nOrtaya çıktıkça veritabanı yönetimi ve web scraping işlerinin sorumluluğunu alıyorum.\nBruin’i gerçek veri hatları kurarak öğreniyorum.',
+  },
 
   // --- Experience Entries ---
   'experience.isbankasi.company': { en: 'İş Bankası', tr: 'İş Bankası' },
@@ -196,37 +216,58 @@ const TEXT_DICTIONARY = {
   // --- Goals / Looking Ahead ---
   'about.goals_title': { en: 'Where I’m Headed', tr: 'Nereye Gidiyorum' },
   'about.goals_lead': {
-    en: 'Every role I’ve had taught me something different about how software actually gets built. İş Bankası showed me what rigor looks like at enterprise scale — pipelines that cannot quietly lose a row, validation that runs whether or not anyone is watching. Tatilsepeti showed me what it takes to keep a product healthy while hundreds of people depend on it every single day. But the four months at VISIGHT, building an app from an empty repository with a small team and an unforgiving deadline, are still the months I think about most. That is the environment I’m aiming for next.',
-    tr: 'Bugüne kadarki her işim bana yazılımın gerçekte nasıl geliştirildiğine dair farklı bir şey öğretti. İş Bankası bana kurumsal ölçekte disiplinin ne demek olduğunu gösterdi — sessizce tek bir kaydı bile kaybedemeyecek veri hatları, kimse bakmasa da çalışan doğrulamalar. Tatilsepeti, yüzlerce insan her gün ona bağımlıyken bir ürünü sağlıklı tutmanın ne gerektirdiğini gösterdi. Ama küçük bir ekiple, affetmeyen bir takvimde, boş bir repodan bir uygulama kurduğum VISIGHT’taki dört ay hâlâ en çok düşündüğüm dönem. Sırada hedeflediğim ortam tam olarak bu.',
+    en: 'Every role I’ve had taught me something different about how software actually gets built. VISIGHT showed me what owning a product from an empty repository feels like. Tatilsepeti showed me what it takes to keep a product healthy while hundreds of people rely on it every day. İş Bankası showed me what rigor looks like at enterprise scale — pipelines that cannot quietly lose a row. Where I am now puts all of it together: a small team, real responsibility, and data at the center.',
+    tr: 'Bugüne kadarki her işim bana yazılımın gerçekte nasıl geliştirildiğine dair farklı bir şey öğretti. VISIGHT bana bir ürünü boş bir repodan itibaren sahiplenmenin nasıl bir his olduğunu gösterdi. Tatilsepeti, yüzlerce insan her gün ona güvenirken bir ürünü sağlıklı tutmanın ne gerektirdiğini gösterdi. İş Bankası ise kurumsal ölçekte disiplinin ne demek olduğunu — sessizce tek bir satırı bile kaybedemeyecek veri hatlarını — gösterdi. Şu an bulunduğum yer hepsini bir araya getiriyor: küçük bir ekip, gerçek sorumluluk ve merkezde veri.',
   },
-  'about.goals.startup.title': { en: 'Why a startup', tr: 'Neden startup' },
+  'about.goals.startup.title': {
+    en: 'Why a small team',
+    tr: 'Neden küçük bir ekip',
+  },
   'about.goals.startup.text': {
-    en: 'Small teams are where I do my best work. I like being close enough to the product to watch a decision land — writing the API in the morning, the screen that consumes it in the afternoon, and hearing from a real user by the end of the week. I’m not looking for a narrow lane. I’m looking for a team small enough that owning a whole vertical is simply the normal way to work.',
-    tr: 'En iyi işimi küçük ekiplerde çıkarıyorum. Ürüne, aldığım bir kararın sonucunu görebilecek kadar yakın olmayı seviyorum — sabah API’yi, öğleden sonra onu kullanan ekranı yazmak ve hafta bitmeden gerçek bir kullanıcıdan geri dönüş almak. Dar bir alan aramıyorum; bir işin tamamını uçtan uca sahiplenmenin sıradan olduğu kadar küçük bir ekip arıyorum.',
+    en: 'Small teams are where I do my best work. I like being close enough to the product to watch a decision land — writing the pipeline in the morning, the query and the API on top of it in the afternoon, and hearing from a real user by the end of the week. Owning a whole slice of the system is simply the normal way to work there.',
+    tr: 'En iyi işimi küçük ekiplerde çıkarıyorum. Ürüne, aldığım bir kararın sonucunu görebilecek kadar yakın olmayı seviyorum — sabah veri hattını, öğleden sonra onun üzerindeki sorguyu ve API’yi yazmak, hafta bitmeden de gerçek bir kullanıcıdan geri dönüş almak. Orada sistemin bütün bir parçasını sahiplenmek işin olağan hali.',
   },
   'about.goals.build.title': { en: 'What I want to build', tr: 'Ne inşa etmek istiyorum' },
   'about.goals.build.text': {
-    en: 'Products people come back to. My favourite work so far has been the unglamorous kind that quietly removes friction — dashboards that replaced a manual reporting ritual, validation that catches missing data before anyone has to file a ticket. I want to keep building things that are genuinely useful, with the same care in the architecture underneath as in the interface on top.',
-    tr: 'İnsanların geri döndüğü ürünler. Şimdiye kadarki en sevdiğim işler, gösterişsiz biçimde sürtünmeyi ortadan kaldıranlar oldu — manuel bir raporlama ritüelinin yerini alan panolar, kimse talep açmadan eksik veriyi yakalayan doğrulamalar. Gerçekten işe yarayan şeyler geliştirmeye devam etmek istiyorum; alttaki mimariye de üstteki arayüze gösterdiğim özenin aynısını göstererek.',
+    en: 'Systems people can trust. My favourite work so far has been the unglamorous kind that quietly removes friction — validation that catches missing data before anyone has to file a ticket, dashboards that replaced a manual reporting ritual, a pipeline that runs every day without anyone thinking about it. I want to keep building that layer, with the same care in the data underneath as in the interface on top.',
+    tr: 'İnsanların güvenebileceği sistemler. Şimdiye kadarki en sevdiğim işler, gösterişsiz biçimde sürtünmeyi ortadan kaldıranlar oldu — kimse talep açmadan eksik veriyi yakalayan doğrulamalar, manuel bir raporlama ritüelinin yerini alan panolar, kimse düşünmeden her gün çalışan bir veri hattı. Bu katmanı inşa etmeye devam etmek istiyorum; alttaki veriye de üstteki arayüze gösterdiğim özenin aynısını göstererek.',
   },
-  'about.goals.growth.title': { en: 'How I want to grow', tr: 'Nasıl gelişmek istiyorum' },
+  'about.goals.growth.title': {
+    en: 'Where I want to go',
+    tr: 'Nereye varmak istiyorum',
+  },
   'about.goals.growth.text': {
-    en: 'I want to move from delivering features to owning outcomes: getting sharper at system design and data architecture, taking real responsibility for what ships and what it costs, and eventually helping shape a product’s direction rather than only its implementation. I’ll finish my degree at ITU along the way — I’ve worked full time through two years of study already, and I intend to keep both moving.',
-    tr: 'Özellik teslim etmekten sonuçları sahiplenmeye geçmek istiyorum: sistem tasarımı ve veri mimarisinde daha keskinleşmek, yayına çıkan şeyin ve maliyetinin sorumluluğunu gerçekten üstlenmek ve zamanla bir ürünün yalnızca uygulamasını değil yönünü de şekillendirmeye katkı vermek. Bu arada İTÜ’deki eğitimimi de tamamlayacağım — iki yıldır okurken tam zamanlı çalışıyorum ve ikisini birlikte yürütmeye devam etmek niyetindeyim.',
+    en: 'I want to grow into a Forward Deployed Engineer: someone who works directly with customers, understands their data and the problem behind it, and builds the pipeline, the database and the application that solve it. That means getting sharper at data architecture, cloud infrastructure and system design, and learning to own outcomes rather than tickets. I’ll finish my degree at ITU along the way — I’ve worked through two years of study already and intend to keep both moving.',
+    tr: 'Forward Deployed Engineer olarak büyümek istiyorum: doğrudan müşterilerle çalışan, verilerini ve arkasındaki sorunu anlayan, o sorunu çözen veri hattını, veritabanını ve uygulamayı kuran biri. Bu da veri mimarisi, bulut altyapısı ve sistem tasarımında keskinleşmek, işleri değil sonuçları sahiplenmeyi öğrenmek demek. Bu arada İTÜ’deki eğitimimi de tamamlayacağım — iki yıldır okurken çalışıyorum ve ikisini birlikte yürütmeye devam etmek niyetindeyim.',
   },
   'about.goals.cta': {
-    en: 'If you’re building something early and need someone who can move across the stack, I’d genuinely love to hear about it.',
-    tr: 'Erken aşamada bir şey inşa ediyorsanız ve stack’in her katmanında hareket edebilecek birine ihtiyacınız varsa, duymayı gerçekten çok isterim.',
+    en: 'If you’re working on a data-heavy product and need someone who can move from the pipeline to the screen, I’d genuinely love to hear about it.',
+    tr: 'Veri ağırlıklı bir ürün üzerinde çalışıyorsanız ve veri hattından ekrana kadar hareket edebilecek birine ihtiyacınız varsa, duymayı gerçekten çok isterim.',
   },
   'about.goals.get_in_touch': { en: 'Get in touch', tr: 'İletişime geç' },
 
   // --- Skill Group Labels ---
   'skills.languages': { en: 'Languages', tr: 'Diller' },
-  'skills.frontend': { en: 'Frontend & Web', tr: 'Frontend ve Web' },
-  'skills.mobile': { en: 'Mobile', tr: 'Mobil' },
-  'skills.backend': { en: 'Backend', tr: 'Backend' },
-  'skills.backend_data': { en: 'Backend & Data', tr: 'Backend ve Veri' },
-  'skills.data': { en: 'Data & Databases', tr: 'Veri ve Veritabanları' },
+  'skills.backend': {
+    en: 'Backend',
+    tr: 'Backend',
+  },
+  'skills.data': {
+    en: 'Databases',
+    tr: 'Veritabanları',
+  },
+  'skills.pipelines': {
+    en: 'Pipelines & Scraping',
+    tr: 'Veri Hatları ve Scraping',
+  },
+  'skills.cloud': {
+    en: 'Cloud & DevOps',
+    tr: 'Bulut ve DevOps',
+  },
+  'skills.web': {
+    en: 'Web & Mobile',
+    tr: 'Web ve Mobil',
+  },
   'skills.ai_ml': { en: 'AI / ML', tr: 'Yapay Zeka / ML' },
   'skills.tools': { en: 'Tools & Practices', tr: 'Araçlar ve Pratikler' },
 
@@ -246,8 +287,8 @@ const TEXT_DICTIONARY = {
     tr: 'Projeler',
   },
   'projects.description': {
-    en: "These are the key projects that have helped me advance my algorithmic thinking, particularly through mobile apps developed with both native iOS and React Native; in every project, I strive to build large-scale, user-experience-optimized applications by adhering to technical architecture and applying the experience I've gained in professional environments to my personal work.",
-    tr: 'Hem iOS hem de React Native ile geliştirilmiş mobil uygulamalar başta olmak üzere Algoritma mantığı konusunda da kendimi geliştirmem yarayan başlıca projeler. Her proje geliştirmesinde teknik yapıya uyarak ve profesyonel ortamlarda edindiğim deneyimleri bireysel projelerimde de kullanarak, kullanıcı deneyimini optimize etmeye çalışan büyük ölçekli projeler geliştirmeye çalışıyorum.',
+    en: 'Projects I built on my own time, from early algorithm work to systems that stream, store and analyse live data. The newer ones lean toward backends and data: ingestion, validation, databases and the dashboards on top. In each one I try to apply what I’ve learned in professional teams — clear architecture, honest measurements and documentation someone else can follow.',
+    tr: 'Kendi zamanımda geliştirdiğim projeler: ilk algoritma çalışmalarımdan canlı veriyi akış halinde alan, saklayan ve analiz eden sistemlere kadar. Yeni olanlar backend ve veriye ağırlık veriyor: veri toplama, doğrulama, veritabanları ve üzerlerindeki panolar. Her birinde profesyonel ekiplerde öğrendiklerimi uygulamaya çalışıyorum — net bir mimari, dürüst ölçümler ve başkasının takip edebileceği dokümantasyon.',
   },
   'projects.details': {
     en: 'Details',
@@ -276,18 +317,30 @@ const TEXT_DICTIONARY = {
     tr: 'Neler bulacaksınız',
   },
   'projects.what_to_expect_description': {
-    en: 'Project details, technical architectures, the technologies and algorithms used during the development process, along with images and detailed descriptions that showcase the final products or visualize the algorithms.',
-    tr: 'Projelerin detayları, teknik yapıları, geliştirilme sürecinde kullanılan teknolojiler ve algoritmalar. Sonuç ürünleri ortaya koyan veya kullanılan algoritmaları görselleştiren resimler ve detaylı açıklamalar.',
+    en: 'What each project does, how it is built, the technologies and algorithms behind it, and measured results where there are any, with diagrams and screenshots.',
+    tr: 'Her projenin ne yaptığı, nasıl kurulduğu, arkasındaki teknolojiler ve algoritmalar, varsa ölçülmüş sonuçlar; diyagramlar ve ekran görüntüleriyle birlikte.',
   },
   'projects.project_types': {
     en: 'Project types',
     tr: 'Proje türleri',
   },
-  'projects.type.native_ios': { en: 'Native iOS', tr: "iOS'a özel" },
-  'projects.type.react_native': { en: 'React Native', tr: 'React Native' },
-  'projects.type.frontend_ux': { en: 'Frontend UX', tr: 'Frontend UX' },
+  'projects.type.backend_data': {
+    en: 'Backend & Data',
+    tr: 'Backend ve Veri',
+  },
+  'projects.type.full_stack': {
+    en: 'Full-Stack',
+    tr: 'Full-Stack',
+  },
+  'projects.type.web_scraping': {
+    en: 'Web Scraping',
+    tr: 'Web Scraping',
+  },
   'projects.type.ai_algorithms': { en: 'AI & Algorithms', tr: 'Yapay Zeka ve Algoritmalar' },
-  'projects.type.tooling': { en: 'Tooling', tr: 'Araçlar' },
+  'projects.type.mobile': {
+    en: 'Mobile',
+    tr: 'Mobil',
+  },
   'projects.collaboration': {
     en: 'Collaboration',
     tr: 'İşbirliği',
@@ -316,6 +369,14 @@ const TEXT_DICTIONARY = {
     en: 'View on GitHub',
     tr: "GitHub'da görüntüle",
   },
+  'projects.in_progress': {
+    en: 'In progress',
+    tr: 'Devam ediyor',
+  },
+  'projects.private_repo': {
+    en: 'The repository is private for now. Happy to walk you through the code — just get in touch.',
+    tr: 'Repository şimdilik gizli. Kodu birlikte incelemekten memnuniyet duyarım; iletişime geçmeniz yeterli.',
+  },
   'projects.share': {
     en: 'Share',
     tr: 'Paylaş',
@@ -334,6 +395,22 @@ const TEXT_DICTIONARY = {
   },
   'orientation.portrait': { en: 'portrait', tr: 'dikey' },
   'orientation.landscape': { en: 'landscape', tr: 'yatay' },
+  'projects.pulsewindow.title': {
+    en: 'PulseWindow',
+    tr: 'PulseWindow',
+  },
+  'projects.pulsewindow.description': {
+    en: 'A self-hosted service that streams live order books from crypto exchanges, finds price gaps that are still profitable after real fees, and paper-trades them on a live dashboard.',
+    tr: 'Kripto borsalarından canlı emir defterlerini akış halinde alan, gerçek komisyonlardan sonra da kârlı kalan fiyat farklarını bulan ve bunlarla canlı bir panoda kâğıt üzerinde işlem yapan, kendi sunucunuzda çalışan bir servis.',
+  },
+  'projects.pulsewindow.long_explanation': {
+    en: "PulseWindow watches the coins you follow on BtcTurk, Binance and OKX TR, finds price gaps between them that survive each market's real maker/taker fees, and paper-trades them from the holdings and limits you enter. It uses public market data only: no API keys and no real orders. I'm still building it.\n\nOne .NET 10 host runs five background services — Ingestion, Detection, Simulator, Persistence and Api — that never call each other directly. They talk only through Redis pub/sub and shared records, and project references enforce that boundary. Redis holds live state; PostgreSQL holds history, fee schedules and everything the admin panel edits. Ingestion streams best bid/ask and order books over each exchange's WebSocket API, with reconnects, backoff, REST snapshots and an idle watchdog. Markets are data: a JSON spec run by one engine, so a new exchange can be added and tested from the admin panel without a release.\n\nDetection computes the net spread for every ordered pair of markets after fees, sized by walking the order books, and only opens an opportunity when both sides are fresh and the gap holds. The Simulator then fills it after a simulated latency against the books as they are by then, and measures the result against doing nothing. A Next.js dashboard (English and Turkish) shows prices, spreads, opportunities and feed health over Server-Sent Events, and the host exports Prometheus metrics for Grafana. Everything runs with Docker Compose, with CI on GitHub Actions.\n\nThe first measured run was a useful result: over one hour on BTC-USDT and ETH-USDT between BtcTurk and Binance, there were zero opportunities above 3 bps after fees. The median net spread was about −20 bps. Across roughly 650,000 evaluations, 99.97% finished in under 50 ms, with a mean of 1.1 ms. Most gaps that look like opportunities aren't, and the system is built to show that honestly.",
+    tr: "PulseWindow, BtcTurk, Binance ve OKX TR'de takip ettiğiniz coinleri izler; aralarındaki fiyat farklarından her piyasanın gerçek maker/taker komisyonlarından sonra da kârlı kalanları bulur ve girdiğiniz bakiye ve limitlerle bunlar üzerinde kâğıt üzerinde işlem yapar. Yalnızca herkese açık piyasa verisini kullanır: API anahtarı yok, gerçek emir yok. Geliştirmeye devam ediyorum.\n\nTek bir .NET 10 host'u beş arka plan servisini çalıştırır — Ingestion, Detection, Simulator, Persistence ve Api — ve bu servisler birbirini doğrudan çağırmaz. Yalnızca Redis pub/sub ve ortak kayıtlar üzerinden konuşurlar; bu sınırı proje referansları zorunlu kılar. Canlı durum Redis'te; geçmiş, komisyon tabloları ve admin panelinden düzenlenen her şey PostgreSQL'de tutulur. Ingestion servisi her borsanın WebSocket API'si üzerinden en iyi alış/satış fiyatlarını ve emir defterlerini akış halinde alır; yeniden bağlanma, backoff, REST anlık görüntüleri ve boşta kalma bekçisiyle. Piyasalar birer veridir: tek bir motorun çalıştırdığı bir JSON tanımı. Böylece yeni bir borsa, yeni bir sürüm çıkarmadan admin panelinden eklenip test edilebilir.\n\nDetection servisi, her piyasa çifti için komisyonlardan sonraki net farkı emir defterlerini dolaşarak hesaplar ve yalnızca iki taraf da güncelken ve fark bir süre korunduğunda bir fırsat açar. Simulator, fırsatı simüle edilmiş bir gecikmeden sonra o anki emir defterlerine karşı doldurur ve sonucu hiçbir şey yapmamakla karşılaştırır. Bir Next.js panosu (Türkçe ve İngilizce) fiyatları, farkları, fırsatları ve veri akışlarının sağlığını Server-Sent Events ile gösterir; host ise Grafana için Prometheus metrikleri sunar. Her şey Docker Compose ile çalışır; CI GitHub Actions üzerindedir.\n\nİlk ölçülmüş çalıştırma faydalı bir sonuç verdi: BtcTurk ile Binance arasında BTC-USDT ve ETH-USDT üzerinde bir saat boyunca, komisyonlardan sonra 3 bps'nin üzerinde hiç fırsat çıkmadı. Medyan net fark yaklaşık −20 bps'ydi. Yaklaşık 650.000 değerlendirmenin %99,97'si 50 ms'nin altında tamamlandı; ortalama 1,1 ms. Fırsat gibi görünen farkların çoğu aslında fırsat değil ve sistem bunu dürüstçe göstermek için tasarlandı.",
+  },
+  'projects.pulsewindow.tags': {
+    en: '.NET, PostgreSQL, Redis, Next.js, Docker, WebSockets, Prometheus',
+    tr: '.NET, PostgreSQL, Redis, Next.js, Docker, WebSockets, Prometheus',
+  },
   // --- Project: Sudoku React Native ---
   'projects.sudokumobileapp.title': {
     en: 'Sudoku - React Native App',
@@ -386,6 +463,22 @@ const TEXT_DICTIONARY = {
   'projects.2048-playing-algorithm.tags': {
     en: 'C++, AI, Minimax Algorithm',
     tr: 'C++, AI, Minimax Algoritması',
+  },
+  'projects.arbitrage-alerts.title': {
+    en: 'Arbitrage Alerts',
+    tr: 'Arbitraj Uyarıları',
+  },
+  'projects.arbitrage-alerts.description': {
+    en: 'A Python desktop app that scrapes USDT/TRY prices from two crypto exchanges with Selenium and gives a spoken alert when the gap crosses limits you set.',
+    tr: 'İki kripto borsasından Selenium ile USDT/TRY fiyatlarını toplayan ve fark belirlediğiniz sınırları aştığında sesli uyarı veren bir Python masaüstü uygulaması.',
+  },
+  'projects.arbitrage-alerts.long_explanation': {
+    en: 'My first data-collection project, and the idea PulseWindow later grew out of. Arbitrage Alerts compares USDT/TRY prices between the markets you choose (TR Binance and BtcTurk, plus the USD/TRY rate from TradingView) and plays a spoken alert when the difference crosses one of the limits you set.\n\nThe exchanges offered no simple feed for what I needed, so the app scrapes their trading pages. A single headless Chrome driven by Selenium keeps one window per market and switches between them, and BeautifulSoup parses each page for the bid, ask and last price. Each market is a small subclass that only defines how to find its prices, so adding one means writing three selectors. If any one price fails to refresh, none of them update, so you never compare prices taken at different moments.\n\nA Tkinter interface shows the live prices and the settings (markets, alert limits, alert interval), which are saved to a JSON file, and gTTS turns the alert into speech. I published it unfinished in 2021: scraping and the UI share one thread, so the window can freeze while the driver loads. That is exactly the problem PulseWindow solves with streaming APIs and separate services.',
+    tr: "İlk veri toplama projem ve PulseWindow'un daha sonra içinden çıktığı fikir. Arbitraj Uyarıları, seçtiğiniz piyasalar (TR Binance ve BtcTurk, ayrıca TradingView'dan USD/TRY kuru) arasındaki USDT/TRY fiyatlarını karşılaştırır ve fark belirlediğiniz sınırlardan birini aştığında sesli bir uyarı çalar.\n\nBorsalar ihtiyacım olan veri için basit bir akış sunmuyordu; bu yüzden uygulama işlem sayfalarını scrape eder. Selenium ile yönetilen tek bir headless Chrome, her piyasa için bir pencere açık tutar ve bunlar arasında geçiş yapar; BeautifulSoup da her sayfadan alış, satış ve son fiyatı ayrıştırır. Her piyasa, yalnızca fiyatlarını nasıl bulacağını tanımlayan küçük bir alt sınıftır; yeni bir piyasa eklemek üç seçici yazmak demektir. Fiyatlardan biri bile yenilenemezse hiçbiri güncellenmez; böylece farklı anlarda alınmış fiyatları asla karşılaştırmazsınız.\n\nTkinter arayüzü canlı fiyatları ve bir JSON dosyasına kaydedilen ayarları (piyasalar, uyarı sınırları, uyarı aralığı) gösterir; gTTS de uyarıyı sese çevirir. 2021'de bitmemiş haliyle yayınladım: scraping ve arayüz aynı thread'i paylaştığı için sürücü yüklenirken pencere donabiliyor. PulseWindow'un akış API'leri ve ayrı servislerle çözdüğü sorun tam olarak bu.",
+  },
+  'projects.arbitrage-alerts.tags': {
+    en: 'Python, Selenium, BeautifulSoup, Web Scraping, Tkinter',
+    tr: 'Python, Selenium, BeautifulSoup, Web Scraping, Tkinter',
   },
 
   // --- Project: SudokuGenerator ---
